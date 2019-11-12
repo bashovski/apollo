@@ -1,0 +1,41 @@
+#apollo_nav_main_btn_pin {
+
+    margin-right: 5px;
+    vertical-align: sub;
+}
+
+#apollo_nav_main_btn {
+    color: #ffffff !important;
+    background: #001730;
+    border-radius: 5px;
+    border-bottom: 2px solid #FE4A49;
+    font-weight: bold;
+    padding: 7px 30px;
+}
+
+.nav-link {
+    color: #001730 !important;
+    padding-right: 30px !important;
+    font-weight: bold !important;
+}
+
+#apollo_nav {
+    background-color: #ffffff;
+    padding-left: 7.5%;
+    padding-right: 7.5%;
+    -webkit-box-shadow: 0 5px 6px -6px #999;
+    -moz-box-shadow: 0 5px 6px -6px #999;
+    box-shadow: 0 5px 6px -6px #999;
+    border-top: 5px solid #FE4A49;
+}
+
+#apollo_nav_brand_span {
+    color: #FE4A49;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15.7922px;
+    letter-spacing: 0.28em;
+    vertical-align: middle;
+    padding-left: 15px;
+}

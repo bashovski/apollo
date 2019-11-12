@@ -11,6 +11,9 @@
 |
 */
 
+/**
+ * #001730 #4AD7D1 #FE4A49
+ */
 Route::get('/', function () {
     return view('welcome');
 });
