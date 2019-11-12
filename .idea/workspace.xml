@@ -2,18 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c5c3d23-321a-4fde-8fc8-8fd8cc1720d2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/apollo_logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/svg/apollo_account.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/svg/apollo_logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/svg/apollo_pin.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/svg/apollo_properties.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/apollo_jumbotron.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PropertiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PropertiesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -140,6 +133,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\git\apollo\public\img" />
       <recent name="C:\xampp\htdocs\git\apollo\public\svg" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -179,7 +173,7 @@
       <workItem from="1573318165027" duration="52000" />
       <workItem from="1573332590184" duration="992000" />
       <workItem from="1573406475751" duration="600000" />
-      <workItem from="1573583360224" duration="8373000" />
+      <workItem from="1573583360224" duration="12852000" />
     </task>
     <servers />
   </component>

@@ -39,3 +39,44 @@
     vertical-align: middle;
     padding-left: 15px;
 }
+
+#apollo_jumbotron_items {
+    padding-top: 80px;
+}
+
+#apollo_jumbotron_landing {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    background: url(/img/apollo_jumbotron.png);
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.apollo_jumbotron_centered_parent {
+    display: flex;
+    justify-content: center;
+}
+
+.apollo_btn_primary {
+    color: #ffffff !important;
+    background: #001730;
+    border: none;
+    border-radius: 5px;
+    border-bottom: 2px solid #FE4A49;
+    font-weight: bold;
+    padding: 7px 30px;
+}
+
+.apollo_jumbotron_heading1 {
+    text-align: center;
+    font-family: Montserrat;
+    font-weight: bold;
+    color: #001730;
+}
+
+.apollo_jumbotron_paragraph {
+    text-align: center;
+    font-family: Karla;
+    font-size: 16px;
+    color: #001730;
+}

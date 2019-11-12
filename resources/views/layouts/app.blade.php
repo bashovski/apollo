@@ -15,7 +15,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Karla|Montserrat&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -23,7 +23,7 @@
 </head>
 <body>
     <div id="app">
-        <nav id="apollo_nav" class="navbar navbar-light navbar-expand-md">
+        <nav id="apollo_nav" class="navbar navbar-light navbar-expand-md fixed-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#" style="color: #fff;">
                     <img src="/img/apollo_logo.png" width="42" height="42" alt="">
@@ -52,7 +52,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main id="apollo_main">
             @yield('content')
         </main>
     </div>
