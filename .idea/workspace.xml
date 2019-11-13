@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c5c3d23-321a-4fde-8fc8-8fd8cc1720d2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/img/apollo_jumbotron.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/svg/apollo_down_arrow.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/svg/apollo_search.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
@@ -127,7 +129,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/img" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/svg" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
@@ -137,8 +139,8 @@
       <recent name="C:\xampp\htdocs\git\apollo\public\svg" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\git\apollo\public\img" />
       <recent name="C:\xampp\htdocs\git\apollo\public\svg" />
+      <recent name="C:\xampp\htdocs\git\apollo\public\img" />
       <recent name="C:\xampp\htdocs\git\apollo\public\css" />
     </key>
   </component>
@@ -173,7 +175,9 @@
       <workItem from="1573318165027" duration="52000" />
       <workItem from="1573332590184" duration="992000" />
       <workItem from="1573406475751" duration="600000" />
-      <workItem from="1573583360224" duration="12852000" />
+      <workItem from="1573583360224" duration="14636000" />
+      <workItem from="1573666804604" duration="3131000" />
+      <workItem from="1573681152250" duration="2153000" />
     </task>
     <servers />
   </component>
@@ -185,7 +189,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

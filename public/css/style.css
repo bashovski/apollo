@@ -13,10 +13,20 @@
     padding: 7px 30px;
 }
 
+#apollo_nav_main_btn:hover {
+    opacity: 0.9;
+    transition: 500ms;
+}
+
 .nav-link {
     color: #001730 !important;
     padding-right: 30px !important;
     font-weight: bold !important;
+}
+
+.apollo_nav_item:hover {
+    opacity: 0.8;
+    transition: 500ms;
 }
 
 #apollo_nav {
@@ -45,8 +55,7 @@
 }
 
 #apollo_jumbotron_landing {
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
+    border-radius: 0px;
     background: url(/img/apollo_jumbotron.png);
     background-size: cover;
     min-height: 100vh;
@@ -66,6 +75,10 @@
     font-weight: bold;
     padding: 7px 30px;
 }
+.apollo_btn_primary:hover {
+    opacity: 0.9;
+    transition: 500ms;
+}
 
 .apollo_jumbotron_heading1 {
     text-align: center;
@@ -79,4 +92,37 @@
     font-family: Karla;
     font-size: 16px;
     color: #001730;
+}
+
+#apollo_jumbotron_search_form {
+    margin-top: 20vh;
+    opacity: 0.9;
+    display: flex;
+    justify-content: center;
+}
+
+#apollo_jumbotron_search_input {
+    color: #FE4A49;
+    font-family: Karla;
+}
+
+textarea, select, input, button { outline: none !important; box-shadow: none !important; }
+
+.separator-type, .title-type, .intro-type, .content-type .intro-type p {
+    position: relative;
+}
+.intro-type .container {
+    padding: 107px 0px 102px 0px !important;
+}
+.company-heading h1 {
+    margin-bottom: 60px;
+    padding-bottom: 50px;
+    line-height: 80px;
+    color: #fff;
+    font-weight: 700 !important;
+    text-align: center;
+}
+
+#apollo_jumbotron_arrow_scrolldown {
+    margin-top: 25vh;
 }
