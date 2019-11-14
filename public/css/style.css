@@ -138,7 +138,7 @@ textarea, select, input, button { outline: none !important; box-shadow: none !im
 
 #apollo_search_property_filter {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     padding: 25px 5%;
     background-color: #FE4A49;;
     margin-right: auto;
@@ -152,6 +152,7 @@ textarea, select, input, button { outline: none !important; box-shadow: none !im
     border-radius: 5px;
     color: #ffffff;
     border-bottom: 2px solid #fff;
+    margin-right: 7px;
 }
 
 .apollo_search_filter_icon {
@@ -255,4 +256,91 @@ textarea, select, input, button { outline: none !important; box-shadow: none !im
     align-items: center;
     margin-left: auto;
     border-bottom-left-radius: 10px;
+    border-bottom: 2px solid #FE4A49;
 }
+
+#apollo_verified_banner {
+    background-size: cover;
+    background: url(/img/apollo_partners_banner.png) 0% 32%;
+    height: 20vh;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: #ffffff;
+    font-family: Montserrat;
+    font-weight: bold;
+    font-size: 40px;
+    align-items: center;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top: 4px solid #FE4A49;
+}
+
+.apollo_why_us_cl {
+    color: #313437;
+    background-color: #fff;
+    padding-bottom: 30px;
+    margin-top: 10vh;
+}
+
+@media (max-width:767px) {
+    .apollo_why_us_cl {
+        padding-bottom: 10px;
+    }
+}
+
+.apollo_why_us_cl p {
+    color: #7d8285;
+}
+
+.apollo_why_us_cl h2 {
+    font-weight: bold;
+    margin-bottom: 40px;
+    padding-top: 40px;
+    color: inherit;
+}
+
+.apollo_why_us_cl .intro {
+    font-size: 16px;
+    max-width: 500px;
+    margin: 0 auto 60px;
+}
+
+@media (max-width:767px) {
+    .apollo_why_us_cl .intro {
+        margin-bottom: 40px;
+    }
+}
+
+.apollo_why_us_cl .item {
+    min-height: 100px;
+    padding-left: 80px;
+    margin-bottom: 40px;
+}
+
+@media (max-width:767px) {
+    .apollo_why_us_cl .item {
+        min-height: 0;
+    }
+}
+
+.apollo_why_us_cl .item .name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: inherit;
+}
+
+.apollo_why_us_cl .item .description {
+    font-size: 15px;
+    margin-bottom: 0;
+}
+
+.apollo_why_us_cl .item .icon {
+    font-size: 40px;
+    float: left;
+    margin-left: -65px;
+}
+
