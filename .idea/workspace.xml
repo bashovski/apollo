@@ -2,22 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c5c3d23-321a-4fde-8fc8-8fd8cc1720d2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/img/apollo_partners_banner.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/svg/apollo_agent.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/svg/apollo_amount.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/svg/apollo_monitor.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/svg/apollo_movein.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/svg/apollo_qa.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/svg/apollo_signature.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/svg/apollo_verified.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/Jumbotron.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/RecentProperties.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/Search.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/apollo_att.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/footer.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/ExampleComponent.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -188,7 +178,7 @@
       <workItem from="1573583360224" duration="14636000" />
       <workItem from="1573666804604" duration="3131000" />
       <workItem from="1573681152250" duration="15052000" />
-      <workItem from="1573748137570" duration="16572000" />
+      <workItem from="1573748137570" duration="21336000" />
     </task>
     <servers />
   </component>
