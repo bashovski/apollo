@@ -29,7 +29,7 @@
             </div>
         </div>
     </div>
-    <div id="apollo_search" style="margin-bottom: 600px">
+    <div id="apollo_search" style="margin-bottom: 10vh">
         <div id="apollo_search_filter_tools">
             <div id="apollo_search_banner" class="row">
                 <div style="vertical-align: middle">
@@ -130,6 +130,29 @@
                     </button>
                 </div>
             </form>
+        </div>
+    </div>
+    <div id="apollo_recent_properties" class="container apollo_container" style="margin-bottom: 300px">
+        <h2 class="apollo_heading2 d-flex justify-content-center">Recently added</h2>
+        <div class="row mt-5">
+            <div class="col">
+                <img class="apollo_recent_item_image" src="/img/examplum1.jpg" height="200" width="312" alt="">
+                <h6 class="apollo_recent_item_heading">Eperweg 13</h6>
+                <p class="apollo_recent_item_city">7313 AV Apeldoorn</p>
+                <h6 class="apollo_recent_item_price">€ 99 000 000</h6>
+            </div>
+            <div class="col">
+                <img class="apollo_recent_item_image" src="/img/examplum2.jpg" height="200" width="312" alt="">
+                <h6 class="apollo_recent_item_heading">Eperweg 13</h6>
+                <p class="apollo_recent_item_city">7313 AV Apeldoorn</p>
+                <h6 class="apollo_recent_item_price">€ 99 000 000</h6>
+            </div>
+            <div class="col">
+                <img class="apollo_recent_item_image" src="/img/examplum3.jpg" height="200" width="312" alt="">
+                <h6 class="apollo_recent_item_heading">Eperweg 13</h6>
+                <p class="apollo_recent_item_city">7313 AV Apeldoorn</p>
+                <h6 class="apollo_recent_item_price">€ 99 000 000</h6>
+            </div>
         </div>
     </div>
 @endsection

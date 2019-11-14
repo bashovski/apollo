@@ -113,7 +113,7 @@ textarea, select, input, button { outline: none !important; box-shadow: none !im
 }
 
 #apollo_search_filter_tools {
-    margin-top: 20vh;
+    margin-top: 12vh;
     display: flex;
     justify-content: center;
 }
@@ -204,4 +204,37 @@ textarea, select, input, button { outline: none !important; box-shadow: none !im
     margin-left: auto;
     width: 36%;
     border-bottom: 2px solid #ffffff;
+}
+
+.apollo_container {
+}
+
+.apollo_heading2 {
+    color: #FE4A49;
+    font-weight: 600;
+    font-family: Montserrat;
+}
+
+.apollo_recent_item_heading {
+    color: #FE4A49;
+    font-weight: 600;
+    font-family: Montserrat;
+    font-size: 1.1rem;
+}
+
+.apollo_recent_item_image {
+    margin-bottom: .75rem;
+}
+
+.apollo_recent_item_city {
+    font-family: Karla;
+    color: #1b1e21;
+    font-size: 1.1rem;
+}
+
+.apollo_recent_item_price {
+    color: #001730;
+    font-weight: 600;
+    font-family: Montserrat;
+    font-size: 1.1rem;
 }
