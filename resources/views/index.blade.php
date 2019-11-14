@@ -29,4 +29,40 @@
             </div>
         </div>
     </div>
+    <div id="apollo_search" style="margin-bottom: 600px">
+        <div id="apollo_search_filter_tools">
+            <div id="apollo_search_banner" class="row">
+                <div style="vertical-align: middle">
+                    <img style="vertical-align: text-bottom;" height="52" width="52" src="/svg/apollo_properties_lg.svg" alt="">
+                    <span style="padding-left: 10px;">SEARCH FOR PROPERTIES</span>
+                </div>
+            </div>
+        </div>
+        <div id="apollo_search_property_filter">
+            <div class="apollo_search_property_filter_item">
+                <img class="apollo_search_filter_icon" height="18" width="18" src="/svg/apollo_forsale.svg">
+                <span>For sale</span>
+            </div>
+            <div class="apollo_search_property_filter_item">
+                <img class="apollo_search_filter_icon" height="18" width="18" src="/svg/apollo_rent.svg">
+                <span>For rent</span>
+            </div>
+            <div class="apollo_search_property_filter_item">
+                <img class="apollo_search_filter_icon" height="18" width="18" src="/svg/apollo_office.svg">
+                <span>Office</span>
+            </div>
+            <div class="apollo_search_property_filter_item">
+                <img class="apollo_search_filter_icon" height="18" width="18" src="/svg/apollo_business.svg">
+                <span>Business</span>
+            </div>
+            <div class="apollo_search_property_filter_item">
+                <img class="apollo_search_filter_icon" height="18" width="18" src="/svg/apollo_detached.svg">
+                <span>Detached</span>
+            </div>
+            <div class="apollo_search_property_filter_item">
+                <img class="apollo_search_filter_icon" height="18" width="18" src="/svg/apollo_new.svg">
+                <span>Newly built</span>
+            </div>
+        </div>
+    </div>
 @endsection
