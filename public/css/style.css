@@ -238,3 +238,21 @@ textarea, select, input, button { outline: none !important; box-shadow: none !im
     font-family: Montserrat;
     font-size: 1.1rem;
 }
+
+.apollo_recent_item {
+    width: 320px;
+    height: 208px;
+    background-size: cover;
+    margin-bottom: 9px;
+}
+
+.apollo_recent_item_visits {
+    background-color: #00173077;
+    color: #ffffff;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    border-bottom-left-radius: 10px;
+}
