@@ -108,15 +108,6 @@
 
 textarea, select, input, button { outline: none !important; box-shadow: none !important; }
 
-.company-heading h1 {
-    margin-bottom: 60px;
-    padding-bottom: 50px;
-    line-height: 80px;
-    color: #fff;
-    font-weight: 700 !important;
-    text-align: center;
-}
-
 #apollo_jumbotron_arrow_scrolldown {
     margin-top: 25vh;
 }
@@ -166,4 +157,51 @@ textarea, select, input, button { outline: none !important; box-shadow: none !im
 .apollo_search_filter_icon {
     margin-right: 5px;
     vertical-align: sub;
+}
+
+#apollo_search_fields {
+    display: flex;
+    background-color: #FE4A49;
+    padding: 0 5% 25px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 80%;
+}
+
+#apollo_search_left_half {
+    width: 50%;
+    display: flex;
+    margin-right: 5%;
+}
+
+#apollo_search_field {
+    width: 80%;
+    height: 40px;
+    background-color: #ffffff;
+    font-family: Karla;
+    border-radius: 3px 0 0 3px;
+}
+
+#apollo_dropdown_button {
+    width: 100%;
+    background-color: #ffffff;
+    height: 40px;
+    border-radius: 0 3px 3px 0;
+    margin-left: 2px;
+    font-family: Karla;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+#apollo_search_right_half {
+    width: 50%;
+    display: flex;
+}
+
+#apollo_search_button {
+    margin-left: auto;
+    width: 36%;
+    border-bottom: 2px solid #ffffff;
 }

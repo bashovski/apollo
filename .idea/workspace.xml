@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c5c3d23-321a-4fde-8fc8-8fd8cc1720d2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/img/apollo_search_estate.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/svg/apollo_business.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/svg/apollo_detached.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/svg/apollo_forsale.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/svg/apollo_new.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/svg/apollo_office.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/svg/apollo_properties_lg.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/svg/apollo_rent.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/svg/apollo_down_caret.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/svg/apollo_search_sm.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
@@ -182,7 +176,7 @@
       <workItem from="1573406475751" duration="600000" />
       <workItem from="1573583360224" duration="14636000" />
       <workItem from="1573666804604" duration="3131000" />
-      <workItem from="1573681152250" duration="9297000" />
+      <workItem from="1573681152250" duration="13736000" />
     </task>
     <servers />
   </component>
