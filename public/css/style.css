@@ -110,6 +110,11 @@ textarea, select, input, button { outline: none !important; box-shadow: none !im
 
 #apollo_jumbotron_arrow_scrolldown {
     margin-top: 25vh;
+    cursor: pointer;
+}
+#apollo_jumbotron_arrow_scrolldown:hover {
+    opacity: 0.6;
+    transition: 500ms;
 }
 
 #apollo_search_filter_tools {
