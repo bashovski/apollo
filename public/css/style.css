@@ -147,12 +147,27 @@ textarea, select, input, button { outline: none !important; box-shadow: none !im
 }
 
 .apollo_search_property_filter_item {
-    background-color: #001730;
+    background: none;
     padding: 10px 25px;
     border-radius: 5px;
     color: #ffffff;
     border-bottom: 2px solid #fff;
     margin-right: 7px;
+    cursor: pointer;
+}
+
+.filter-active {
+    background: #001730;
+}
+
+.apollo_search_property_filter_item:hover {
+    background-color: rgb(203, 56, 56);
+    transition: 500ms;
+}
+
+.filter-active:hover {
+    background: #001730;
+    opacity: 0.9 !important;
 }
 
 .apollo_search_filter_icon {
