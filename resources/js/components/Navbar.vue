@@ -1,7 +1,7 @@
 <template>
     <nav id="apollo_nav" class="navbar navbar-light navbar-expand-md fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#" style="color: #fff;">
+            <a class="navbar-brand" :href="routeHome" style="color: #fff;">
                 <img src="/img/apollo_logo.png" width="42" height="42" alt="">
                 <span id="apollo_nav_brand_span">APOLLO</span>
             </a>
@@ -32,7 +32,10 @@
 
 <script>
     export default {
-        name: "Navbar"
+        name: "Navbar",
+        props: [
+            'routeHome'
+        ]
     }
 </script>
 

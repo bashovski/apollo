@@ -1,1 +1,1 @@
-<navbar></navbar>
+<navbar route-home="{{route('home')}}"></navbar>

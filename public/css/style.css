@@ -363,3 +363,53 @@ textarea, select, input, button { outline: none !important; box-shadow: none !im
     float: left;
     margin-left: -65px;
 }
+
+#apollo_login_form_mail {
+    background-color: #ffffff;
+    margin: auto;
+
+    width: 40%;
+    border: none;
+    border-radius: 6px;
+    border-bottom: 4px solid #FE4A49;
+}
+
+#apollo_login_form_password {
+    background-color: #ffffff;
+    margin: auto;
+
+    width: 40%;
+    border: none;
+    border-radius: 6px;
+    border-bottom: 4px solid #FE4A49 !important;
+}
+
+.login_form_input {
+    margin-top: 50px;
+    border-radius: 50px;
+    border: 1px #888888 solid;
+    width: 80%;
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #FE4A49 !important;
+    font-family: Karla;
+}
+
+.apollo_flex_item {
+    justify-content: center;
+    display: flex;
+}
+
+.apollo_login_proceed {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+#apollo_login_no_acc {
+    color: #FE4A49;
+    font-weight: 800;
+    font-size: 1.01em;
+    font-family: inherit;
+    cursor: pointer;
+}

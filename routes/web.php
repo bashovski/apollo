@@ -21,3 +21,4 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/', 'PropertiesController@index')->name('home');
+Route::get('/myaccount', 'UsersController@show')->name('myaccount');
