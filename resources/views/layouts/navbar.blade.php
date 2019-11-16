@@ -1,1 +1,4 @@
-<navbar route-home="{{route('home')}}"></navbar>
+<navbar
+    route-home="{{route('home')}}"
+    route-my-account="{{route('myaccount')}}"
+></navbar>

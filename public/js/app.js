@@ -1945,9 +1945,9 @@ __webpack_require__.r(__webpack_exports__);
       apiEndpoint: '/api/validate',
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
       email: '',
-      previousEmail: '',
+      previousEmail: '_',
       password: '',
-      previousPassword: '',
+      previousPassword: '_',
       loginFlowPasswordStyle: 'display: none',
       loginFlowEmailStyle: '',
       emailPlaceholder: this.emailPlaceholderDefault,
@@ -1963,13 +1963,16 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       if (!this.isValidMail(this.email)) return this.displayError('EMAIL', 'Invalid e-mail');
+      if (this.password === this.previousPassword || this.email === this.previousEmail) return true;
       axios.get(this.constructApiEndpoint(type)).then(function (response) {
         if (type === 'email') {
+          _this.previousEmail = _this.email;
           if (response.data.exists === 0) return _this.displayError('EMAIL', 'Account with this e-mail doesn\'t exist.');else {
             _this.loginFlowPasswordStyle = '';
             _this.loginFlowEmailStyle = 'display: none';
           }
         } else if (type === 'final') {
+          _this.previousPassword = _this.password;
           if (response.data.correct_pass === 0) return _this.displayError('FINAL', 'You\'ve entered wrong password.');else _this.login();
         } else return console.log('error');
       })["catch"](function (errors) {
@@ -2041,7 +2044,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Navbar",
-  props: ['routeHome']
+  props: ['routeHome', 'routeMyAccount']
 });
 
 /***/ }),
@@ -38163,7 +38166,55 @@ var render = function() {
         _vm._v(" "),
         _vm._m(0),
         _vm._v(" "),
-        _vm._m(1)
+        _c(
+          "div",
+          {
+            staticClass: "collapse navbar-collapse",
+            staticStyle: { color: "#fff" },
+            attrs: { href: "#", ver: "" }
+          },
+          [
+            _c("ul", { staticClass: "nav navbar-nav ml-auto" }, [
+              _c(
+                "li",
+                {
+                  staticClass: "apollo_nav_item nav-item",
+                  attrs: { role: "presentation" }
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "nav-link",
+                      staticStyle: {
+                        color: "#4AD7D1",
+                        "padding-right": "30px"
+                      },
+                      attrs: { href: _vm.routeMyAccount }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          id: "apollo_nav_main_btn_pin",
+                          src: "/svg/apollo_account.svg",
+                          height: "18",
+                          width: "18",
+                          alt: ""
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("span", [_vm._v("My Account")])
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(1),
+              _vm._v(" "),
+              _vm._m(2)
+            ])
+          ]
+        )
       ])
     ]
   )
@@ -38190,95 +38241,56 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c(
-      "div",
+      "li",
       {
-        staticClass: "collapse navbar-collapse",
-        staticStyle: { color: "#fff" },
-        attrs: { href: "#", ver: "" }
+        staticClass: "apollo_nav_item nav-item",
+        attrs: { role: "presentation" }
       },
       [
-        _c("ul", { staticClass: "nav navbar-nav ml-auto" }, [
-          _c(
-            "li",
-            {
-              staticClass: "apollo_nav_item nav-item",
-              attrs: { role: "presentation" }
-            },
-            [
-              _c(
-                "a",
-                {
-                  staticClass: "nav-link",
-                  staticStyle: { color: "#4AD7D1", "padding-right": "30px" },
-                  attrs: { href: "#" }
-                },
-                [
-                  _c("img", {
-                    attrs: {
-                      id: "apollo_nav_main_btn_pin",
-                      src: "/svg/apollo_account.svg",
-                      height: "18",
-                      width: "18",
-                      alt: ""
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("span", [_vm._v("My Account")])
-                ]
-              )
-            ]
-          ),
+        _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
+          _c("img", {
+            attrs: {
+              id: "apollo_nav_main_btn_pin",
+              src: "/svg/apollo_properties.svg",
+              height: "18",
+              width: "18",
+              alt: ""
+            }
+          }),
           _vm._v(" "),
-          _c(
-            "li",
-            {
-              staticClass: "apollo_nav_item nav-item",
-              attrs: { role: "presentation" }
-            },
-            [
-              _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                _c("img", {
-                  attrs: {
-                    id: "apollo_nav_main_btn_pin",
-                    src: "/svg/apollo_properties.svg",
-                    height: "18",
-                    width: "18",
-                    alt: ""
-                  }
-                }),
-                _vm._v(" "),
-                _c("span", [_vm._v("My Properties")])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "li",
-            { staticClass: "nav-item", attrs: { role: "presentation" } },
-            [
-              _c(
-                "a",
-                {
-                  staticClass: "nav-link",
-                  attrs: { href: "#", id: "apollo_nav_main_btn" }
-                },
-                [
-                  _c("img", {
-                    attrs: {
-                      id: "apollo_nav_main_btn_pin",
-                      src: "/svg/apollo_pin.svg",
-                      height: "18",
-                      width: "18",
-                      alt: ""
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("span", [_vm._v("Place a Property")])
-                ]
-              )
-            ]
-          )
+          _c("span", [_vm._v("My Properties")])
         ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "li",
+      { staticClass: "nav-item", attrs: { role: "presentation" } },
+      [
+        _c(
+          "a",
+          {
+            staticClass: "nav-link",
+            attrs: { href: "#", id: "apollo_nav_main_btn" }
+          },
+          [
+            _c("img", {
+              attrs: {
+                id: "apollo_nav_main_btn_pin",
+                src: "/svg/apollo_pin.svg",
+                height: "18",
+                width: "18",
+                alt: ""
+              }
+            }),
+            _vm._v(" "),
+            _c("span", [_vm._v("Place a Property")])
+          ]
+        )
       ]
     )
   }

@@ -21,4 +21,4 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/', 'PropertiesController@index')->name('home');
-Route::get('/myaccount', 'UsersController@show')->name('myaccount');
+Route::get('/myaccount', 'UsersController@show')->name('myaccount')->middleware('auth');

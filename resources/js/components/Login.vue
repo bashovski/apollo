@@ -57,9 +57,9 @@
                 apiEndpoint: '/api/validate',
                 csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
                 email: '',
-                previousEmail: '',
+                previousEmail: '_',
                 password: '',
-                previousPassword: '',
+                previousPassword: '_',
                 loginFlowPasswordStyle: 'display: none',
                 loginFlowEmailStyle: '',
                 emailPlaceholder : this.emailPlaceholderDefault,
@@ -73,9 +73,11 @@
             },
             proceed(type) {
                 if(!this.isValidMail(this.email)) return this.displayError('EMAIL', 'Invalid e-mail');
+                if(this.password === this.previousPassword || this.email === this.previousEmail) return true;
                 axios.get(this.constructApiEndpoint(type))
                 .then(response => {
                     if(type === 'email') {
+                        this.previousEmail = this.email;
                         if(response.data.exists === 0)
                             return this.displayError('EMAIL', 'Account with this e-mail doesn\'t exist.');
                         else {
@@ -83,6 +85,7 @@
                             this.loginFlowEmailStyle = 'display: none';
                         }
                     } else if(type === 'final') {
+                        this.previousPassword = this.password;
                         if(response.data.correct_pass === 0)
                             return this.displayError('FINAL', 'You\'ve entered wrong password.');
                          else this.login();

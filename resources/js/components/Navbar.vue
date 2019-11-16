@@ -9,7 +9,7 @@
             <div class="collapse navbar-collapse"
                  href="#" style="color: #fff;" ver="">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="apollo_nav_item nav-item" role="presentation"><a class="nav-link" href="#" style="color: #4AD7D1;padding-right: 30px;">
+                    <li class="apollo_nav_item nav-item" role="presentation"><a class="nav-link" :href="routeMyAccount" style="color: #4AD7D1;padding-right: 30px;">
                         <img id="apollo_nav_main_btn_pin" src="/svg/apollo_account.svg" height="18" width="18" alt="">
                         <span>My Account</span>
                     </a>
@@ -34,7 +34,8 @@
     export default {
         name: "Navbar",
         props: [
-            'routeHome'
+            'routeHome',
+            'routeMyAccount'
         ]
     }
 </script>
