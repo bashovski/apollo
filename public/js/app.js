@@ -1883,6 +1883,53 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Navbar.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Navbar.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "Navbar"
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/RecentProperties.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/RecentProperties.vue?vue&type=script&lang=js& ***!
@@ -2055,6 +2102,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Search",
   props: [],
@@ -2062,7 +2112,13 @@ __webpack_require__.r(__webpack_exports__);
     return {
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
       selectedFilterStylesheets: ['filter-active', '', '', '', '', ''],
-      selectedId: 0
+      selectedId: 0,
+      propertyRange: 0,
+      // in kilometers,
+      priceFrom: 0,
+      // -1 is for 'over a million' for both
+      priceTo: 0,
+      query: ''
     };
   },
   methods: {
@@ -2072,6 +2128,23 @@ __webpack_require__.r(__webpack_exports__);
       });
       this.selectedFilterStylesheets[filterId] = 'filter-active';
       this.selectedId = filterId;
+    },
+    selectPropertyRange: function selectPropertyRange(range) {
+      this.propertyRange = range;
+    },
+    selectPriceRangeFrom: function selectPriceRangeFrom(price) {
+      this.priceFrom = price;
+    },
+    selectPriceRangeTo: function selectPriceRangeTo(price) {
+      this.priceTo = price;
+    }
+  },
+  computed: {
+    displayPriceFrom: function displayPriceFrom() {
+      return this.priceFrom === -1 ? 'over a million' : '€ ' + this.priceFrom.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    },
+    displayPriceTo: function displayPriceTo() {
+      return this.priceTo === -1 ? 'over a million' : '€ ' + this.priceTo.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
     }
   }
 });
@@ -37617,6 +37690,179 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Navbar.vue?vue&type=template&id=6dde423b&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Navbar.vue?vue&type=template&id=6dde423b&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "nav",
+      {
+        staticClass: "navbar navbar-light navbar-expand-md fixed-top",
+        attrs: { id: "apollo_nav" }
+      },
+      [
+        _c("div", { staticClass: "container-fluid" }, [
+          _c(
+            "a",
+            {
+              staticClass: "navbar-brand",
+              staticStyle: { color: "#fff" },
+              attrs: { href: "#" }
+            },
+            [
+              _c("img", {
+                attrs: {
+                  src: "/img/apollo_logo.png",
+                  width: "42",
+                  height: "42",
+                  alt: ""
+                }
+              }),
+              _vm._v(" "),
+              _c("span", { attrs: { id: "apollo_nav_brand_span" } }, [
+                _vm._v("APOLLO")
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "navbar-toggler",
+              attrs: { "data-toggle": "collapse", "data-target": "#" }
+            },
+            [
+              _c("span", { staticClass: "sr-only" }, [
+                _vm._v("Toggle navigation")
+              ]),
+              _c("span", { staticClass: "navbar-toggler-icon" })
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "collapse navbar-collapse",
+              staticStyle: { color: "#fff" },
+              attrs: { href: "#", ver: "" }
+            },
+            [
+              _c("ul", { staticClass: "nav navbar-nav ml-auto" }, [
+                _c(
+                  "li",
+                  {
+                    staticClass: "apollo_nav_item nav-item",
+                    attrs: { role: "presentation" }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "nav-link",
+                        staticStyle: {
+                          color: "#4AD7D1",
+                          "padding-right": "30px"
+                        },
+                        attrs: { href: "#" }
+                      },
+                      [
+                        _c("img", {
+                          attrs: {
+                            id: "apollo_nav_main_btn_pin",
+                            src: "/svg/apollo_account.svg",
+                            height: "18",
+                            width: "18",
+                            alt: ""
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("My Account")])
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  {
+                    staticClass: "apollo_nav_item nav-item",
+                    attrs: { role: "presentation" }
+                  },
+                  [
+                    _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
+                      _c("img", {
+                        attrs: {
+                          id: "apollo_nav_main_btn_pin",
+                          src: "/svg/apollo_properties.svg",
+                          height: "18",
+                          width: "18",
+                          alt: ""
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("span", [_vm._v("My Properties")])
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  { staticClass: "nav-item", attrs: { role: "presentation" } },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "nav-link",
+                        attrs: { href: "#", id: "apollo_nav_main_btn" }
+                      },
+                      [
+                        _c("img", {
+                          attrs: {
+                            id: "apollo_nav_main_btn_pin",
+                            src: "/svg/apollo_pin.svg",
+                            height: "18",
+                            width: "18",
+                            alt: ""
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("span", [_vm._v("Place a Property")])
+                      ]
+                    )
+                  ]
+                )
+              ])
+            ]
+          )
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/RecentProperties.vue?vue&type=template&id=2b63a559&scoped=true&":
 /*!*******************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/RecentProperties.vue?vue&type=template&id=2b63a559&scoped=true& ***!
@@ -37984,9 +38230,582 @@ var render = function() {
               }
             }),
             _vm._v(" "),
-            _vm._m(1),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.propertyRange,
+                  expression: "propertyRange"
+                }
+              ],
+              attrs: { type: "hidden", name: "range" },
+              domProps: { value: _vm.propertyRange },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.propertyRange = $event.target.value
+                }
+              }
+            }),
             _vm._v(" "),
-            _vm._m(2)
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.priceFrom,
+                  expression: "priceFrom"
+                }
+              ],
+              attrs: { type: "hidden", name: "priceFrom" },
+              domProps: { value: _vm.priceFrom },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.priceFrom = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.priceTo,
+                  expression: "priceTo"
+                }
+              ],
+              attrs: { type: "hidden", name: "priceTo" },
+              domProps: { value: _vm.priceTo },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.priceTo = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("div", { attrs: { id: "apollo_search_left_half" } }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.query,
+                    expression: "query"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  id: "apollo_search_field",
+                  name: "searchQuery",
+                  placeholder: "Address, City, State, etc.",
+                  type: "text"
+                },
+                domProps: { value: _vm.query },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.query = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "dropdown show", staticStyle: { width: "20%" } },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn dropdown-toggle",
+                      attrs: {
+                        id: "apollo_dropdown_button",
+                        href: "#",
+                        role: "button",
+                        "data-toggle": "dropdown"
+                      }
+                    },
+                    [
+                      _c(
+                        "span",
+                        { staticStyle: { "vertical-align": "middle" } },
+                        [_vm._v("+ " + _vm._s(_vm.propertyRange) + " km")]
+                      ),
+                      _vm._v(" "),
+                      _c("img", {
+                        staticStyle: { "vertical-align": "middle" },
+                        attrs: {
+                          src: "/svg/apollo_down_caret.svg",
+                          height: "14",
+                          width: "14",
+                          alt: ""
+                        }
+                      })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "dropdown-menu" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item",
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectPropertyRange(1)
+                          }
+                        }
+                      },
+                      [_vm._v("+ 1 km")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item",
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectPropertyRange(2)
+                          }
+                        }
+                      },
+                      [_vm._v("+ 2 km")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item",
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectPropertyRange(5)
+                          }
+                        }
+                      },
+                      [_vm._v("+ 5 km")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item",
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectPropertyRange(10)
+                          }
+                        }
+                      },
+                      [_vm._v("+ 10 km")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item",
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectPropertyRange(25)
+                          }
+                        }
+                      },
+                      [_vm._v("+ 25 km")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item",
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectPropertyRange(50)
+                          }
+                        }
+                      },
+                      [_vm._v("+ 50 km")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item",
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectPropertyRange(100)
+                          }
+                        }
+                      },
+                      [_vm._v("+ 100 km")]
+                    )
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { attrs: { id: "apollo_search_right_half" } }, [
+              _c(
+                "div",
+                { staticClass: "dropdown show", staticStyle: { width: "30%" } },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn dropdown-toggle",
+                      staticStyle: { "border-radius": "3px 0 0 3px" },
+                      attrs: {
+                        id: "apollo_dropdown_button",
+                        href: "#",
+                        role: "button",
+                        "data-toggle": "dropdown"
+                      }
+                    },
+                    [
+                      _c(
+                        "span",
+                        { staticStyle: { "vertical-align": "middle" } },
+                        [_vm._v("From")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        { staticStyle: { "vertical-align": "middle" } },
+                        [_vm._v(_vm._s(_vm.displayPriceFrom))]
+                      ),
+                      _vm._v(" "),
+                      _c("img", {
+                        staticStyle: { "vertical-align": "middle" },
+                        attrs: {
+                          src: "/svg/apollo_down_caret.svg",
+                          height: "14",
+                          width: "14",
+                          alt: ""
+                        }
+                      })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "dropdown-menu" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item",
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectPriceRangeFrom(0)
+                          }
+                        }
+                      },
+                      [_vm._v("€ 0")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item",
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectPriceRangeFrom(25000)
+                          }
+                        }
+                      },
+                      [_vm._v("€ 25 000")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item",
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectPriceRangeFrom(50000)
+                          }
+                        }
+                      },
+                      [_vm._v("€ 50 000")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item",
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectPriceRangeFrom(100000)
+                          }
+                        }
+                      },
+                      [_vm._v("€ 100 000")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item",
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectPriceRangeFrom(250000)
+                          }
+                        }
+                      },
+                      [_vm._v("€ 250 000")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item",
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectPriceRangeFrom(500000)
+                          }
+                        }
+                      },
+                      [_vm._v("€ 500 000")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item",
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectPriceRangeFrom(750000)
+                          }
+                        }
+                      },
+                      [_vm._v("€ 750 000")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item",
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectPriceRangeFrom(1000000)
+                          }
+                        }
+                      },
+                      [_vm._v("€ 1 000 000")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item",
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectPriceRangeFrom(-1)
+                          }
+                        }
+                      },
+                      [_vm._v("€ Over a million")]
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "dropdown show",
+                  staticStyle: { width: "30%", "margin-left": "3px" }
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn dropdown-toggle",
+                      staticStyle: { "border-radius": "0 3px 3px 0" },
+                      attrs: {
+                        id: "apollo_dropdown_button",
+                        href: "#",
+                        role: "button",
+                        "data-toggle": "dropdown"
+                      }
+                    },
+                    [
+                      _c(
+                        "span",
+                        { staticStyle: { "vertical-align": "middle" } },
+                        [_vm._v("To")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        { staticStyle: { "vertical-align": "middle" } },
+                        [_vm._v(_vm._s(_vm.displayPriceTo))]
+                      ),
+                      _vm._v(" "),
+                      _c("img", {
+                        staticStyle: { "vertical-align": "middle" },
+                        attrs: {
+                          src: "/svg/apollo_down_caret.svg",
+                          height: "14",
+                          width: "14",
+                          alt: ""
+                        }
+                      })
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "dropdown-menu" }, [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item",
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectPriceRangeTo(0)
+                          }
+                        }
+                      },
+                      [_vm._v("€ 0")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item",
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectPriceRangeTo(25000)
+                          }
+                        }
+                      },
+                      [_vm._v("€ 25 000")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item",
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectPriceRangeTo(50000)
+                          }
+                        }
+                      },
+                      [_vm._v("€ 50 000")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item",
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectPriceRangeTo(100000)
+                          }
+                        }
+                      },
+                      [_vm._v("€ 100 000")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item",
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectPriceRangeTo(250000)
+                          }
+                        }
+                      },
+                      [_vm._v("€ 250 000")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item",
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectPriceRangeTo(500000)
+                          }
+                        }
+                      },
+                      [_vm._v("€ 500 000")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item",
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectPriceRangeTo(750000)
+                          }
+                        }
+                      },
+                      [_vm._v("€ 750 000")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item",
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectPriceRangeTo(1000000)
+                          }
+                        }
+                      },
+                      [_vm._v("€ 1 000 000")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item",
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectPriceRangeTo(-1)
+                          }
+                        }
+                      },
+                      [_vm._v("€ Over a million")]
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(1)
+            ])
           ]
         )
       ])
@@ -38022,217 +38841,21 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "apollo_search_left_half" } }, [
-      _c("input", {
-        staticClass: "form-control",
-        attrs: {
-          id: "apollo_search_field",
-          placeholder: "Address, City, State, etc.",
-          type: "text"
-        }
-      }),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "dropdown show", staticStyle: { width: "20%" } },
-        [
-          _c(
-            "a",
-            {
-              staticClass: "btn dropdown-toggle",
-              attrs: {
-                id: "apollo_dropdown_button",
-                href: "#",
-                role: "button",
-                "data-toggle": "dropdown"
-              }
-            },
-            [
-              _c("span", { staticStyle: { "vertical-align": "middle" } }, [
-                _vm._v("+ 0 km")
-              ]),
-              _vm._v(" "),
-              _c("img", {
-                staticStyle: { "vertical-align": "middle" },
-                attrs: {
-                  src: "/svg/apollo_down_caret.svg",
-                  height: "14",
-                  width: "14",
-                  alt: ""
-                }
-              })
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "dropdown-menu" }, [
-            _c("a", { staticClass: "dropdown-item" }, [_vm._v("+ 1 km")]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item" }, [_vm._v("+ 2 km")]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item" }, [_vm._v("+ 5 km")]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item" }, [_vm._v("+ 10 km")]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item" }, [_vm._v("+ 25 km")]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item" }, [_vm._v("+ 50 km")]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item" }, [_vm._v("+ 100 km")])
-          ])
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "apollo_search_right_half" } }, [
-      _c(
-        "div",
-        { staticClass: "dropdown show", staticStyle: { width: "30%" } },
-        [
-          _c(
-            "a",
-            {
-              staticClass: "btn dropdown-toggle",
-              staticStyle: { "border-radius": "3px 0 0 3px" },
-              attrs: {
-                id: "apollo_dropdown_button",
-                href: "#",
-                role: "button",
-                "data-toggle": "dropdown"
-              }
-            },
-            [
-              _c("span", { staticStyle: { "vertical-align": "middle" } }, [
-                _vm._v("From")
-              ]),
-              _vm._v(" "),
-              _c("span", { staticStyle: { "vertical-align": "middle" } }, [
-                _vm._v("€ 0")
-              ]),
-              _vm._v(" "),
-              _c("img", {
-                staticStyle: { "vertical-align": "middle" },
-                attrs: {
-                  src: "/svg/apollo_down_caret.svg",
-                  height: "14",
-                  width: "14",
-                  alt: ""
-                }
-              })
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "dropdown-menu" }, [
-            _c("a", { staticClass: "dropdown-item" }, [_vm._v("€ 0")]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item" }, [_vm._v("€ 25 000")]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item" }, [_vm._v("€ 50 000")]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item" }, [_vm._v("€ 100 000")]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item" }, [_vm._v("€ 250 000")]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item" }, [_vm._v("€ 500 000")]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item" }, [_vm._v("€ 750 000")]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item" }, [_vm._v("€ 1 000 000")]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item" }, [
-              _vm._v("€ Over a million")
-            ])
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "dropdown show",
-          staticStyle: { width: "30%", "margin-left": "3px" }
-        },
-        [
-          _c(
-            "a",
-            {
-              staticClass: "btn dropdown-toggle",
-              staticStyle: { "border-radius": "0 3px 3px 0" },
-              attrs: {
-                id: "apollo_dropdown_button",
-                href: "#",
-                role: "button",
-                "data-toggle": "dropdown"
-              }
-            },
-            [
-              _c("span", { staticStyle: { "vertical-align": "middle" } }, [
-                _vm._v("To")
-              ]),
-              _vm._v(" "),
-              _c("span", { staticStyle: { "vertical-align": "middle" } }, [
-                _vm._v("€ 0")
-              ]),
-              _vm._v(" "),
-              _c("img", {
-                staticStyle: { "vertical-align": "middle" },
-                attrs: {
-                  src: "/svg/apollo_down_caret.svg",
-                  height: "14",
-                  width: "14",
-                  alt: ""
-                }
-              })
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "dropdown-menu" }, [
-            _c("a", { staticClass: "dropdown-item" }, [_vm._v("€ 0")]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item" }, [_vm._v("€ 25 000")]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item" }, [_vm._v("€ 50 000")]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item" }, [_vm._v("€ 100 000")]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item" }, [_vm._v("€ 250 000")]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item" }, [_vm._v("€ 500 000")]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item" }, [_vm._v("€ 750 000")]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item" }, [_vm._v("€ 1 000 000")]),
-            _vm._v(" "),
-            _c("a", { staticClass: "dropdown-item" }, [
-              _vm._v("€ Over a million")
-            ])
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "apollo_btn_primary",
-          attrs: { id: "apollo_search_button", type: "button" }
-        },
-        [
-          _c("img", {
-            staticClass: "apollo_search_filter_icon",
-            attrs: {
-              height: "18",
-              width: "18",
-              src: "/svg/apollo_search_sm.svg"
-            }
-          }),
-          _vm._v(" "),
-          _c("span", [_vm._v("Search")])
-        ]
-      )
-    ])
+    return _c(
+      "button",
+      {
+        staticClass: "apollo_btn_primary",
+        attrs: { id: "apollo_search_button", type: "submit" }
+      },
+      [
+        _c("img", {
+          staticClass: "apollo_search_filter_icon",
+          attrs: { height: "18", width: "18", src: "/svg/apollo_search_sm.svg" }
+        }),
+        _vm._v(" "),
+        _c("span", [_vm._v("Search")])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -50586,10 +51209,11 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_Jumbotron_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Jumbotron.vue */ "./resources/js/components/Jumbotron.vue");
-/* harmony import */ var _components_Search__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Search */ "./resources/js/components/Search.vue");
-/* harmony import */ var _components_RecentProperties__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/RecentProperties */ "./resources/js/components/RecentProperties.vue");
-/* harmony import */ var _components_WhyUs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/WhyUs */ "./resources/js/components/WhyUs.vue");
+/* harmony import */ var _components_Navbar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Navbar */ "./resources/js/components/Navbar.vue");
+/* harmony import */ var _components_Jumbotron_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Jumbotron.vue */ "./resources/js/components/Jumbotron.vue");
+/* harmony import */ var _components_Search__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Search */ "./resources/js/components/Search.vue");
+/* harmony import */ var _components_RecentProperties__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/RecentProperties */ "./resources/js/components/RecentProperties.vue");
+/* harmony import */ var _components_WhyUs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/WhyUs */ "./resources/js/components/WhyUs.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
@@ -50597,13 +51221,15 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 
 
+
 var app = new Vue({
   el: '#app',
   components: {
-    Jumbotron: _components_Jumbotron_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    Search: _components_Search__WEBPACK_IMPORTED_MODULE_1__["default"],
-    RecentProperties: _components_RecentProperties__WEBPACK_IMPORTED_MODULE_2__["default"],
-    WhyUs: _components_WhyUs__WEBPACK_IMPORTED_MODULE_3__["default"]
+    Navbar: _components_Navbar__WEBPACK_IMPORTED_MODULE_0__["default"],
+    Jumbotron: _components_Jumbotron_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    Search: _components_Search__WEBPACK_IMPORTED_MODULE_2__["default"],
+    RecentProperties: _components_RecentProperties__WEBPACK_IMPORTED_MODULE_3__["default"],
+    WhyUs: _components_WhyUs__WEBPACK_IMPORTED_MODULE_4__["default"]
   }
 });
 
@@ -50718,6 +51344,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Jumbotron_vue_vue_type_template_id_0b8439d1_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Jumbotron_vue_vue_type_template_id_0b8439d1_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Navbar.vue":
+/*!********************************************!*\
+  !*** ./resources/js/components/Navbar.vue ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Navbar_vue_vue_type_template_id_6dde423b_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Navbar.vue?vue&type=template&id=6dde423b&scoped=true& */ "./resources/js/components/Navbar.vue?vue&type=template&id=6dde423b&scoped=true&");
+/* harmony import */ var _Navbar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Navbar.vue?vue&type=script&lang=js& */ "./resources/js/components/Navbar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Navbar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Navbar_vue_vue_type_template_id_6dde423b_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Navbar_vue_vue_type_template_id_6dde423b_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "6dde423b",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Navbar.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Navbar.vue?vue&type=script&lang=js&":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/Navbar.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Navbar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Navbar.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Navbar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Navbar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Navbar.vue?vue&type=template&id=6dde423b&scoped=true&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/Navbar.vue?vue&type=template&id=6dde423b&scoped=true& ***!
+  \***************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Navbar_vue_vue_type_template_id_6dde423b_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Navbar.vue?vue&type=template&id=6dde423b&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Navbar.vue?vue&type=template&id=6dde423b&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Navbar_vue_vue_type_template_id_6dde423b_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Navbar_vue_vue_type_template_id_6dde423b_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

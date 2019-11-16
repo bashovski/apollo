@@ -38,21 +38,24 @@
             <form id="apollo_search_fields" action="" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="_token" :value="csrf">
                 <input type="hidden" name="filter" v-model="selectedId">
+                <input type="hidden" name="range" v-model="propertyRange">
+                <input type="hidden" name="priceFrom" v-model="priceFrom">
+                <input type="hidden" name="priceTo" v-model="priceTo">
                 <div id="apollo_search_left_half">
-                    <input id="apollo_search_field" placeholder="Address, City, State, etc." type="text" class="form-control">
+                    <input id="apollo_search_field" v-model="query" name="searchQuery" placeholder="Address, City, State, etc." type="text" class="form-control">
                     <div class="dropdown show" style="width: 20%;">
                         <a id="apollo_dropdown_button" class="btn dropdown-toggle" href="#" role="button" data-toggle="dropdown" >
-                            <span style="vertical-align: middle;">+ 0 km</span>
+                            <span style="vertical-align: middle;">+ {{propertyRange}} km</span>
                             <img src="/svg/apollo_down_caret.svg" height="14" width="14" style="vertical-align: middle;" alt="">
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item">+ 1 km</a>
-                            <a class="dropdown-item">+ 2 km</a>
-                            <a class="dropdown-item">+ 5 km</a>
-                            <a class="dropdown-item">+ 10 km</a>
-                            <a class="dropdown-item">+ 25 km</a>
-                            <a class="dropdown-item">+ 50 km</a>
-                            <a class="dropdown-item">+ 100 km</a>
+                            <a class="dropdown-item" style="cursor: pointer;" @click="selectPropertyRange(1)">+ 1 km</a>
+                            <a class="dropdown-item" style="cursor: pointer;" @click="selectPropertyRange(2)">+ 2 km</a>
+                            <a class="dropdown-item" style="cursor: pointer;" @click="selectPropertyRange(5)">+ 5 km</a>
+                            <a class="dropdown-item" style="cursor: pointer;" @click="selectPropertyRange(10)">+ 10 km</a>
+                            <a class="dropdown-item" style="cursor: pointer;" @click="selectPropertyRange(25)">+ 25 km</a>
+                            <a class="dropdown-item" style="cursor: pointer;" @click="selectPropertyRange(50)">+ 50 km</a>
+                            <a class="dropdown-item" style="cursor: pointer;" @click="selectPropertyRange(100)">+ 100 km</a>
                         </div>
                     </div>
                 </div>
@@ -61,41 +64,41 @@
                         <a id="apollo_dropdown_button" class="btn dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                            style="border-radius: 3px 0 0 3px;">
                             <span style="vertical-align: middle;">From</span>
-                            <span style="vertical-align: middle;">€ 0</span>
+                            <span style="vertical-align: middle;">{{displayPriceFrom}}</span>
                             <img src="/svg/apollo_down_caret.svg" height="14" width="14" style="vertical-align: middle;" alt="">
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item">€ 0</a>
-                            <a class="dropdown-item">€ 25 000</a>
-                            <a class="dropdown-item">€ 50 000</a>
-                            <a class="dropdown-item">€ 100 000</a>
-                            <a class="dropdown-item">€ 250 000</a>
-                            <a class="dropdown-item">€ 500 000</a>
-                            <a class="dropdown-item">€ 750 000</a>
-                            <a class="dropdown-item">€ 1 000 000</a>
-                            <a class="dropdown-item">€ Over a million</a>
+                            <a class="dropdown-item" style="cursor: pointer;" @click="selectPriceRangeFrom(0)">€ 0</a>
+                            <a class="dropdown-item" style="cursor: pointer;" @click="selectPriceRangeFrom(25000)">€ 25 000</a>
+                            <a class="dropdown-item" style="cursor: pointer;" @click="selectPriceRangeFrom(50000)">€ 50 000</a>
+                            <a class="dropdown-item" style="cursor: pointer;" @click="selectPriceRangeFrom(100000)">€ 100 000</a>
+                            <a class="dropdown-item" style="cursor: pointer;" @click="selectPriceRangeFrom(250000)">€ 250 000</a>
+                            <a class="dropdown-item" style="cursor: pointer;" @click="selectPriceRangeFrom(500000)">€ 500 000</a>
+                            <a class="dropdown-item" style="cursor: pointer;" @click="selectPriceRangeFrom(750000)">€ 750 000</a>
+                            <a class="dropdown-item" style="cursor: pointer;" @click="selectPriceRangeFrom(1000000)">€ 1 000 000</a>
+                            <a class="dropdown-item" style="cursor: pointer;" @click="selectPriceRangeFrom(-1)">€ Over a million</a>
                         </div>
                     </div>
                     <div class="dropdown show" style="width: 30%; margin-left: 3px">
                         <a id="apollo_dropdown_button" class="btn dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                            style="border-radius: 0 3px 3px 0;">
                             <span style="vertical-align: middle;">To</span>
-                            <span style="vertical-align: middle;">€ 0</span>
+                            <span style="vertical-align: middle;">{{displayPriceTo}}</span>
                             <img src="/svg/apollo_down_caret.svg" height="14" width="14" style="vertical-align: middle;" alt="">
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item">€ 0</a>
-                            <a class="dropdown-item">€ 25 000</a>
-                            <a class="dropdown-item">€ 50 000</a>
-                            <a class="dropdown-item">€ 100 000</a>
-                            <a class="dropdown-item">€ 250 000</a>
-                            <a class="dropdown-item">€ 500 000</a>
-                            <a class="dropdown-item">€ 750 000</a>
-                            <a class="dropdown-item">€ 1 000 000</a>
-                            <a class="dropdown-item">€ Over a million</a>
+                            <a class="dropdown-item" style="cursor: pointer;" @click="selectPriceRangeTo(0)">€ 0</a>
+                            <a class="dropdown-item" style="cursor: pointer;" @click="selectPriceRangeTo(25000)">€ 25 000</a>
+                            <a class="dropdown-item" style="cursor: pointer;" @click="selectPriceRangeTo(50000)">€ 50 000</a>
+                            <a class="dropdown-item" style="cursor: pointer;" @click="selectPriceRangeTo(100000)">€ 100 000</a>
+                            <a class="dropdown-item" style="cursor: pointer;" @click="selectPriceRangeTo(250000)">€ 250 000</a>
+                            <a class="dropdown-item" style="cursor: pointer;" @click="selectPriceRangeTo(500000)">€ 500 000</a>
+                            <a class="dropdown-item" style="cursor: pointer;" @click="selectPriceRangeTo(750000)">€ 750 000</a>
+                            <a class="dropdown-item" style="cursor: pointer;" @click="selectPriceRangeTo(1000000)">€ 1 000 000</a>
+                            <a class="dropdown-item" style="cursor: pointer;" @click="selectPriceRangeTo(-1)">€ Over a million</a>
                         </div>
                     </div>
-                    <button id="apollo_search_button" class="apollo_btn_primary" type="button">
+                    <button id="apollo_search_button" class="apollo_btn_primary" type="submit">
                         <img class="apollo_search_filter_icon" height="18" width="18" src="/svg/apollo_search_sm.svg">
                         <span>Search</span>
                     </button>
@@ -115,7 +118,11 @@
             return {
                 csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
                 selectedFilterStylesheets: ['filter-active', '', '', '', '', ''],
-                selectedId: 0
+                selectedId: 0,
+                propertyRange: 0, // in kilometers,
+                priceFrom: 0, // -1 is for 'over a million' for both
+                priceTo: 0,
+                query: ''
             }
         },
         methods: {
@@ -123,6 +130,23 @@
                 this.selectedFilterStylesheets = this.selectedFilterStylesheets.map( i => '' );
                 this.selectedFilterStylesheets[filterId] = 'filter-active';
                 this.selectedId = filterId;
+            },
+            selectPropertyRange(range) {
+                this.propertyRange = range;
+            },
+            selectPriceRangeFrom(price) {
+                this.priceFrom = price;
+            },
+            selectPriceRangeTo(price) {
+                this.priceTo = price;
+            }
+        },
+        computed: {
+            displayPriceFrom() {
+                return (this.priceFrom === -1) ? ('over a million') : ('€ '+ this.priceFrom.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " "));
+            },
+            displayPriceTo() {
+                return (this.priceTo === -1) ? ('over a million') : ('€ '+ this.priceTo.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " "));
             }
         }
     }
