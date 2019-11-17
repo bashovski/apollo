@@ -2105,6 +2105,218 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Register.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Register.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "Register",
+  props: ['routeLogin', 'routeRegister'],
+  data: function data() {
+    return {
+      apiEndpoint: '/api/validateregister',
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+      divStyles: ['', 'display: none', 'display: none', 'display: none', 'display: none'],
+      email: '',
+      firstName: '',
+      lastName: '',
+      password: '',
+      passwordConfirmation: '',
+      previousMail: '_',
+      previousPassword: '_'
+    };
+  },
+  methods: {
+    next: function next(type) {
+      if (type === 'email') this.proceedEmail(type);else if (type === 'names') this.proceedNames(type);else if (type === 'password') this.proceedPassword(type);
+    },
+    constructApiEndpoint: function constructApiEndpoint(type) {
+      var endpoint = this.apiEndpoint;
+      endpoint += '?type=' + type + '&email=' + this.email + '&firstname=' + this.firstName + '&lastname=' + this.lastName + '&password=' + this.password + '&password_confirmation=' + this.passwordConfirmation;
+      return endpoint;
+    },
+    proceedEmail: function proceedEmail(type) {
+      var _this = this;
+
+      if (!this.isValidMail(this.email)) return this.displayError('EMAIL', 'Invalid e-mail');
+      if (this.email === this.previousMail) return true;
+      axios.get(this.constructApiEndpoint(type)).then(function (response) {
+        if (response.data.account_exists === 0) {
+          _this.divStyles[0] = 'display: none';
+          _this.divStyles[1] = '';
+
+          _this.$forceUpdate();
+        } else {}
+      })["catch"](function (errors) {
+        console.log(errors);
+      });
+    },
+    proceedNames: function proceedNames(type) {
+      if (this.firstName.length < 1) return this.displayError('NAMES', 'Please insert your name.');
+      if (this.lastName.length < 1) return this.displayError('NAMES', 'Please insert your surname.');
+      this.divStyles[1] = 'display: none';
+      this.divStyles[2] = '';
+      this.$forceUpdate();
+    },
+    proceedPassword: function proceedPassword(type) {
+      var _this2 = this;
+
+      axios.get(this.constructApiEndpoint(type)).then(function (response) {
+        if (response.data.password !== undefined) return _this2.displayError('PASSWORD', response.data.password[0]);
+        console.log(response.data);
+        _this2.divStyles[2] = 'display: none';
+        _this2.divStyles[3] = '';
+
+        _this2.$forceUpdate();
+      })["catch"](function (errors) {
+        console.log(errors);
+      });
+    },
+    isValidMail: function isValidMail(email) {
+      var exp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return exp.test(String(email).toLowerCase());
+    },
+    selectDate: function selectDate(type, _int) {},
+    displayError: function displayError(type, error) {
+      console.log(type + ' ' + error);
+      /*if(type === 'FINAL') {
+          this.passwordPlaceholder = error;
+          this.password = '';
+      } else if(type === 'EMAIL') {
+          this.emailPlaceholder = error;
+          this.email = '';
+      }*/
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Search.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Search.vue?vue&type=script&lang=js& ***!
@@ -38462,6 +38674,727 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Register.vue?vue&type=template&id=97358ae4&scoped=true&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Register.vue?vue&type=template&id=97358ae4&scoped=true& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "jumbotron",
+      staticStyle: { "margin-bottom": "0" },
+      attrs: { id: "apollo_jumbotron_landing" }
+    },
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        { style: _vm.divStyles[0], attrs: { id: "apollo_login_form_mail" } },
+        [
+          _vm._m(1),
+          _vm._v(" "),
+          _c("div", { staticClass: "apollo_flex_item" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.email,
+                  expression: "email"
+                }
+              ],
+              staticClass: "form-control login_form_input",
+              attrs: {
+                name: "email",
+                type: "text",
+                placeholder: "E-mail",
+                autocomplete: "off",
+                autocorrect: "off",
+                autocapitalize: "off",
+                spellcheck: "false"
+              },
+              domProps: { value: _vm.email },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.email = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "apollo_flex_item",
+              staticStyle: { "margin-top": "10px" }
+            },
+            [
+              _c("span", [
+                _vm._v("Already have an account? "),
+                _c(
+                  "a",
+                  {
+                    attrs: {
+                      id: "apollo_login_no_acc",
+                      href: _vm.routeRegister
+                    }
+                  },
+                  [_vm._v("Log back in")]
+                ),
+                _vm._v(".")
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "apollo_flex_item apollo_register_proceed" },
+            [
+              _c(
+                "form",
+                {
+                  attrs: {
+                    id: "apollo_login_form_hidden",
+                    action: _vm.routeLogin,
+                    method: "post"
+                  }
+                },
+                [
+                  _c("input", {
+                    attrs: { type: "hidden", name: "_token" },
+                    domProps: { value: _vm.csrf }
+                  }),
+                  _vm._v(" "),
+                  _c("input", { attrs: { type: "hidden", name: "email" } }),
+                  _vm._v(" "),
+                  _c("input", { attrs: { type: "hidden", name: "password" } }),
+                  _vm._v(" "),
+                  _c("input", {
+                    attrs: { type: "hidden", name: "password_confirmation" }
+                  }),
+                  _vm._v(" "),
+                  _c("input", { attrs: { type: "hidden", name: "firstName" } }),
+                  _vm._v(" "),
+                  _c("input", { attrs: { type: "hidden", name: "lastName" } })
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "apollo_btn_primary",
+                  on: {
+                    click: function($event) {
+                      return _vm.next("email")
+                    }
+                  }
+                },
+                [_vm._v("Next")]
+              )
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "apollo_login_form_box animated slideInLeft",
+          style: _vm.divStyles[1],
+          attrs: { id: "apollo_register_form_name" }
+        },
+        [
+          _vm._m(2),
+          _vm._v(" "),
+          _c("div", { staticClass: "apollo_flex_item" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.firstName,
+                  expression: "firstName"
+                }
+              ],
+              staticClass: "form-control login_form_input",
+              attrs: {
+                type: "text",
+                placeholder: "Name",
+                autocomplete: "off",
+                autocorrect: "off",
+                autocapitalize: "off",
+                spellcheck: "false"
+              },
+              domProps: { value: _vm.firstName },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.firstName = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "apollo_flex_item" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.lastName,
+                  expression: "lastName"
+                }
+              ],
+              staticClass: "form-control login_form_input",
+              staticStyle: { "margin-top": "25px" },
+              attrs: {
+                type: "text",
+                placeholder: "Surname",
+                autocomplete: "off",
+                autocorrect: "off",
+                autocapitalize: "off",
+                spellcheck: "false"
+              },
+              domProps: { value: _vm.lastName },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.lastName = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "apollo_flex_item apollo_register_proceed" },
+            [
+              _c(
+                "button",
+                {
+                  staticClass: "apollo_btn_primary",
+                  on: {
+                    click: function($event) {
+                      return _vm.next("names")
+                    }
+                  }
+                },
+                [_vm._v("Next")]
+              )
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "apollo_login_form_box animated slideInLeft",
+          style: _vm.divStyles[2],
+          attrs: { id: "apollo_register_form_password" }
+        },
+        [
+          _vm._m(3),
+          _vm._v(" "),
+          _c("div", { staticClass: "apollo_flex_item" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.password,
+                  expression: "password"
+                }
+              ],
+              staticClass: "form-control login_form_input",
+              attrs: {
+                type: "text",
+                placeholder: "Password",
+                autocomplete: "off",
+                autocorrect: "off",
+                autocapitalize: "off",
+                spellcheck: "false"
+              },
+              domProps: { value: _vm.password },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.password = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "apollo_flex_item" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.passwordConfirmation,
+                  expression: "passwordConfirmation"
+                }
+              ],
+              staticClass: "form-control login_form_input",
+              staticStyle: { "margin-top": "25px" },
+              attrs: {
+                type: "text",
+                placeholder: "Confirm your password",
+                autocomplete: "off",
+                autocorrect: "off",
+                autocapitalize: "off",
+                spellcheck: "false"
+              },
+              domProps: { value: _vm.passwordConfirmation },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.passwordConfirmation = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "apollo_flex_item apollo_register_proceed" },
+            [
+              _c(
+                "button",
+                {
+                  staticClass: "apollo_btn_primary",
+                  on: {
+                    click: function($event) {
+                      return _vm.next("password")
+                    }
+                  }
+                },
+                [_vm._v("Next")]
+              )
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "apollo_login_form_box animated slideInLeft",
+          attrs: { id: "apollo_register_form_birth_loc" }
+        },
+        [
+          _vm._m(4),
+          _vm._v(" "),
+          _vm._m(5),
+          _vm._v(" "),
+          _c("div", { staticClass: "apollo_flex_item" }, [
+            _c(
+              "div",
+              { staticClass: "dropdown show", staticStyle: { width: "25%" } },
+              [
+                _vm._m(6),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "dropdown-menu",
+                    staticStyle: { "overflow-y": "auto", height: "200px" }
+                  },
+                  _vm._l(31, function(i) {
+                    return _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item",
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectDate("month", i)
+                          }
+                        }
+                      },
+                      [_vm._v(_vm._s(i))]
+                    )
+                  }),
+                  0
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "dropdown show", staticStyle: { width: "25%" } },
+              [
+                _vm._m(7),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "dropdown-menu",
+                    staticStyle: { "overflow-y": "auto", height: "200px" }
+                  },
+                  _vm._l(12, function(i) {
+                    return _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item",
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectDate("month", i)
+                          }
+                        }
+                      },
+                      [_vm._v(_vm._s(i))]
+                    )
+                  }),
+                  0
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "dropdown show", staticStyle: { width: "25%" } },
+              [
+                _vm._m(8),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "dropdown-menu",
+                    staticStyle: { "overflow-y": "auto", height: "200px" }
+                  },
+                  _vm._l(101, function(i) {
+                    return _c(
+                      "a",
+                      {
+                        staticClass: "dropdown-item",
+                        staticStyle: { cursor: "pointer" },
+                        on: {
+                          click: function($event) {
+                            return _vm.selectDate("month", i)
+                          }
+                        }
+                      },
+                      [_vm._v(_vm._s(2019 + 1 - i))]
+                    )
+                  }),
+                  0
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _vm._m(9),
+          _vm._v(" "),
+          _c("div", { staticClass: "apollo_flex_item" }),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "apollo_flex_item apollo_register_proceed" },
+            [
+              _c(
+                "button",
+                {
+                  staticClass: "apollo_btn_primary",
+                  on: {
+                    click: function($event) {
+                      return _vm.next("birthloc")
+                    }
+                  }
+                },
+                [_vm._v("Next")]
+              )
+            ]
+          )
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { attrs: { id: "apollo_jumbotron_items" } }, [
+      _c(
+        "div",
+        {
+          staticClass: "apollo_jumbotron_centered_parent",
+          attrs: { id: "apollo_jumbotron_heading" }
+        },
+        [
+          _c("h1", { staticClass: "apollo_jumbotron_heading1" }, [
+            _vm._v("Register")
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "apollo_jumbotron_centered_parent",
+          attrs: { id: "apollo_jumbotron_desc" }
+        },
+        [
+          _c("p", { staticClass: "apollo_jumbotron_paragraph" }, [
+            _vm._v(
+              "Welcome to Apollo. Please insert your data to complete the registration."
+            )
+          ])
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "apollo_flex_item",
+        staticStyle: { "padding-top": "50px" }
+      },
+      [
+        _c("img", {
+          attrs: {
+            src: "/img/apollo_logo.png",
+            width: "50",
+            height: "50",
+            alt: ""
+          }
+        })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "apollo_flex_item",
+        staticStyle: { "padding-top": "50px" }
+      },
+      [
+        _c("img", {
+          attrs: {
+            src: "/img/apollo_logo.png",
+            width: "50",
+            height: "50",
+            alt: ""
+          }
+        })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "apollo_flex_item",
+        staticStyle: { "padding-top": "50px" }
+      },
+      [
+        _c("img", {
+          attrs: {
+            src: "/img/apollo_logo.png",
+            width: "50",
+            height: "50",
+            alt: ""
+          }
+        })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "apollo_flex_item",
+        staticStyle: { "padding-top": "50px" }
+      },
+      [
+        _c("img", {
+          attrs: {
+            src: "/img/apollo_logo.png",
+            width: "50",
+            height: "50",
+            alt: ""
+          }
+        })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "apollo_flex_item",
+        staticStyle: { "padding-top": "50px" }
+      },
+      [
+        _c("h5", { staticClass: "apollo_register_form_label" }, [
+          _vm._v("Date of birth")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "btn dropdown-toggle",
+        attrs: {
+          id: "apollo_dropdown_button",
+          href: "#",
+          role: "button",
+          "data-toggle": "dropdown"
+        }
+      },
+      [
+        _c("span", { staticStyle: { "vertical-align": "middle" } }, [
+          _vm._v("16")
+        ]),
+        _vm._v(" "),
+        _c("img", {
+          staticStyle: { "vertical-align": "middle" },
+          attrs: {
+            src: "/svg/apollo_down_caret.svg",
+            height: "14",
+            width: "14",
+            alt: ""
+          }
+        })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "btn dropdown-toggle",
+        attrs: {
+          id: "apollo_dropdown_button",
+          href: "#",
+          role: "button",
+          "data-toggle": "dropdown"
+        }
+      },
+      [
+        _c("span", { staticStyle: { "vertical-align": "middle" } }, [
+          _vm._v("November")
+        ]),
+        _vm._v(" "),
+        _c("img", {
+          staticStyle: { "vertical-align": "middle" },
+          attrs: {
+            src: "/svg/apollo_down_caret.svg",
+            height: "14",
+            width: "14",
+            alt: ""
+          }
+        })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "btn dropdown-toggle",
+        attrs: {
+          id: "apollo_dropdown_button",
+          href: "#",
+          role: "button",
+          "data-toggle": "dropdown"
+        }
+      },
+      [
+        _c("span", { staticStyle: { "vertical-align": "middle" } }, [
+          _vm._v("2019")
+        ]),
+        _vm._v(" "),
+        _c("img", {
+          staticStyle: { "vertical-align": "middle" },
+          attrs: {
+            src: "/svg/apollo_down_caret.svg",
+            height: "14",
+            width: "14",
+            alt: ""
+          }
+        })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "apollo_flex_item",
+        staticStyle: { "padding-top": "50px" }
+      },
+      [
+        _c("h5", { staticClass: "apollo_register_form_label" }, [
+          _vm._v("Where are you from?")
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Search.vue?vue&type=template&id=5026ffd3&scoped=true&":
 /*!*********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Search.vue?vue&type=template&id=5026ffd3&scoped=true& ***!
@@ -51653,9 +52586,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_RecentProperties__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/RecentProperties */ "./resources/js/components/RecentProperties.vue");
 /* harmony import */ var _components_WhyUs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/WhyUs */ "./resources/js/components/WhyUs.vue");
 /* harmony import */ var _components_Login__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Login */ "./resources/js/components/Login.vue");
+/* harmony import */ var _components_Register__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/Register */ "./resources/js/components/Register.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+
 
 
 
@@ -51670,7 +52605,8 @@ var app = new Vue({
     Search: _components_Search__WEBPACK_IMPORTED_MODULE_2__["default"],
     RecentProperties: _components_RecentProperties__WEBPACK_IMPORTED_MODULE_3__["default"],
     WhyUs: _components_WhyUs__WEBPACK_IMPORTED_MODULE_4__["default"],
-    Login: _components_Login__WEBPACK_IMPORTED_MODULE_5__["default"]
+    Login: _components_Login__WEBPACK_IMPORTED_MODULE_5__["default"],
+    Register: _components_Register__WEBPACK_IMPORTED_MODULE_6__["default"]
   }
 });
 
@@ -51992,6 +52928,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RecentProperties_vue_vue_type_template_id_2b63a559_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RecentProperties_vue_vue_type_template_id_2b63a559_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Register.vue":
+/*!**********************************************!*\
+  !*** ./resources/js/components/Register.vue ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Register_vue_vue_type_template_id_97358ae4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Register.vue?vue&type=template&id=97358ae4&scoped=true& */ "./resources/js/components/Register.vue?vue&type=template&id=97358ae4&scoped=true&");
+/* harmony import */ var _Register_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Register.vue?vue&type=script&lang=js& */ "./resources/js/components/Register.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Register_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Register_vue_vue_type_template_id_97358ae4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Register_vue_vue_type_template_id_97358ae4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "97358ae4",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Register.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Register.vue?vue&type=script&lang=js&":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/Register.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Register_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Register.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Register.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Register_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Register.vue?vue&type=template&id=97358ae4&scoped=true&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/Register.vue?vue&type=template&id=97358ae4&scoped=true& ***!
+  \*****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Register_vue_vue_type_template_id_97358ae4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Register.vue?vue&type=template&id=97358ae4&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Register.vue?vue&type=template&id=97358ae4&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Register_vue_vue_type_template_id_97358ae4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Register_vue_vue_type_template_id_97358ae4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

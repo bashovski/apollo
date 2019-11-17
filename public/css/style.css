@@ -209,6 +209,7 @@ textarea, select, input, button { outline: none !important; box-shadow: none !im
     height: 40px;
     border-radius: 0 3px 3px 0;
     margin-left: 2px;
+    outline: none !important; box-shadow: none !important;
     font-family: Karla;
 }
 
@@ -406,10 +407,32 @@ textarea, select, input, button { outline: none !important; box-shadow: none !im
     margin-bottom: 50px;
 }
 
+.apollo_register_proceed {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
 #apollo_login_no_acc {
     color: #FE4A49;
     font-weight: 800;
     font-size: 1.01em;
     font-family: inherit;
     cursor: pointer;
+}
+
+.apollo_login_form_box {
+    background-color: #ffffff;
+    margin: auto;
+
+    width: 40%;
+    border: none;
+    border-radius: 6px;
+    border-bottom: 4px solid #FE4A49;
+}
+
+.apollo_register_form_label {
+    color: #FE4A49;
+    font-weight: 800;
+    font-size: 1.01em;
+    font-family: inherit;
 }

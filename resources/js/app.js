@@ -8,6 +8,7 @@ import Search from "./components/Search";
 import RecentProperties from "./components/RecentProperties";
 import WhyUs from "./components/WhyUs";
 import Login from "./components/Login";
+import Register from "./components/Register";
 
 const app = new Vue({
     el: '#app',
@@ -17,6 +18,7 @@ const app = new Vue({
         Search,
         RecentProperties,
         WhyUs,
-        Login
+        Login,
+        Register
     }
 });
