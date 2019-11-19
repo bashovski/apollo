@@ -2234,6 +2234,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Register",
   props: ['routeLogin', 'routeRegister'],
@@ -2246,18 +2247,25 @@ __webpack_require__.r(__webpack_exports__);
       firstName: '',
       lastName: '',
       password: '',
+      location: '',
+      previousLocation: '_',
       passwordConfirmation: '',
       previousMail: '_',
-      previousPassword: '_'
+      previousPassword: '_',
+      birthDay: -1,
+      birthMonth: -1,
+      birthYear: -1,
+      yearNow: -1,
+      monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
     };
   },
   methods: {
     next: function next(type) {
-      if (type === 'email') this.proceedEmail(type);else if (type === 'names') this.proceedNames(type);else if (type === 'password') this.proceedPassword(type);
+      if (type === 'email') this.proceedEmail(type);else if (type === 'names') this.proceedNames(type);else if (type === 'password') this.proceedPassword(type);else if (type === 'birthloc') this.proceedBirthLocation(type);
     },
     constructApiEndpoint: function constructApiEndpoint(type) {
       var endpoint = this.apiEndpoint;
-      endpoint += '?type=' + type + '&email=' + this.email + '&firstname=' + this.firstName + '&lastname=' + this.lastName + '&password=' + this.password + '&password_confirmation=' + this.passwordConfirmation;
+      endpoint += '?type=' + type + '&email=' + this.email + '&firstname=' + this.firstName + '&lastname=' + this.lastName + '&password=' + this.password + '&password_confirmation=' + this.passwordConfirmation + '&birthDay=' + this.birthDay + '&birthMonth=' + this.birthMonth + '&birthYear=' + this.birthYear + '&location=' + this.location;
       return endpoint;
     },
     proceedEmail: function proceedEmail(type) {
@@ -2297,11 +2305,37 @@ __webpack_require__.r(__webpack_exports__);
         console.log(errors);
       });
     },
+    proceedBirthLocation: function proceedBirthLocation(type) {
+      axios.get(this.constructApiEndpoint(type)).then(function (response) {
+        console.log(response.data);
+      })["catch"](function (errors) {
+        console.log(errors);
+      });
+    },
     isValidMail: function isValidMail(email) {
       var exp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return exp.test(String(email).toLowerCase());
     },
-    selectDate: function selectDate(type, _int) {},
+    initializeDate: function initializeDate() {
+      var date = new Date();
+      this.birthDay = date.getDate();
+      this.birthMonth = date.getMonth() + 1;
+      this.birthYear = date.getFullYear();
+      this.yearNow = date.getFullYear();
+      this.$forceUpdate();
+      console.log(this.birthYear);
+    },
+    selectDate: function selectDate(type, _int) {
+      if (type === 'year') {
+        this.birthYear = _int;
+      } else if (type === 'month') {
+        this.birthMonth = _int;
+      } else if (type === 'day') {
+        this.birthDay = _int;
+      }
+
+      this.$forceUpdate();
+    },
     displayError: function displayError(type, error) {
       console.log(type + ' ' + error);
       /*if(type === 'FINAL') {
@@ -2312,6 +2346,14 @@ __webpack_require__.r(__webpack_exports__);
           this.email = '';
       }*/
     }
+  },
+  computed: {
+    displaySelectedMonth: function displaySelectedMonth() {
+      return this.monthNames[this.birthMonth - 1];
+    }
+  },
+  mounted: function mounted() {
+    this.initializeDate();
   }
 });
 
@@ -39015,7 +39057,35 @@ var render = function() {
               "div",
               { staticClass: "dropdown show", staticStyle: { width: "25%" } },
               [
-                _vm._m(6),
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn dropdown-toggle",
+                    attrs: {
+                      id: "apollo_dropdown_button",
+                      href: "#",
+                      role: "button",
+                      "data-toggle": "dropdown"
+                    }
+                  },
+                  [
+                    _c(
+                      "span",
+                      { staticStyle: { "vertical-align": "middle" } },
+                      [_vm._v(_vm._s(_vm.birthDay))]
+                    ),
+                    _vm._v(" "),
+                    _c("img", {
+                      staticStyle: { "vertical-align": "middle" },
+                      attrs: {
+                        src: "/svg/apollo_down_caret.svg",
+                        height: "14",
+                        width: "14",
+                        alt: ""
+                      }
+                    })
+                  ]
+                ),
                 _vm._v(" "),
                 _c(
                   "div",
@@ -39031,7 +39101,7 @@ var render = function() {
                         staticStyle: { cursor: "pointer" },
                         on: {
                           click: function($event) {
-                            return _vm.selectDate("month", i)
+                            return _vm.selectDate("day", i)
                           }
                         }
                       },
@@ -39047,7 +39117,35 @@ var render = function() {
               "div",
               { staticClass: "dropdown show", staticStyle: { width: "25%" } },
               [
-                _vm._m(7),
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn dropdown-toggle",
+                    attrs: {
+                      id: "apollo_dropdown_button",
+                      href: "#",
+                      role: "button",
+                      "data-toggle": "dropdown"
+                    }
+                  },
+                  [
+                    _c(
+                      "span",
+                      { staticStyle: { "vertical-align": "middle" } },
+                      [_vm._v(_vm._s(_vm.displaySelectedMonth))]
+                    ),
+                    _vm._v(" "),
+                    _c("img", {
+                      staticStyle: { "vertical-align": "middle" },
+                      attrs: {
+                        src: "/svg/apollo_down_caret.svg",
+                        height: "14",
+                        width: "14",
+                        alt: ""
+                      }
+                    })
+                  ]
+                ),
                 _vm._v(" "),
                 _c(
                   "div",
@@ -39067,7 +39165,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v(_vm._s(i))]
+                      [_vm._v(_vm._s(_vm.monthNames[i - 1]))]
                     )
                   }),
                   0
@@ -39079,7 +39177,35 @@ var render = function() {
               "div",
               { staticClass: "dropdown show", staticStyle: { width: "25%" } },
               [
-                _vm._m(8),
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn dropdown-toggle",
+                    attrs: {
+                      id: "apollo_dropdown_button",
+                      href: "#",
+                      role: "button",
+                      "data-toggle": "dropdown"
+                    }
+                  },
+                  [
+                    _c(
+                      "span",
+                      { staticStyle: { "vertical-align": "middle" } },
+                      [_vm._v(_vm._s(_vm.birthYear))]
+                    ),
+                    _vm._v(" "),
+                    _c("img", {
+                      staticStyle: { "vertical-align": "middle" },
+                      attrs: {
+                        src: "/svg/apollo_down_caret.svg",
+                        height: "14",
+                        width: "14",
+                        alt: ""
+                      }
+                    })
+                  ]
+                ),
                 _vm._v(" "),
                 _c(
                   "div",
@@ -39095,11 +39221,11 @@ var render = function() {
                         staticStyle: { cursor: "pointer" },
                         on: {
                           click: function($event) {
-                            return _vm.selectDate("month", i)
+                            return _vm.selectDate("year", _vm.yearNow + 1 - i)
                           }
                         }
                       },
-                      [_vm._v(_vm._s(2019 + 1 - i))]
+                      [_vm._v(_vm._s(_vm.yearNow + 1 - i))]
                     )
                   }),
                   0
@@ -39108,9 +39234,40 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _vm._m(9),
+          _vm._m(6),
           _vm._v(" "),
-          _c("div", { staticClass: "apollo_flex_item" }),
+          _c("div", { staticClass: "apollo_flex_item" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.location,
+                  expression: "location"
+                }
+              ],
+              staticClass: "form-control login_form_input",
+              staticStyle: { "margin-top": "25px" },
+              attrs: {
+                type: "text",
+                placeholder:
+                  "Insert your Location (e.g. City, Region, Country)",
+                autocomplete: "off",
+                autocorrect: "off",
+                autocapitalize: "off",
+                spellcheck: "false"
+              },
+              domProps: { value: _vm.location },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.location = $event.target.value
+                }
+              }
+            })
+          ]),
           _vm._v(" "),
           _c(
             "div",
@@ -39272,102 +39429,6 @@ var staticRenderFns = [
         _c("h5", { staticClass: "apollo_register_form_label" }, [
           _vm._v("Date of birth")
         ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "btn dropdown-toggle",
-        attrs: {
-          id: "apollo_dropdown_button",
-          href: "#",
-          role: "button",
-          "data-toggle": "dropdown"
-        }
-      },
-      [
-        _c("span", { staticStyle: { "vertical-align": "middle" } }, [
-          _vm._v("16")
-        ]),
-        _vm._v(" "),
-        _c("img", {
-          staticStyle: { "vertical-align": "middle" },
-          attrs: {
-            src: "/svg/apollo_down_caret.svg",
-            height: "14",
-            width: "14",
-            alt: ""
-          }
-        })
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "btn dropdown-toggle",
-        attrs: {
-          id: "apollo_dropdown_button",
-          href: "#",
-          role: "button",
-          "data-toggle": "dropdown"
-        }
-      },
-      [
-        _c("span", { staticStyle: { "vertical-align": "middle" } }, [
-          _vm._v("November")
-        ]),
-        _vm._v(" "),
-        _c("img", {
-          staticStyle: { "vertical-align": "middle" },
-          attrs: {
-            src: "/svg/apollo_down_caret.svg",
-            height: "14",
-            width: "14",
-            alt: ""
-          }
-        })
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "btn dropdown-toggle",
-        attrs: {
-          id: "apollo_dropdown_button",
-          href: "#",
-          role: "button",
-          "data-toggle": "dropdown"
-        }
-      },
-      [
-        _c("span", { staticStyle: { "vertical-align": "middle" } }, [
-          _vm._v("2019")
-        ]),
-        _vm._v(" "),
-        _c("img", {
-          staticStyle: { "vertical-align": "middle" },
-          attrs: {
-            src: "/svg/apollo_down_caret.svg",
-            height: "14",
-            width: "14",
-            alt: ""
-          }
-        })
       ]
     )
   },

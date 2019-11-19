@@ -77,31 +77,31 @@
             <div class="apollo_flex_item">
                 <div class="dropdown show" style="width: 25%;">
                     <a id="apollo_dropdown_button" class="btn dropdown-toggle" href="#" role="button" data-toggle="dropdown" >
-                        <span style="vertical-align: middle;">16</span>
+                        <span style="vertical-align: middle;">{{birthDay}}</span>
                         <img src="/svg/apollo_down_caret.svg" height="14" width="14" style="vertical-align: middle;" alt="">
                     </a>
                     <div class="dropdown-menu" style="overflow-y: auto; height: 200px;">
-                        <a v-for="i in 31" class="dropdown-item" style="cursor: pointer;" @click="selectDate('month', i)">{{i}}</a>
+                        <a v-for="i in 31" class="dropdown-item" style="cursor: pointer;" @click="selectDate('day', i)">{{i}}</a>
                     </div>
                 </div>
 
                 <div class="dropdown show" style="width: 25%;">
                     <a id="apollo_dropdown_button" class="btn dropdown-toggle" href="#" role="button" data-toggle="dropdown" >
-                        <span style="vertical-align: middle;">November</span>
+                        <span style="vertical-align: middle;">{{displaySelectedMonth}}</span>
                         <img src="/svg/apollo_down_caret.svg" height="14" width="14" style="vertical-align: middle;" alt="">
                     </a>
                     <div class="dropdown-menu" style="overflow-y: auto; height: 200px;">
-                        <a v-for="i in 12" class="dropdown-item" style="cursor: pointer;" @click="selectDate('month', i)">{{i}}</a>
+                        <a v-for="i in 12" class="dropdown-item" style="cursor: pointer;" @click="selectDate('month', i)">{{monthNames[i-1]}}</a>
                     </div>
                 </div>
 
                 <div class="dropdown show" style="width: 25%;">
                     <a id="apollo_dropdown_button" class="btn dropdown-toggle" href="#" role="button" data-toggle="dropdown" >
-                        <span style="vertical-align: middle;">2019</span>
+                        <span style="vertical-align: middle;">{{birthYear}}</span>
                         <img src="/svg/apollo_down_caret.svg" height="14" width="14" style="vertical-align: middle;" alt="">
                     </a>
                     <div class="dropdown-menu" style="overflow-y: auto; height: 200px;">
-                        <a v-for="i in 101" class="dropdown-item" style="cursor: pointer;" @click="selectDate('month', i)">{{2019+1-i}}</a>
+                        <a v-for="i in 101" class="dropdown-item" style="cursor: pointer;" @click="selectDate('year', yearNow+1-i)">{{yearNow+1-i}}</a>
                     </div>
                 </div>
             </div>
@@ -109,7 +109,8 @@
                 <h5 class="apollo_register_form_label">Where are you from?</h5>
             </div>
             <div class="apollo_flex_item">
-
+                <input v-model="location" style="margin-top: 25px;" class="form-control login_form_input" type="text" placeholder="Insert your Location (e.g. City, Region, Country)"
+                       autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
             </div>
             <div class="apollo_flex_item apollo_register_proceed">
                 <button class="apollo_btn_primary" @click="next('birthloc')">Next</button>
@@ -134,9 +135,16 @@
                 firstName: '',
                 lastName: '',
                 password: '',
+                location: '',
+                previousLocation: '_',
                 passwordConfirmation: '',
                 previousMail: '_',
-                previousPassword: '_'
+                previousPassword: '_',
+                birthDay: -1,
+                birthMonth: -1,
+                birthYear: -1,
+                yearNow: -1,
+                monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
             }
         },
         methods: {
@@ -144,6 +152,7 @@
                 if(type === 'email') this.proceedEmail(type);
                 else if(type === 'names') this.proceedNames(type);
                 else if(type === 'password') this.proceedPassword(type);
+                else if(type === 'birthloc') this.proceedBirthLocation(type);
             },
             constructApiEndpoint(type) {
                 let endpoint = this.apiEndpoint;
@@ -152,7 +161,11 @@
                     '&firstname=' + this.firstName +
                     '&lastname=' + this.lastName +
                     '&password=' + this.password +
-                    '&password_confirmation=' + this.passwordConfirmation;
+                    '&password_confirmation=' + this.passwordConfirmation +
+                    '&birthDay=' + this.birthDay +
+                    '&birthMonth=' + this.birthMonth +
+                    '&birthYear=' + this.birthYear +
+                    '&location=' + this.location;
                 return endpoint;
             },
             proceedEmail(type) {
@@ -190,12 +203,38 @@
                     console.log(errors);
                 });
             },
+            proceedBirthLocation(type) {
+                axios.get(this.constructApiEndpoint(type))
+                    .then(response => {
+
+                        console.log(response.data);
+
+                    }).catch(errors => {
+                    console.log(errors);
+                });
+            },
             isValidMail(email) {
                 let exp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 return exp.test(String(email).toLowerCase());
             },
+            initializeDate() {
+                let date = new Date();
+                this.birthDay = date.getDate();
+                this.birthMonth = date.getMonth() + 1;
+                this.birthYear = date.getFullYear();
+                this.yearNow = date.getFullYear();
+                this.$forceUpdate();
+                console.log(this.birthYear);
+            },
             selectDate(type, int) {
-
+                if(type === 'year') {
+                    this.birthYear = int;
+                } else if(type === 'month') {
+                    this.birthMonth = int;
+                } else if(type === 'day') {
+                    this.birthDay = int;
+                }
+                this.$forceUpdate();
             },
             displayError(type, error) {
                 console.log(type + ' '+ error);
@@ -206,7 +245,15 @@
                     this.emailPlaceholder = error;
                     this.email = '';
                 }*/
+            },
+        },
+        computed: {
+            displaySelectedMonth() {
+                return this.monthNames[this.birthMonth-1];
             }
+        },
+        mounted() {
+            this.initializeDate();
         }
     }
 </script>

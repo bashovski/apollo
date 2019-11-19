@@ -43,7 +43,10 @@ class ValidateRegisterController extends BaseController {
             'firstName' => request('firstName'),
             'lastName' => request('lastName'),
             'password' => request('password'),
-            'password_confirmation' => request('password_confirmation')
+            'password_confirmation' => request('password_confirmation'),
+            'birthDay' => request('birthDay'),
+            'birthMonth' => request('birthMonth'),
+            'birthYear' => request('birthYear'),
         ];
         switch($responseData['type']) {
             case 'email': {
@@ -68,7 +71,7 @@ class ValidateRegisterController extends BaseController {
                 return response()->json($errors);
             }
             case 'birthloc': {
-
+                return response()->json(request()->all());
             }
         }
 
