@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -47,6 +48,7 @@ class ValidateRegisterController extends BaseController {
             'birthDay' => request('birthDay'),
             'birthMonth' => request('birthMonth'),
             'birthYear' => request('birthYear'),
+            'location' => request('location')
         ];
         switch($responseData['type']) {
             case 'email': {
@@ -71,7 +73,31 @@ class ValidateRegisterController extends BaseController {
                 return response()->json($errors);
             }
             case 'birthloc': {
-                return response()->json(request()->all());
+
+                // DD-MM-YYYY Format
+                $responseData['concatenatedDate'] = $responseData['birthDay'] . '-' . $responseData['birthMonth'] . '-' . $responseData['birthYear'];
+
+                $validation = Validator::make( $responseData, [
+                    'birthDay' => ['required', 'numeric'],
+                    'birthMonth' => ['required', 'numeric'],
+                    'birthYear' => ['required', 'numeric'],
+                    'location' => ['required', 'string', 'min:2', 'max:128'],
+                    'concatenatedDate' => ['date']
+                ]);
+                $errors = $validation->errors();
+
+                // Validating if user is 18 or more years old.
+                if($errors->count() == 0) {
+                    $selectedDate = Carbon::createFromDate($responseData['concatenatedDate']);
+                    $now = Carbon::now();
+
+                    if($selectedDate->diffInYears($now) < 18) {
+                        $errors = [
+                            'yearsEligible' => 'To be eligible to register to Apollo, you need to be at least 18 years old.'
+                        ];
+                    }
+                }
+                return response()->json($errors);
             }
         }
 

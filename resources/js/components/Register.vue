@@ -67,7 +67,7 @@
             </div>
         </div>
 
-        <div id="apollo_register_form_birth_loc" class="apollo_login_form_box animated slideInLeft" >
+        <div id="apollo_register_form_birth_loc" class="apollo_login_form_box animated slideInLeft" v-bind:style="divStyles[3]">
             <div class="apollo_flex_item" style="padding-top: 50px">
                 <img src="/img/apollo_logo.png" width="50" height="50" alt="">
             </div>
@@ -207,6 +207,8 @@
                 axios.get(this.constructApiEndpoint(type))
                     .then(response => {
 
+                        this.divStyles[3] = '';
+                        this.divStyles[2] = 'display: none';
                         console.log(response.data);
 
                     }).catch(errors => {

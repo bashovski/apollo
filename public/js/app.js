@@ -2306,7 +2306,11 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     proceedBirthLocation: function proceedBirthLocation(type) {
+      var _this3 = this;
+
       axios.get(this.constructApiEndpoint(type)).then(function (response) {
+        _this3.divStyles[3] = '';
+        _this3.divStyles[2] = 'display: none';
         console.log(response.data);
       })["catch"](function (errors) {
         console.log(errors);
@@ -39045,6 +39049,7 @@ var render = function() {
         "div",
         {
           staticClass: "apollo_login_form_box animated slideInLeft",
+          style: _vm.divStyles[3],
           attrs: { id: "apollo_register_form_birth_loc" }
         },
         [
