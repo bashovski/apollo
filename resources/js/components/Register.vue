@@ -14,7 +14,7 @@
                 <img src="/img/apollo_logo.png" width="50" height="50" alt="">
             </div>
             <div class="apollo_flex_item">
-                <input name="email" v-model="email" class="form-control login_form_input" type="text" placeholder="E-mail"
+                <input name="email" v-model="email" class="form-control login_form_input" type="text" :placeholder="emailPlaceholder"
                        autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
             </div>
             <div class="apollo_flex_item" style="margin-top: 10px;">
@@ -28,6 +28,10 @@
                     <input type="hidden" name="password_confirmation" >
                     <input type="hidden" name="firstName" >
                     <input type="hidden" name="lastName" >
+                    <input type="hidden" name="birthDay" >
+                    <input type="hidden" name="birthMonth" >
+                    <input type="hidden" name="birthYear" >
+                    <input type="hidden" name="birthLocation" >
                 </form>
                 <button class="apollo_btn_primary" @click="next('email')">Next</button>
             </div>
@@ -38,11 +42,11 @@
                 <img src="/img/apollo_logo.png" width="50" height="50" alt="">
             </div>
             <div class="apollo_flex_item">
-                <input v-model="firstName" class="form-control login_form_input" type="text" placeholder="Name"
+                <input v-model="firstName" class="form-control login_form_input" type="text" :placeholder="namePlaceholder"
                        autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
             </div>
             <div class="apollo_flex_item">
-                <input v-model="lastName" style="margin-top: 25px;" class="form-control login_form_input" type="text" placeholder="Surname"
+                <input v-model="lastName" style="margin-top: 25px;" class="form-control login_form_input" type="text" :placeholder="surnamePlaceholder"
                        autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
             </div>
             <div class="apollo_flex_item apollo_register_proceed">
@@ -144,7 +148,13 @@
                 birthMonth: -1,
                 birthYear: -1,
                 yearNow: -1,
-                monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+                monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                emailPlaceholder: 'E-mail',
+                emailPlaceholderDefault: 'E-mail',
+                namePlaceholder: 'Name',
+                namePlaceholderDefault: 'Name',
+                surnamePlaceholder: 'Surname',
+                surnamePlaceholderDefault: 'Surname'
             }
         },
         methods: {
@@ -185,8 +195,8 @@
                 });
             },
             proceedNames(type) {
-                if(this.firstName.length < 1) return this.displayError('NAMES', 'Please insert your name.');
-                if(this.lastName.length < 1) return this.displayError('NAMES', 'Please insert your surname.');
+                if(this.firstName.length < 1) return this.displayError('NAME', 'Please insert your name.');
+                if(this.lastName.length < 1) return this.displayError('SURNAME', 'Please insert your surname.');
                 this.divStyles[1] = 'display: none';
                 this.divStyles[2] = '';
                 this.$forceUpdate();
@@ -240,14 +250,17 @@
             },
             displayError(type, error) {
                 console.log(type + ' '+ error);
-                /*if(type === 'FINAL') {
-                    this.passwordPlaceholder = error;
-                    this.password = '';
-                } else if(type === 'EMAIL') {
+                if(type === 'EMAIL') {
                     this.emailPlaceholder = error;
                     this.email = '';
-                }*/
-            },
+                } else if(type === 'NAME') {
+                    this.namePlaceholder = error;
+                    this.name = '';
+                } else if(type === 'SURNAME') {
+                    this.surnamePlaceholder = error;
+                    this.surname = '';
+                }
+             },
         },
         computed: {
             displaySelectedMonth() {

@@ -2235,6 +2235,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Register",
   props: ['routeLogin', 'routeRegister'],
@@ -2256,7 +2260,13 @@ __webpack_require__.r(__webpack_exports__);
       birthMonth: -1,
       birthYear: -1,
       yearNow: -1,
-      monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+      monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      emailPlaceholder: 'E-mail',
+      emailPlaceholderDefault: 'E-mail',
+      namePlaceholder: 'Name',
+      namePlaceholderDefault: 'Name',
+      surnamePlaceholder: 'Surname',
+      surnamePlaceholderDefault: 'Surname'
     };
   },
   methods: {
@@ -2285,8 +2295,8 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     proceedNames: function proceedNames(type) {
-      if (this.firstName.length < 1) return this.displayError('NAMES', 'Please insert your name.');
-      if (this.lastName.length < 1) return this.displayError('NAMES', 'Please insert your surname.');
+      if (this.firstName.length < 1) return this.displayError('NAME', 'Please insert your name.');
+      if (this.lastName.length < 1) return this.displayError('SURNAME', 'Please insert your surname.');
       this.divStyles[1] = 'display: none';
       this.divStyles[2] = '';
       this.$forceUpdate();
@@ -2342,13 +2352,17 @@ __webpack_require__.r(__webpack_exports__);
     },
     displayError: function displayError(type, error) {
       console.log(type + ' ' + error);
-      /*if(type === 'FINAL') {
-          this.passwordPlaceholder = error;
-          this.password = '';
-      } else if(type === 'EMAIL') {
-          this.emailPlaceholder = error;
-          this.email = '';
-      }*/
+
+      if (type === 'EMAIL') {
+        this.emailPlaceholder = error;
+        this.email = '';
+      } else if (type === 'NAME') {
+        this.namePlaceholder = error;
+        this.name = '';
+      } else if (type === 'SURNAME') {
+        this.surnamePlaceholder = error;
+        this.surname = '';
+      }
     }
   },
   computed: {
@@ -38765,7 +38779,7 @@ var render = function() {
               attrs: {
                 name: "email",
                 type: "text",
-                placeholder: "E-mail",
+                placeholder: _vm.emailPlaceholder,
                 autocomplete: "off",
                 autocorrect: "off",
                 autocapitalize: "off",
@@ -38836,7 +38850,19 @@ var render = function() {
                   _vm._v(" "),
                   _c("input", { attrs: { type: "hidden", name: "firstName" } }),
                   _vm._v(" "),
-                  _c("input", { attrs: { type: "hidden", name: "lastName" } })
+                  _c("input", { attrs: { type: "hidden", name: "lastName" } }),
+                  _vm._v(" "),
+                  _c("input", { attrs: { type: "hidden", name: "birthDay" } }),
+                  _vm._v(" "),
+                  _c("input", {
+                    attrs: { type: "hidden", name: "birthMonth" }
+                  }),
+                  _vm._v(" "),
+                  _c("input", { attrs: { type: "hidden", name: "birthYear" } }),
+                  _vm._v(" "),
+                  _c("input", {
+                    attrs: { type: "hidden", name: "birthLocation" }
+                  })
                 ]
               ),
               _vm._v(" "),
@@ -38880,7 +38906,7 @@ var render = function() {
               staticClass: "form-control login_form_input",
               attrs: {
                 type: "text",
-                placeholder: "Name",
+                placeholder: _vm.namePlaceholder,
                 autocomplete: "off",
                 autocorrect: "off",
                 autocapitalize: "off",
@@ -38912,7 +38938,7 @@ var render = function() {
               staticStyle: { "margin-top": "25px" },
               attrs: {
                 type: "text",
-                placeholder: "Surname",
+                placeholder: _vm.surnamePlaceholder,
                 autocomplete: "off",
                 autocorrect: "off",
                 autocapitalize: "off",
