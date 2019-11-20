@@ -2239,6 +2239,111 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Register",
   props: ['routeLogin', 'routeRegister'],
@@ -2262,16 +2367,24 @@ __webpack_require__.r(__webpack_exports__);
       yearNow: -1,
       monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
       emailPlaceholder: 'E-mail',
-      emailPlaceholderDefault: 'E-mail',
       namePlaceholder: 'Name',
-      namePlaceholderDefault: 'Name',
       surnamePlaceholder: 'Surname',
-      surnamePlaceholderDefault: 'Surname'
+      passwordPlaceholder: 'Password',
+      confirmPasswordPlaceholder: 'Confirm your password',
+      dateError: '',
+      locationPlaceholder: 'Insert your location (e.g. City, Region, Country)',
+      accountType: 'STANDARD',
+      // Default: STANDARD, needs option for AGENT account
+      standardStyle: 'apollo_account_selected',
+      standardButtonStyle: '#FFFFFF',
+      agentStyle: '',
+      agentButtonStyle: '#001730',
+      selectedMonth: 0
     };
   },
   methods: {
     next: function next(type) {
-      if (type === 'email') this.proceedEmail(type);else if (type === 'names') this.proceedNames(type);else if (type === 'password') this.proceedPassword(type);else if (type === 'birthloc') this.proceedBirthLocation(type);
+      if (type === 'email') this.proceedEmail(type);else if (type === 'names') this.proceedNames(type);else if (type === 'password') this.proceedPassword(type);else if (type === 'birthloc') this.proceedBirthLocation(type);else if (type === 'account_type') this.proceedAccountType(type);
     },
     constructApiEndpoint: function constructApiEndpoint(type) {
       var endpoint = this.apiEndpoint;
@@ -2289,7 +2402,10 @@ __webpack_require__.r(__webpack_exports__);
           _this.divStyles[1] = '';
 
           _this.$forceUpdate();
-        } else {}
+        } else {
+          // link this to login
+          _this.displayError('EMAIL', 'An account with this e-mail already exists.');
+        }
       })["catch"](function (errors) {
         console.log(errors);
       });
@@ -2306,7 +2422,6 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get(this.constructApiEndpoint(type)).then(function (response) {
         if (response.data.password !== undefined) return _this2.displayError('PASSWORD', response.data.password[0]);
-        console.log(response.data);
         _this2.divStyles[2] = 'display: none';
         _this2.divStyles[3] = '';
 
@@ -2319,12 +2434,23 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       axios.get(this.constructApiEndpoint(type)).then(function (response) {
-        _this3.divStyles[3] = '';
-        _this3.divStyles[2] = 'display: none';
-        console.log(response.data);
+        if (response.data.yearsEligible !== undefined) return _this3.displayError('DATE', response.data.yearsEligible);
+        if (response.data.concatenatedDate !== undefined) return _this3.displayError('DATE', response.data.concatenatedDate);
+        if (response.data.location !== undefined) return _this3.displayError('LOCATION', response.data.location);
+        _this3.divStyles[3] = 'display: none';
+        _this3.divStyles[4] = '';
+
+        _this3.$forceUpdate();
       })["catch"](function (errors) {
         console.log(errors);
       });
+    },
+    proceedAccountType: function proceedAccountType(type) {
+      this.completeRegistration();
+    },
+    completeRegistration: function completeRegistration() {
+      event.preventDefault();
+      document.getElementById('apollo_register_form_hidden').submit();
     },
     isValidMail: function isValidMail(email) {
       var exp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -2337,7 +2463,6 @@ __webpack_require__.r(__webpack_exports__);
       this.birthYear = date.getFullYear();
       this.yearNow = date.getFullYear();
       this.$forceUpdate();
-      console.log(this.birthYear);
     },
     selectDate: function selectDate(type, _int) {
       if (type === 'year') {
@@ -2362,12 +2487,36 @@ __webpack_require__.r(__webpack_exports__);
       } else if (type === 'SURNAME') {
         this.surnamePlaceholder = error;
         this.surname = '';
+      } else if (type === 'DATE') {
+        this.dateError = error;
+      } else if (type === 'LOCATION') {
+        this.locationPlaceholder = error;
+        this.location = '';
+      }
+    },
+    selectAccountType: function selectAccountType(id) {
+      this.selectedAccount = id;
+      console.log(id);
+
+      if (id === 1) {
+        this.standardStyle = '';
+        this.standardButtonStyle = '#001730';
+        this.agentStyle = 'apollo_account_selected';
+        this.agentButtonStyle = '#ffffff';
+      } else {
+        this.standardStyle = 'apollo_account_selected';
+        this.standardButtonStyle = '#ffffff';
+        this.agentStyle = '';
+        this.agentButtonStyle = '#001730';
       }
     }
   },
   computed: {
     displaySelectedMonth: function displaySelectedMonth() {
       return this.monthNames[this.birthMonth - 1];
+    },
+    getAccountType: function getAccountType() {
+      return this.selectedAccount === 0 ? 'STANDARD' : 'AGENT';
     }
   },
   mounted: function mounted() {
@@ -38829,8 +38978,8 @@ var render = function() {
                 "form",
                 {
                   attrs: {
-                    id: "apollo_login_form_hidden",
-                    action: _vm.routeLogin,
+                    id: "apollo_register_form_hidden",
+                    action: _vm.routeRegister,
                     method: "post"
                   }
                 },
@@ -38840,28 +38989,214 @@ var render = function() {
                     domProps: { value: _vm.csrf }
                   }),
                   _vm._v(" "),
-                  _c("input", { attrs: { type: "hidden", name: "email" } }),
-                  _vm._v(" "),
-                  _c("input", { attrs: { type: "hidden", name: "password" } }),
-                  _vm._v(" "),
                   _c("input", {
-                    attrs: { type: "hidden", name: "password_confirmation" }
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.email,
+                        expression: "email"
+                      }
+                    ],
+                    attrs: { type: "hidden", name: "email" },
+                    domProps: { value: _vm.email },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.email = $event.target.value
+                      }
+                    }
                   }),
                   _vm._v(" "),
-                  _c("input", { attrs: { type: "hidden", name: "firstName" } }),
-                  _vm._v(" "),
-                  _c("input", { attrs: { type: "hidden", name: "lastName" } }),
-                  _vm._v(" "),
-                  _c("input", { attrs: { type: "hidden", name: "birthDay" } }),
-                  _vm._v(" "),
                   _c("input", {
-                    attrs: { type: "hidden", name: "birthMonth" }
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.password,
+                        expression: "password"
+                      }
+                    ],
+                    attrs: { type: "hidden", name: "password" },
+                    domProps: { value: _vm.password },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.password = $event.target.value
+                      }
+                    }
                   }),
                   _vm._v(" "),
-                  _c("input", { attrs: { type: "hidden", name: "birthYear" } }),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.passwordConfirmation,
+                        expression: "passwordConfirmation"
+                      }
+                    ],
+                    attrs: { type: "hidden", name: "password_confirmation" },
+                    domProps: { value: _vm.passwordConfirmation },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.passwordConfirmation = $event.target.value
+                      }
+                    }
+                  }),
                   _vm._v(" "),
                   _c("input", {
-                    attrs: { type: "hidden", name: "birthLocation" }
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.firstName,
+                        expression: "firstName"
+                      }
+                    ],
+                    attrs: { type: "hidden", name: "firstName" },
+                    domProps: { value: _vm.firstName },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.firstName = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.lastName,
+                        expression: "lastName "
+                      }
+                    ],
+                    attrs: { type: "hidden", name: "lastName" },
+                    domProps: { value: _vm.lastName },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.lastName = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.birthDay,
+                        expression: "birthDay"
+                      }
+                    ],
+                    attrs: { type: "hidden", name: "birthDay" },
+                    domProps: { value: _vm.birthDay },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.birthDay = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.birthMonth,
+                        expression: "birthMonth"
+                      }
+                    ],
+                    attrs: { type: "hidden", name: "birthMonth" },
+                    domProps: { value: _vm.birthMonth },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.birthMonth = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.birthYear,
+                        expression: "birthYear"
+                      }
+                    ],
+                    attrs: { type: "hidden", name: "birthYear" },
+                    domProps: { value: _vm.birthYear },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.birthYear = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.location,
+                        expression: "location"
+                      }
+                    ],
+                    attrs: { type: "hidden", name: "location" },
+                    domProps: { value: _vm.location },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.location = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.getAccountType,
+                        expression: "getAccountType"
+                      }
+                    ],
+                    attrs: { type: "hidden", name: "accountType" },
+                    domProps: { value: _vm.getAccountType },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.getAccountType = $event.target.value
+                      }
+                    }
                   })
                 ]
               ),
@@ -38999,7 +39334,7 @@ var render = function() {
               ],
               staticClass: "form-control login_form_input",
               attrs: {
-                type: "text",
+                type: "password",
                 placeholder: "Password",
                 autocomplete: "off",
                 autocorrect: "off",
@@ -39031,7 +39366,7 @@ var render = function() {
               staticClass: "form-control login_form_input",
               staticStyle: { "margin-top": "25px" },
               attrs: {
-                type: "text",
+                type: "password",
                 placeholder: "Confirm your password",
                 autocomplete: "off",
                 autocorrect: "off",
@@ -39082,6 +39417,19 @@ var render = function() {
           _vm._m(4),
           _vm._v(" "),
           _vm._m(5),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "apollo_flex_item",
+              staticStyle: { "padding-top": "10px" }
+            },
+            [
+              _c("h5", { staticClass: "apollo_register_form_error" }, [
+                _vm._v(_vm._s(_vm.dateError))
+              ])
+            ]
+          ),
           _vm._v(" "),
           _c("div", { staticClass: "apollo_flex_item" }, [
             _c(
@@ -39281,8 +39629,7 @@ var render = function() {
               staticStyle: { "margin-top": "25px" },
               attrs: {
                 type: "text",
-                placeholder:
-                  "Insert your Location (e.g. City, Region, Country)",
+                placeholder: _vm.locationPlaceholder,
                 autocomplete: "off",
                 autocorrect: "off",
                 autocapitalize: "off",
@@ -39315,6 +39662,211 @@ var render = function() {
                   }
                 },
                 [_vm._v("Next")]
+              )
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "apollo_login_form_box animated slideInLeft",
+          style: _vm.divStyles[4],
+          attrs: { id: "apollo_register_form_account_type" }
+        },
+        [
+          _vm._m(7),
+          _vm._v(" "),
+          _vm._m(8),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "apollo_flex_item",
+              staticStyle: { "padding-top": "30px" }
+            },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "apollo_standard_user_btn",
+                  class: _vm.standardStyle,
+                  on: {
+                    click: function($event) {
+                      return _vm.selectAccountType(0)
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "svg",
+                    {
+                      staticStyle: {
+                        "enable-background": "new 0 0 318.75 318.75"
+                      },
+                      attrs: {
+                        width: "50",
+                        height: "50",
+                        fill: _vm.standardButtonStyle,
+                        version: "1.1",
+                        id: "Layer_1",
+                        xmlns: "http://www.w3.org/2000/svg",
+                        x: "0px",
+                        y: "0px",
+                        viewBox: "0 0 318.75 318.75",
+                        "xml:space": "preserve"
+                      }
+                    },
+                    [
+                      _c("g", [
+                        _c("path", {
+                          attrs: {
+                            d:
+                              "M159.375,150c41.355,0,75-33.645,75-75s-33.645-75-75-75s-75,33.645-75,75S118.02,150,159.375,150z M159.375,30\n\t\tc24.813,0,45,20.187,45,45s-20.187,45-45,45s-45-20.187-45-45S134.562,30,159.375,30z"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("path", {
+                          attrs: {
+                            d:
+                              "M159.375,180c-68.236,0-123.75,55.514-123.75,123.75v15h247.5v-15C283.125,235.514,227.611,180,159.375,180z\n\t\t M66.824,288.75c7.202-44.588,45.962-78.75,92.551-78.75s85.35,34.162,92.551,78.75H66.824z"
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g")
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "apollo_agent_user_btn",
+                  class: _vm.agentStyle,
+                  on: {
+                    click: function($event) {
+                      return _vm.selectAccountType(1)
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "svg",
+                    {
+                      staticStyle: { "enable-background": "new 0 0 320 320" },
+                      attrs: {
+                        width: "50",
+                        height: "50",
+                        fill: _vm.agentButtonStyle,
+                        version: "1.1",
+                        id: "Capa_1",
+                        xmlns: "http://www.w3.org/2000/svg",
+                        "xmlns:xlink": "http://www.w3.org/1999/xlink",
+                        x: "0px",
+                        y: "0px",
+                        viewBox: "0 0 320 320",
+                        "xml:space": "preserve"
+                      }
+                    },
+                    [
+                      _c("g", [
+                        _c("path", {
+                          attrs: {
+                            d:
+                              "M308.719,182.794l-70-50c-5.216-3.725-12.222-3.725-17.438,0l-49.225,35.16C155.995,159.792,138.195,155.5,120,155.5\n\t\tc-63.411,0-115,51.589-115,115c0,8.284,6.716,15,15,15h125V305c0,8.284,6.716,15,15,15h140c8.284,0,15-6.716,15-15V195\n\t\tC315,190.155,312.661,185.609,308.719,182.794z M36.325,255.5c7.106-39.739,41.923-70,83.675-70c8.903,0,17.675,1.387,26.029,4.068\n\t\tC145.364,191.279,145,193.115,145,195v60.5H36.325z M285,290H175v-87.28l6.61-4.722c0.018-0.012,0.036-0.025,0.054-0.038\n\t\tL230,163.434l55,39.286V290z"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("path", {
+                          attrs: {
+                            d:
+                              "M120,125.5c34.601,0,62.751-28.149,62.751-62.75S154.601,0,120,0S57.249,28.149,57.249,62.75S85.399,125.5,120,125.5z\n\t\t M120,30c18.059,0,32.751,14.691,32.751,32.75S138.059,95.5,120,95.5S87.249,80.809,87.249,62.75S101.941,30,120,30z"
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g"),
+                      _vm._v(" "),
+                      _c("g")
+                    ]
+                  )
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "apollo_flex_item apollo_register_proceed" },
+            [
+              _c(
+                "button",
+                {
+                  staticClass: "apollo_btn_primary",
+                  on: {
+                    click: function($event) {
+                      return _vm.next("account_type")
+                    }
+                  }
+                },
+                [_vm._v("Complete registration")]
               )
             ]
           )
@@ -39476,6 +40028,45 @@ var staticRenderFns = [
       [
         _c("h5", { staticClass: "apollo_register_form_label" }, [
           _vm._v("Where are you from?")
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "apollo_flex_item",
+        staticStyle: { "padding-top": "50px" }
+      },
+      [
+        _c("img", {
+          attrs: {
+            src: "/img/apollo_logo.png",
+            width: "50",
+            height: "50",
+            alt: ""
+          }
+        })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "apollo_flex_item",
+        staticStyle: { "padding-top": "30px" }
+      },
+      [
+        _c("h5", { staticClass: "apollo_register_form_label" }, [
+          _vm._v("Select type of an account")
         ])
       ]
     )

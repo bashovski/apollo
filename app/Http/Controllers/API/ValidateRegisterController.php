@@ -78,9 +78,9 @@ class ValidateRegisterController extends BaseController {
                 $responseData['concatenatedDate'] = $responseData['birthDay'] . '-' . $responseData['birthMonth'] . '-' . $responseData['birthYear'];
 
                 $validation = Validator::make( $responseData, [
-                    'birthDay' => ['required', 'numeric'],
+                    /*'birthDay' => ['required', 'numeric'],
                     'birthMonth' => ['required', 'numeric'],
-                    'birthYear' => ['required', 'numeric'],
+                    'birthYear' => ['required', 'numeric'],*/
                     'location' => ['required', 'string', 'min:2', 'max:128'],
                     'concatenatedDate' => ['date']
                 ]);

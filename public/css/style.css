@@ -436,3 +436,60 @@ textarea, select, input, button { outline: none !important; box-shadow: none !im
     font-size: 1.01em;
     font-family: inherit;
 }
+
+.apollo_register_form_error {
+    color: #7b2524;
+    font-weight: 800;
+    font-size: 1.01em;
+    font-family: inherit;
+    text-align: center;
+}
+
+#apollo_login_form_account_type {
+    background-color: #ffffff;
+    margin: auto;
+
+    width: 40%;
+    border: none;
+    border-radius: 6px;
+    border-bottom: 4px solid #FE4A49 !important;
+}
+
+.apollo_standard_user_btn {
+    border: 1px solid #333333;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    padding: 10px 50px;
+    cursor: pointer;
+}
+
+.apollo_standard_user_btn:hover {
+    opacity: 0.9;
+    transition: 500ms;
+}
+
+.apollo_agent_user_btn {
+    border: 1px solid #333333;
+    border-left: none;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 10px 50px;
+    cursor: pointer;
+}
+
+.apollo_agent_user_btn:hover {
+    opacity: 0.9;
+    background-color: #e0e0e0;
+    transition: 500ms;
+}
+
+.apollo_account_selected:hover {
+    opacity: 1 !important;
+    background-color: #001730 !important;
+}
+
+.apollo_account_selected {
+    background-color: #001730 !important;
+    opacity: 1 !important;
+    transition: 500ms;
+}
