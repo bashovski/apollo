@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <register></register>
+    <register
+        route-login="{{route('login')}}"
+        route-register="{{route('register')}}"
+    ></register>
 @endsection

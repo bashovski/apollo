@@ -48,11 +48,16 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        dd($data);
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'firstName' => ['required', 'string', 'max:255'],
+            'lastName' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'birthDay' => ['required', 'numeric'],
+            'birthMonth' => ['required', 'numeric'],
+            'birthYear' => ['required', 'numeric'],
+            'location' => ['required', 'string', 'max:255'],
+            'accountType' => ['required', 'string', 'max:255'],
         ]);
     }
 
@@ -62,12 +67,20 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
-    {
+    protected function create(array $data) {
+
+        if($data['accountType'] == 'AGENT' || $data['accountType'] == 'STANDARD') {} else return redirect(route('register'));
+
         return User::create([
-            'name' => $data['name'],
+            'firstName' => $data['firstName'],
+            'lastName' => $data['lastName'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'birthDay' => $data['birthDay'],
+            'birthMonth' => $data['birthMonth'],
+            'birthYear' => $data['birthYear'],
+            'location' => $data['location'],
+            'accountType' => $data['accountType'],
         ]);
     }
 }
