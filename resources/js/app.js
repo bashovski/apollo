@@ -12,6 +12,11 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import MyAccountNav from "./components/MyAccountNav";
 import MyAccountProfile from "./components/MyAccountProfile";
+import MyAccountProperties from "./components/MyAccountProperties";
+import MyAccountPrivateMessages from "./components/MyAccountPrivateMessages";
+import MyAccountHistory from "./components/MyAccountHistory";
+import MyAccountSettings from "./components/MyAccountSettings";
+import MyAccountStatistics from "./components/MyAccountStatistics";
 
 const app = new Vue({
     el: '#app',
@@ -25,6 +30,11 @@ const app = new Vue({
         Login,
         Register,
         MyAccountNav,
-        MyAccountProfile
+        MyAccountProfile,
+        MyAccountProperties,
+        MyAccountPrivateMessages,
+        MyAccountHistory,
+        MyAccountSettings,
+        MyAccountStatistics
     }
 });

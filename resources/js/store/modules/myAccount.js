@@ -1,6 +1,6 @@
 const state = {
     selectedNavItem: 0,
-    navItemStyles: ['', '', '', '', '', '']
+    viewStyles: ['', 'display: none', 'display: none', 'display: none', 'display: none', 'display: none']
 };
 
 const getters = {
@@ -11,12 +11,19 @@ const getters = {
 
 const actions = {
     selectNavItem({commit}, item) {
-        //state.selectedNavItem = item;
-        console.log('state call');
+        commit('setSelectedNavItem', item);
     }
 };
 
 const mutations = {
+    updateView(item) {
+
+    },
+    setSelectedNavItem(state, item) {
+        state.selectedNavItem = item;
+        state.viewStyles = state.viewStyles.map( i => 'display: none' );
+        state.viewStyles[item] = '';
+    }
 };
 
 export default {
