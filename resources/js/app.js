@@ -2,6 +2,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import store from './store'
 import Navbar from "./components/Navbar";
 import Jumbotron from './components/Jumbotron.vue';
 import Search from "./components/Search";
@@ -15,6 +16,7 @@ import MyAccountProfile from "./components/MyAccountProfile";
 const app = new Vue({
     el: '#app',
     components: {
+        store,
         Navbar,
         Jumbotron,
         Search,

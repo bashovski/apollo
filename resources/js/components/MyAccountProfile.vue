@@ -70,8 +70,9 @@
 </template>
 
 <script>
+
     export default {
-        name: "MyAccountProfile"
+        name: "MyAccountProfile",
     }
 </script>
 
