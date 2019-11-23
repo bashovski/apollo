@@ -22,7 +22,7 @@
         name: "MyAccountNav",
         data() {
             return {
-                navItemStyles: ['apollo_jumbotron_listitem_active', '', '', '', '', '']
+                navItemStyles: ['apollo_jumbotron_listitem_active', '', '', '', '', ''],
             }
         },
         methods: {

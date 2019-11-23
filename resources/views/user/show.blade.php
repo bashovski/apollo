@@ -2,4 +2,9 @@
 @section('content')
     <my-account-nav></my-account-nav>
     <my-account-profile></my-account-profile>
+    <my-account-properties></my-account-properties>
+    <my-account-private-messages></my-account-private-messages>
+    <my-account-history></my-account-history>
+    <my-account-statistics></my-account-statistics>
+    <my-account-settings></my-account-settings>
 @endsection

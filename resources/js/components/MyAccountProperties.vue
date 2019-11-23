@@ -3,8 +3,14 @@
 </template>
 
 <script>
+    import store from '../store/index';
     export default {
-        name: "MyAccountProperties"
+        name: "MyAccountProperties",
+        computed: {
+            getViewStyle() {
+                return store.getters.getViewStyles[1];
+            }
+        }
     }
 </script>
 

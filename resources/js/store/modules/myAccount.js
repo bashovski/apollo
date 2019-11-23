@@ -6,6 +6,9 @@ const state = {
 const getters = {
     getSelectedNavItem(state) {
         return state.selectedNavItem;
+    },
+    getViewStyles() {
+        return state.viewStyles;
     }
 };
 
