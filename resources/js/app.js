@@ -9,6 +9,8 @@ import RecentProperties from "./components/RecentProperties";
 import WhyUs from "./components/WhyUs";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import MyAccountNav from "./components/MyAccountNav";
+import MyAccountProfile from "./components/MyAccountProfile";
 
 const app = new Vue({
     el: '#app',
@@ -19,6 +21,8 @@ const app = new Vue({
         RecentProperties,
         WhyUs,
         Login,
-        Register
+        Register,
+        MyAccountNav,
+        MyAccountProfile
     }
 });

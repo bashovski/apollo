@@ -493,3 +493,83 @@ textarea, select, input, button { outline: none !important; box-shadow: none !im
     opacity: 1 !important;
     transition: 500ms;
 }
+
+#apollo_myaccount_jumbotron {
+    border-radius: 0px;
+    background: url(/img/apollo_jumbotron.png);
+    min-height: 20vh;
+    height: 20vh;
+    margin-top: 36px;
+    padding-top: 4.9rem;
+}
+
+.apollo_jumbotron_listitems {
+    display: flex;
+    margin-left: 7.5%;
+}
+
+.apollo_jumbotron_listitem {
+    padding: .2rem 1rem;
+    color: #ffffff;
+    opacity: 0.7;
+    cursor: pointer;
+    font-family: Karla;
+}
+
+.apollo_jumbotron_listitem:hover {
+    opacity: 0.9;
+    transition: 300ms;
+    border-bottom: 2px solid #ffffff;
+}
+
+.apollo_jumbotron_listitem_active {
+    border-bottom: 2px solid #001730;
+    border-radius: 2px;
+    color: #001730;
+    font-weight: bold;
+    padding: .2rem 2rem;
+    opacity: 1 !important;
+}
+
+#apollo_myaccount_profile {
+    display: flex;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+#apollo_myaccount_avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 6px;
+    border-bottom: 4px solid #FE4A49;
+}
+
+#apollo_myaccount_profile_info_heading {
+    padding: 17.8px;
+    margin-left: 20px;
+}
+
+#apollo_myaccount_profile_info_name {
+    font-family: Montserrat;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #001730;
+}
+
+.apollo_myaccount_item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    margin-top: 10px;
+    height: 48px;
+    align-items: center;
+}
+
+.apollo_myaccount_item_right {
+    display: flex;
+    justify-content: center;
+    height: 48px;
+    align-items: center;
+    margin-top: 0px;
+    margin-left: 10px;
+}

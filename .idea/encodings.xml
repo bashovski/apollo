@@ -3,16 +3,21 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/public/svg/apollo_agent.svg" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/svg/apollo_amount.svg" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/public/svg/apollo_balloon.svg" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/svg/apollo_business.svg" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/svg/apollo_detached.svg" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/svg/apollo_down_arrow.svg" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/svg/apollo_down_caret.svg" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/public/svg/apollo_edit.svg" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/public/svg/apollo_email.svg" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/svg/apollo_forsale.svg" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/public/svg/apollo_location_pin.svg" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/svg/apollo_logo.svg" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/svg/apollo_monitor.svg" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/svg/apollo_movein.svg" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/svg/apollo_new.svg" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/svg/apollo_office.svg" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/public/svg/apollo_phone.svg" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/svg/apollo_pin.svg" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/svg/apollo_properties.svg" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/public/svg/apollo_properties_lg.svg" charset="UTF-8" />

@@ -73,7 +73,6 @@
             },
             proceed(type) {
                 if(!this.isValidMail(this.email)) return this.displayError('EMAIL', 'Invalid e-mail');
-                if(this.password === this.previousPassword || this.email === this.previousEmail) return true;
                 axios.get(this.constructApiEndpoint(type))
                 .then(response => {
                     if(type === 'email') {
@@ -109,6 +108,7 @@
                 }
             },
             login() {
+                event.preventDefault();
                 document.getElementById('apollo_login_form_hidden').submit();
             }
         }
