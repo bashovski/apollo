@@ -82,3 +82,35 @@ paths:
           description: "Internal"
         200:
           description: "Success"
+  /validate:
+    get:
+      tags:
+      -  "User"
+      summary: "Validate a user input for login"
+      description: ""
+      operationId: "validateUserInput"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        name: "type"
+        enum: ["email", "final"]
+        type: "string"
+        required: true
+
+      - in: "query"
+        name: "email"
+        type: "string"
+        required: true
+
+      - in: "query"
+        name: "password"
+        type: "string"
+        required: true
+      responses:
+        500:
+          description: "Internal"
+        200:
+          description: "Success"
