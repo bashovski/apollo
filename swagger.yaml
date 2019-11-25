@@ -114,3 +114,62 @@ paths:
           description: "Internal"
         200:
           description: "Success"
+  /validateuserupdate:
+    get:
+      tags:
+      -  "User"
+      summary: "Validate and update user settings"
+      description: ""
+      operationId: "validateUserUpdate"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+
+      - in: "query"
+        name: "email"
+        type: "string"
+        required: true
+
+      - in: "query"
+        name: "password"
+        type: "string"
+        required: true
+
+      - in: "query"
+        name: "password_confirmation"
+        type: "string"
+        required: true
+
+      - in: "query"
+        name: "dateOfBirth"
+        type: "string"
+        required: true
+
+      - in: "query"
+        name: "location"
+        type: "string"
+        required: true
+
+      - in: "query"
+        name: "postalCode"
+        type: "string"
+        required: true
+
+      - in: "query"
+        name: "accessProfilePermission"
+        enum: ["everyone", "onlyRegistered", "onlyAgent", "onlyMe"]
+        type: "string"
+        required: true
+
+      - in: "query"
+        name: "language"
+        type: "string"
+        required: true
+
+      responses:
+        500:
+          description: "Internal"
+        200:
+          description: "Success"
