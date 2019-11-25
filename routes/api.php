@@ -20,5 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group( [], function () {
     Route::resource('validate', 'API\ValidateUserInputController');
     Route::resource('validateregister', 'API\ValidateRegisterController');
+    Route::resource('validateuserupdate', 'API\ValidateUserUpdateController');
 });
 

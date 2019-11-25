@@ -514,11 +514,12 @@ textarea, select, input, button { outline: none !important; box-shadow: none !im
     opacity: 0.7;
     cursor: pointer;
     font-family: Karla;
+    user-select: none;
 }
 
 .apollo_jumbotron_listitem:hover {
     opacity: 0.9;
-    transition: 300ms;
+    transition: 400ms;
     border-bottom: 2px solid #ffffff;
 }
 
@@ -529,6 +530,12 @@ textarea, select, input, button { outline: none !important; box-shadow: none !im
     font-weight: bold;
     padding: .2rem 2rem;
     opacity: 1 !important;
+    transition: 800ms !important;
+}
+
+.apollo_jumbotron_listitem_active:hover {
+    color: #001730 !important;
+    border-bottom: 2px solid #001730 !important;
 }
 
 #apollo_myaccount_profile {
@@ -573,3 +580,65 @@ textarea, select, input, button { outline: none !important; box-shadow: none !im
     margin-top: 0px;
     margin-left: 10px;
 }
+
+.apollo_settings_input {
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid #001730;
+}
+
+#apollo_myaccount_settings_access {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    margin-top: 10px;
+    height: 48px;
+    align-items: center;
+}
+
+.apollo_settings_dropdown {
+    width: 100%;
+    background-color: transparent;
+    border-radius: 0 3px 3px 0;
+    outline: none !important; box-shadow: none !important;
+    font-family: Karla;
+}
+
+.apollo_settings_dropdown_btn {
+    border: none;
+    background-color: transparent;
+    border-radius: 0;
+    border-bottom: 1px solid #001730;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+#apollo_snackbar {
+    visibility: visible;
+    min-width: 250px;
+    background-color: #001730;
+    color: #fff;
+    text-align: center;
+    font-weight: 600;
+    font-family: 'Montserrat', 'Arial', sans-serif;
+    font-size: 20px;
+    padding: 16px 16px 16px 16px;
+    position: fixed;
+    z-index: 1;
+    right: 5%;
+    bottom: 5%;
+    border-radius: 6px;
+    border-bottom: 4px solid #FE4A49;
+    -webkit-animation: fadein 0.8s, fadeout 0.8s 2.5s;
+    animation: fadein 0.8s, fadeout 0.8s 2.5s;
+    cursor: pointer;
+}
+
+#apollo_snackbar:hover {
+    opacity: 0.9;
+    transition: 350ms;
+}
+

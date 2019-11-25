@@ -38,69 +38,75 @@ class ValidateRegisterController extends BaseController {
     }
 
     public function index() {
-        $responseData = [
-            'type' => request('type'),
-            'email' => request('email'),
-            'firstName' => request('firstName'),
-            'lastName' => request('lastName'),
-            'password' => request('password'),
-            'password_confirmation' => request('password_confirmation'),
-            'birthDay' => request('birthDay'),
-            'birthMonth' => request('birthMonth'),
-            'birthYear' => request('birthYear'),
-            'location' => request('location')
-        ];
-        switch($responseData['type']) {
-            case 'email': {
-                $account = User::where('email', '=', $responseData['email'])->take(1)->get();
-                if($account->count() != 0) {
-                    return response()->json([
-                        'account_exists' => 1,
-                        'email' => $responseData['email'],
-                        'firstName' => $responseData['firstName']
-                    ]);
-                } else {
-                    return response()->json([
-                        'account_exists' => 0
-                    ]);
-                }
-            }
-            case 'password': {
-                $validation = Validator::make( $responseData, [
-                    'password' => ['required', 'string', 'min:8', 'confirmed'],
-                ]);
-                $errors = $validation->errors();
-                return response()->json($errors);
-            }
-            case 'birthloc': {
-
-                // DD-MM-YYYY Format
-                $responseData['concatenatedDate'] = $responseData['birthDay'] . '-' . $responseData['birthMonth'] . '-' . $responseData['birthYear'];
-
-                $validation = Validator::make( $responseData, [
-                    /*'birthDay' => ['required', 'numeric'],
-                    'birthMonth' => ['required', 'numeric'],
-                    'birthYear' => ['required', 'numeric'],*/
-                    'location' => ['required', 'string', 'min:2', 'max:128'],
-                    'concatenatedDate' => ['date']
-                ]);
-                $errors = $validation->errors();
-
-                // Validating if user is 18 or more years old.
-                if($errors->count() == 0) {
-                    $selectedDate = Carbon::createFromDate($responseData['concatenatedDate']);
-                    $now = Carbon::now();
-
-                    if($selectedDate->diffInYears($now) < 18) {
-                        $errors = [
-                            'yearsEligible' => 'To be eligible to register to Apollo, you need to be at least 18 years old.'
-                        ];
+        try {
+            $responseData = [
+                'type' => request('type'),
+                'email' => request('email'),
+                'firstName' => request('firstName'),
+                'lastName' => request('lastName'),
+                'password' => request('password'),
+                'password_confirmation' => request('password_confirmation'),
+                'birthDay' => request('birthDay'),
+                'birthMonth' => request('birthMonth'),
+                'birthYear' => request('birthYear'),
+                'location' => request('location')
+            ];
+            switch ($responseData['type']) {
+                case 'email':
+                {
+                    $account = User::where('email', '=', $responseData['email'])->take(1)->get();
+                    if ($account->count() != 0) {
+                        return response()->json([
+                            'account_exists' => 1,
+                            'email' => $responseData['email'],
+                            'firstName' => $responseData['firstName']
+                        ]);
+                    } else {
+                        return response()->json([
+                            'account_exists' => 0
+                        ]);
                     }
                 }
-                return response()->json($errors);
-            }
-        }
+                case 'password':
+                {
+                    $validation = Validator::make($responseData, [
+                        'password' => ['required', 'string', 'min:8', 'confirmed'],
+                    ]);
+                    $errors = $validation->errors();
+                    return response()->json($errors);
+                }
+                case 'birthloc':
+                {
 
+                    // DD-MM-YYYY Format
+                    $responseData['concatenatedDate'] = $responseData['birthDay'] . '-' . $responseData['birthMonth'] . '-' . $responseData['birthYear'];
+
+                    $validation = Validator::make($responseData, [
+                        /*'birthDay' => ['required', 'numeric'],
+                        'birthMonth' => ['required', 'numeric'],
+                        'birthYear' => ['required', 'numeric'],*/
+                        'location' => ['required', 'string', 'min:2', 'max:128'],
+                        'concatenatedDate' => ['date']
+                    ]);
+                    $errors = $validation->errors();
+
+                    // Validating if user is 18 or more years old.
+                    if ($errors->count() == 0) {
+                        $selectedDate = Carbon::createFromDate($responseData['concatenatedDate']);
+                        $now = Carbon::now();
+
+                        if ($selectedDate->diffInYears($now) < 18) {
+                            $errors = [
+                                'yearsEligible' => 'To be eligible to register to Apollo, you need to be at least 18 years old.'
+                            ];
+                        }
+                    }
+                    return response()->json($errors);
+                }
+            }
+        } catch(\Exception $httpRequestException) {
+            return response()->json(['error' => 'Invalid http request']);
+        }
         return response()->json(['error' => 'Invalid http request']);
     }
 }

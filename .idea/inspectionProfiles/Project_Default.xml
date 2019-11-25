@@ -14,7 +14,7 @@
     <inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>
-          <list size="13">
+          <list size="20">
             <item index="0" class="java.lang.String" itemvalue="nobr" />
             <item index="1" class="java.lang.String" itemvalue="noembed" />
             <item index="2" class="java.lang.String" itemvalue="comment" />
@@ -28,6 +28,13 @@
             <item index="10" class="java.lang.String" itemvalue="navbar" />
             <item index="11" class="java.lang.String" itemvalue="login" />
             <item index="12" class="java.lang.String" itemvalue="register" />
+            <item index="13" class="java.lang.String" itemvalue="my-account-history" />
+            <item index="14" class="java.lang.String" itemvalue="my-account-private-messages" />
+            <item index="15" class="java.lang.String" itemvalue="my-account-properties" />
+            <item index="16" class="java.lang.String" itemvalue="my-account-profile" />
+            <item index="17" class="java.lang.String" itemvalue="my-account-nav" />
+            <item index="18" class="java.lang.String" itemvalue="my-account-statistics" />
+            <item index="19" class="java.lang.String" itemvalue="my-account-settings" />
           </list>
         </value>
       </option>
