@@ -2,20 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c5c3d23-321a-4fde-8fc8-8fd8cc1720d2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Basha.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Basha.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/ValidateRegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/ValidateRegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/ValidateUserUpdateController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/ValidateUserUpdateController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/svg/apollo_access_view.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/svg/apollo_access_view.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/svg/apollo_globe.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/svg/apollo_globe.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/svg/apollo_password.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/svg/apollo_password.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/MyAccountSettings.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/MyAccountSettings.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/show.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -218,7 +210,7 @@
       <workItem from="1574459822440" duration="10847000" />
       <workItem from="1574509434687" duration="15454000" />
       <workItem from="1574612996805" duration="10526000" />
-      <workItem from="1574701795519" duration="8219000" />
+      <workItem from="1574701795519" duration="15016000" />
     </task>
     <servers />
   </component>

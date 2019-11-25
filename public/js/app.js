@@ -2383,10 +2383,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submitUpdateUser: function submitUpdateUser() {
-      var _this = this;
-
+      this.apiCalls++;
       axios.get(this.constructApiEndpoint()).then(function (response) {
-        _this.apiCalls++;
         console.log(response.data);
       })["catch"](function (errors) {
         console.log(errors);
@@ -2395,9 +2393,24 @@ __webpack_require__.r(__webpack_exports__);
     updateUser: function updateUser() {},
     constructApiEndpoint: function constructApiEndpoint() {
       var endpoint = this.apiEndpoint;
-      endpoint += '?apiCalls=' + this.apiCalls + '&' + 'email=' + this.email + '&' + 'location=' + this.location + '&' + 'postalCode=' + this.postalCode + '&' + 'accessProfilePermission=' + this.accessProfilePermission + '&' + 'dateOfBirth=' + this.dateOfBirth + '&' + 'password=' + this.password + '&' + 'password_confirmation=' + this.passwordConfirmation + '&' + 'language=' + this.language + '&';
+      endpoint += '?apiCalls=' + this.apiCalls + '&' + 'email=' + this.preprocessQueryParam('email') + '&' + 'location=' + this.preprocessQueryParam('location') + '&' + 'postalCode=' + this.preprocessQueryParam('postalCode') + '&' + 'accessProfilePermission=' + this.preprocessQueryParam('accessProfilePermission') + '&' + 'dateOfBirth=' + this.preprocessQueryParam('dateOfBirth') + '&' + 'password=' + this.password + '&' + 'password_confirmation=' + this.passwordConfirmation + '&' + 'language=' + this.preprocessQueryParam('language') + '&';
       console.log(endpoint);
       return endpoint;
+    },
+    preprocessQueryParam: function preprocessQueryParam(param) {
+      if (param === 'email') {
+        if (this.email === this.backendEmail) return '';else return this.email;
+      } else if (param === 'location') {
+        if (this.location === this.backendLocation) return '';else return this.location;
+      } else if (param === 'postalCode') {
+        if (this.postalCode === this.backendPostalCode) return '';else return this.postalCode;
+      } else if (param === 'accessProfilePermission') {
+        if (this.accessProfilePermission === this.backendAccessProfilePermission) return '';else return this.accessProfilePermission;
+      } else if (param === 'dateOfBirth') {
+        if (this.dateOfBirth === this.backendDateOfBirth) return '';else return this.dateOfBirth;
+      } else if (param === 'language') {
+        if (this.language === this.backendLocale) return '';else return this.language;
+      }
     },
     updateAccessDropdown: function updateAccessDropdown(accessId) {
       if (accessId === 'everyone') this.accessProfilePermission = 'Everyone';else if (accessId === 'onlyRegistered') this.accessProfilePermission = 'Only registered';else if (accessId === 'onlyAgent') this.accessProfilePermission = 'Only real estate agents';else if (accessId === 'onlyMe') this.accessProfilePermission = 'Only Me';

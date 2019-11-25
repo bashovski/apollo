@@ -6,5 +6,12 @@
     <my-account-private-messages></my-account-private-messages>
     <my-account-history></my-account-history>
     <my-account-statistics></my-account-statistics>
-    <my-account-settings></my-account-settings>
+    <my-account-settings
+        backend-email="{{$passedCredentials['email']}}"
+        backend-location="{{$passedCredentials['location']}}"
+        backend-postal-code="{{$passedCredentials['postalCode']}}"
+        backend-access-profile-permission="{{$passedCredentials['accessProfilePermission']}}"
+        backend-date-of-birth="{{$passedCredentials['dateOfBirth']}}"
+        backend-locale="{{$passedCredentials['locale']}}"
+    ></my-account-settings>
 @endsection
