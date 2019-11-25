@@ -25,6 +25,9 @@ class CreateUsersTable extends Migration
             $table->unsignedSmallInteger('birthMonth');
             $table->unsignedSmallInteger('birthYear');
             $table->string('location');
+            $table->string('language')->default('en');
+            $table->string('accessProfilePermission')->default('everyone');
+            $table->string('postalCode');
             $table->rememberToken();
             $table->timestamps();
         });
