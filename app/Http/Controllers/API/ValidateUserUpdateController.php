@@ -31,7 +31,8 @@ class ValidateUserUpdateController extends Controller {
             ]);
         }
         return response()->json([
-            'success' => true
+            'success' => true,
+            'inserted' => $data
         ]);
     }
 }

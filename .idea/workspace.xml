@@ -4,8 +4,6 @@
     <list default="true" id="6c5c3d23-321a-4fde-8fc8-8fd8cc1720d2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/ValidateUserUpdateController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/ValidateUserUpdateController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/MyAccountSettings.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/MyAccountSettings.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/swagger.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/swagger.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -225,7 +223,7 @@
       <workItem from="1574509434687" duration="15454000" />
       <workItem from="1574612996805" duration="10526000" />
       <workItem from="1574701795519" duration="19776000" />
-      <workItem from="1574877558708" duration="1642000" />
+      <workItem from="1574877558708" duration="2094000" />
     </task>
     <servers />
   </component>

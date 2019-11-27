@@ -165,6 +165,7 @@ paths:
 
       - in: "query"
         name: "language"
+        enum: ["English", "bosanski", "Nederlands"]
         type: "string"
         required: true
 
@@ -183,3 +184,4 @@ paths:
                 type: "object"
               inserted:
                 type: "object"
+
