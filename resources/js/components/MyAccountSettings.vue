@@ -74,7 +74,7 @@
                 <div>Change password</div>
                 <div class="apollo_myaccount_item_right">
                     <input autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
-                           class="apollo_settings_input" v-model="password" type="password" placeholder="Insert your new password.">
+                           class="apollo_settings_input" v-model="password" type="password" placeholder="New password">
                     <img src="/svg/apollo_edit.svg" style="margin-left: 10px" width="16" height="16" alt="">
                 </div>
             </div>
@@ -83,7 +83,7 @@
                 <div>Confirm your new password</div>
                 <div class="apollo_myaccount_item_right">
                     <input autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
-                           class="apollo_settings_input" v-model="passwordConfirmation" type="password" placeholder="Confirm new password...">
+                           class="apollo_settings_input" v-model="passwordConfirmation" type="password" placeholder="Confirm new password">
                     <img src="/svg/apollo_edit.svg" style="margin-left: 10px" width="16" height="16" alt="">
                 </div>
             </div>

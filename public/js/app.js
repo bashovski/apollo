@@ -39861,7 +39861,7 @@ var render = function() {
                   autocapitalize: "off",
                   spellcheck: "false",
                   type: "password",
-                  placeholder: "Insert your new password."
+                  placeholder: "New password"
                 },
                 domProps: { value: _vm.password },
                 on: {
@@ -39915,7 +39915,7 @@ var render = function() {
                   autocapitalize: "off",
                   spellcheck: "false",
                   type: "password",
-                  placeholder: "Confirm new password..."
+                  placeholder: "Confirm new password"
                 },
                 domProps: { value: _vm.passwordConfirmation },
                 on: {

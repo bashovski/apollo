@@ -7,33 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class ValidateUserUpdateController extends Controller {
-    public function sendResponse($result, $message)
-    {
-        $response = [
-            'success' => true,
-            'data'    => $result,
-            'message' => $message,
-        ];
-
-
-        return response()->json($response, 200);
-    }
-
-    public function sendError($error, $errorMessages = [], $code = 404)
-    {
-        $response = [
-            'success' => false,
-            'message' => $error,
-        ];
-
-
-        if(!empty($errorMessages)){
-            $response['data'] = $errorMessages;
-        }
-
-
-        return response()->json($response, $code);
-    }
 
     public function index() {
 
@@ -50,9 +23,15 @@ class ValidateUserUpdateController extends Controller {
             'postalCode' => ['nullable', 'string']
         ]);
 
+        if($validation->errors()->count() != 0) {
+            return response()->json([
+                'success' => false,
+                'errors' => $validation->errors(),
+                'inserted' => $data
+            ]);
+        }
         return response()->json([
-            'errors' => $validation->errors(),
-            'inserted' => $data
+            'success' => true
         ]);
     }
 }

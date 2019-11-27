@@ -173,3 +173,13 @@ paths:
           description: "Internal"
         200:
           description: "Success"
+          schema:
+            type: "object"
+            properties:
+              success:
+                type: "boolean"
+                enum: [true, false]
+              errors:
+                type: "object"
+              inserted:
+                type: "object"
