@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Validator;
 
 class User extends Authenticatable
 {
@@ -44,4 +45,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static function validateUserSettings($data) {
+        $validation = Validator::make($data, [
+            'email' => ['nullable', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['nullable', 'string', 'min:8', 'confirmed'],
+            'location' => ['nullable', 'string', 'min:2', 'max:128'],
+            'language' => ['nullable', 'string'],
+            'dateOfBirth' => ['nullable', 'string'],
+            'accessProfilePermission' => ['nullable', 'string'],
+            'postalCode' => ['nullable', 'string']
+        ]);
+        return [
+            "errors" => ($validation->errors()->count() > 0) ? ($validation->getMessageBag()->getMessages()) : (false)
+        ];
+    }
 }
