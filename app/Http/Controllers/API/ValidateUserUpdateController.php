@@ -15,7 +15,7 @@ class ValidateUserUpdateController extends Controller {
         $userData = auth()->user();
 
         $validation = User::validateUserSettings($data);
-        //dd($validation);
+        //dd($validation['errors']);
         if($validation['errors'] !== false) {
             return response()->json([
                 'success' => false,
