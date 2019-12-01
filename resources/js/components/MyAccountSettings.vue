@@ -7,7 +7,7 @@
 
 
             <div id="apollo_myaccount_profile" class="row shadow" style="cursor: pointer;" @click="avatarFileControl()">
-                <img id="apollo_myaccount_avatar" src="/img/profile.jpg" alt="">
+                <img id="apollo_myaccount_avatar" :src="backendAvatar" alt="">
                 <div id="apollo_myaccount_profile_info">
                     <div id="apollo_myaccount_profile_info_heading">
                         <div id="apollo_myaccount_profile_info_name">Avatar</div>
@@ -121,7 +121,7 @@
             <input type="hidden" name="accessProfilePermission" v-model="accessProfilePermission" >
             <input type="hidden" name="dateOfBirth" v-model="dateOfBirth" >
             <input type="hidden" name="language" v-model="language" >
-            <input type="file" id="upload" name="avatar">
+            <input type="file" id="apollo_file_control" name="avatar" style="opacity: 0; width: 0px; height: 0px;">
         </form>
     </div>
 </template>
@@ -136,6 +136,7 @@
             }
         },
         props: [
+            'backendAvatar',
             'backendEmail',
             'backendLocation',
             'backendPostalCode',

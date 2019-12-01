@@ -2378,7 +2378,7 @@ __webpack_require__.r(__webpack_exports__);
       return _store_index__WEBPACK_IMPORTED_MODULE_0__["default"].getters.getViewStyles[5];
     }
   },
-  props: ['backendEmail', 'backendLocation', 'backendPostalCode', 'backendAccessProfilePermission', 'backendDateOfBirth', 'backendLocale', 'routeUpdate'],
+  props: ['backendAvatar', 'backendEmail', 'backendLocation', 'backendPostalCode', 'backendAccessProfilePermission', 'backendDateOfBirth', 'backendLocale', 'routeUpdate'],
   data: function data() {
     return {
       apiEndpoint: '/api/validateuserupdate',
@@ -39557,7 +39557,7 @@ var render = function() {
               _c("img", {
                 attrs: {
                   id: "apollo_myaccount_avatar",
-                  src: "/img/profile.jpg",
+                  src: _vm.backendAvatar,
                   alt: ""
                 }
               }),
@@ -40220,7 +40220,10 @@ var render = function() {
             }
           }),
           _vm._v(" "),
-          _c("input", { attrs: { type: "file", id: "upload", name: "avatar" } })
+          _c("input", {
+            staticStyle: { opacity: "0", width: "0px", height: "0px" },
+            attrs: { type: "file", id: "apollo_file_control", name: "avatar" }
+          })
         ]
       )
     ]

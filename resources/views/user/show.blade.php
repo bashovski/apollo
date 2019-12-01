@@ -7,6 +7,7 @@
     <my-account-history></my-account-history>
     <my-account-statistics></my-account-statistics>
     <my-account-settings
+        backend-avatar="{{$passedCredentials['avatar']}}"
         backend-email="{{$passedCredentials['email']}}"
         backend-location="{{$passedCredentials['location']}}"
         backend-postal-code="{{$passedCredentials['postalCode']}}"

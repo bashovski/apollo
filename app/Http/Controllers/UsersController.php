@@ -9,6 +9,7 @@ class UsersController extends Controller {
     public function show() {
         $user = auth()->user();
         $passedCredentials = [
+            'avatar' => ('/storage/').$user->avatar,
             'email' => $user->email,
             'location' => $user->location,
             'postalCode' => $user->postalCode,
