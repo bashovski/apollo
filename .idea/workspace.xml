@@ -2,8 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c5c3d23-321a-4fde-8fc8-8fd8cc1720d2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Basha.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Basha.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/BaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/BaseController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/ValidateUserUpdateController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/ValidateUserUpdateController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/MyAccountSettings.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/MyAccountSettings.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/user/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Feature/ValidateUserSettingsTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/ValidateUserSettingsTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,7 +53,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.3">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
       <path value="$PROJECT_DIR$/vendor/phar-io/version" />
@@ -157,20 +166,23 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/svg" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\git\apollo\public\svg" />
-      <recent name="C:\xampp\htdocs\git\apollo\public\img" />
-      <recent name="C:\xampp\htdocs\git\apollo\public\css" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\git\apollo\resources\js" />
       <recent name="C:\xampp\htdocs\git\apollo\public\img" />
       <recent name="C:\xampp\htdocs\git\apollo\public\svg" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\git\apollo\app\Http\Controllers" />
+      <recent name="C:\xampp\htdocs\git\apollo\public\svg" />
+      <recent name="C:\xampp\htdocs\git\apollo\public\img" />
+      <recent name="C:\xampp\htdocs\git\apollo\public\css" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -185,11 +197,40 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="PHPUnit.phpunit.xml">
+    <configuration name="ValidateProfileAccessEnumerationTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\ValidateProfileAccessEnumerationTest" file="$PROJECT_DIR$/tests/Feature/ValidateProfileAccessEnumerationTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ValidateProfileAccessEnumerationTest.testExample" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\ValidateProfileAccessEnumerationTest" file="$PROJECT_DIR$/tests/Feature/ValidateProfileAccessEnumerationTest.php" method="testExample" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ValidateSanitizedUserBirthDate" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\ValidateSanitizedUserBirthDate" file="$PROJECT_DIR$/tests/Feature/ValidateSanitizedUserBirthDate.php" scope="Class" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ValidateSanitizedUserBirthDate.testExample" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\ValidateSanitizedUserBirthDate" file="$PROJECT_DIR$/tests/Feature/ValidateSanitizedUserBirthDate.php" method="testExample" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ValidateUserSettingsTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\ValidateUserSettingsTest" file="$PROJECT_DIR$/tests/Feature/ValidateUserSettingsTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHPUnit.ValidateSanitizedUserBirthDate.testExample" />
+        <item itemvalue="PHPUnit.ValidateSanitizedUserBirthDate" />
+        <item itemvalue="PHPUnit.ValidateProfileAccessEnumerationTest" />
+        <item itemvalue="PHPUnit.ValidateProfileAccessEnumerationTest.testExample" />
+        <item itemvalue="PHPUnit.ValidateUserSettingsTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -223,7 +264,14 @@
       <workItem from="1574509434687" duration="15454000" />
       <workItem from="1574612996805" duration="10526000" />
       <workItem from="1574701795519" duration="19776000" />
-      <workItem from="1574877558708" duration="7445000" />
+      <workItem from="1574877558708" duration="14832000" />
+      <workItem from="1575068100439" duration="1054000" />
+      <workItem from="1575116104890" duration="83000" />
+      <workItem from="1575151355733" duration="1002000" />
+      <workItem from="1575152987353" duration="58000" />
+      <workItem from="1575153074060" duration="154000" />
+      <workItem from="1575153253307" duration="333000" />
+      <workItem from="1575153616090" duration="11117000" />
     </task>
     <servers />
   </component>

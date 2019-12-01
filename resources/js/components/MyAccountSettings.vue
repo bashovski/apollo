@@ -110,6 +110,18 @@
             <div>APPLY CHANGES</div>
             <div style="font-size: 14px; font-weight: normal;">Click to apply changes</div>
         </div>
+        <form id="apollo_update_user_form" :action="routeUpdate" method="post">
+            <input type="hidden" name="_token" :value="csrf">
+            <input type="hidden" name="_method" value="PATCH">
+            <input type="hidden" name="email" v-model="email" >
+            <input type="hidden" name="password" v-model="password" >
+            <input type="hidden" name="password_confirmation" v-model="passwordConfirmation" >
+            <input type="hidden" name="location" v-model="location" >
+            <input type="hidden" name="postalCode" v-model="postalCode" >
+            <input type="hidden" name="accessProfilePermission" v-model="accessProfilePermission" >
+            <input type="hidden" name="dateOfBirth" v-model="dateOfBirth" >
+            <input type="hidden" name="language" v-model="language" >
+        </form>
     </div>
 </template>
 
@@ -128,7 +140,8 @@
             'backendPostalCode',
             'backendAccessProfilePermission',
             'backendDateOfBirth',
-            'backendLocale'
+            'backendLocale',
+            'routeUpdate'
         ],
         data() {
             return {
@@ -151,8 +164,15 @@
                 axios.get(this.constructApiEndpoint())
                     .then(response => {
 
-
                         console.log(response.data);
+                        if(!response.data.success) {
+                            // display validation errors
+                            console.log(response.data[0].errors.email.length);
+                            this.displayValidationErrors();
+                        } else {
+                            // proceed
+                            this.submitSettings();
+                        }
 
                     }).catch(errors => {
                     console.log(errors);
@@ -201,6 +221,15 @@
                 else if(accessId === 'onlyRegistered') this.accessProfilePermission = 'Only registered';
                 else if(accessId === 'onlyAgent') this.accessProfilePermission = 'Only real estate agents';
                 else if(accessId === 'onlyMe') this.accessProfilePermission = 'Only Me';
+            },
+            submitSettings() {
+                event.preventDefault();
+                document.getElementById('apollo_update_user_form').submit();
+            },
+            displayValidationErrors() {
+                if(response.data[0].errors.email.length === 0) {
+
+                }
             }
         }
     }

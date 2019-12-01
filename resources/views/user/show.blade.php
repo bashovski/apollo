@@ -13,5 +13,6 @@
         backend-access-profile-permission="{{$passedCredentials['accessProfilePermission']}}"
         backend-date-of-birth="{{$passedCredentials['dateOfBirth']}}"
         backend-locale="{{$passedCredentials['locale']}}"
+        route-update="{{route('user.update')}}"
     ></my-account-settings>
 @endsection

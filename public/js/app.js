@@ -2357,6 +2357,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "MyAccountSettings",
@@ -2365,7 +2377,7 @@ __webpack_require__.r(__webpack_exports__);
       return _store_index__WEBPACK_IMPORTED_MODULE_0__["default"].getters.getViewStyles[5];
     }
   },
-  props: ['backendEmail', 'backendLocation', 'backendPostalCode', 'backendAccessProfilePermission', 'backendDateOfBirth', 'backendLocale'],
+  props: ['backendEmail', 'backendLocation', 'backendPostalCode', 'backendAccessProfilePermission', 'backendDateOfBirth', 'backendLocale', 'routeUpdate'],
   data: function data() {
     return {
       apiEndpoint: '/api/validateuserupdate',
@@ -2383,9 +2395,21 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submitUpdateUser: function submitUpdateUser() {
+      var _this = this;
+
       this.apiCalls++;
       axios.get(this.constructApiEndpoint()).then(function (response) {
         console.log(response.data);
+
+        if (!response.data.success) {
+          // display validation errors
+          console.log(response.data[0].errors.email.length);
+
+          _this.displayValidationErrors();
+        } else {
+          // proceed
+          _this.submitSettings();
+        }
       })["catch"](function (errors) {
         console.log(errors);
       });
@@ -2414,6 +2438,13 @@ __webpack_require__.r(__webpack_exports__);
     },
     updateAccessDropdown: function updateAccessDropdown(accessId) {
       if (accessId === 'everyone') this.accessProfilePermission = 'Everyone';else if (accessId === 'onlyRegistered') this.accessProfilePermission = 'Only registered';else if (accessId === 'onlyAgent') this.accessProfilePermission = 'Only real estate agents';else if (accessId === 'onlyMe') this.accessProfilePermission = 'Only Me';
+    },
+    submitSettings: function submitSettings() {
+      event.preventDefault();
+      document.getElementById('apollo_update_user_form').submit();
+    },
+    displayValidationErrors: function displayValidationErrors() {
+      if (response.data[0].errors.email.length === 0) {}
     }
   }
 });
@@ -39967,6 +39998,195 @@ var render = function() {
             { staticStyle: { "font-size": "14px", "font-weight": "normal" } },
             [_vm._v("Click to apply changes")]
           )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          attrs: {
+            id: "apollo_update_user_form",
+            action: _vm.routeUpdate,
+            method: "post"
+          }
+        },
+        [
+          _c("input", {
+            attrs: { type: "hidden", name: "_token" },
+            domProps: { value: _vm.csrf }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            attrs: { type: "hidden", name: "_method", value: "PATCH" }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.email,
+                expression: "email"
+              }
+            ],
+            attrs: { type: "hidden", name: "email" },
+            domProps: { value: _vm.email },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.email = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.password,
+                expression: "password"
+              }
+            ],
+            attrs: { type: "hidden", name: "password" },
+            domProps: { value: _vm.password },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.password = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.passwordConfirmation,
+                expression: "passwordConfirmation"
+              }
+            ],
+            attrs: { type: "hidden", name: "password_confirmation" },
+            domProps: { value: _vm.passwordConfirmation },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.passwordConfirmation = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.location,
+                expression: "location"
+              }
+            ],
+            attrs: { type: "hidden", name: "location" },
+            domProps: { value: _vm.location },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.location = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.postalCode,
+                expression: "postalCode"
+              }
+            ],
+            attrs: { type: "hidden", name: "postalCode" },
+            domProps: { value: _vm.postalCode },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.postalCode = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.accessProfilePermission,
+                expression: "accessProfilePermission"
+              }
+            ],
+            attrs: { type: "hidden", name: "accessProfilePermission" },
+            domProps: { value: _vm.accessProfilePermission },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.accessProfilePermission = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.dateOfBirth,
+                expression: "dateOfBirth"
+              }
+            ],
+            attrs: { type: "hidden", name: "dateOfBirth" },
+            domProps: { value: _vm.dateOfBirth },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.dateOfBirth = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.language,
+                expression: "language"
+              }
+            ],
+            attrs: { type: "hidden", name: "language" },
+            domProps: { value: _vm.language },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.language = $event.target.value
+              }
+            }
+          })
         ]
       )
     ]

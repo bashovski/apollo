@@ -22,3 +22,6 @@ Auth::routes();
 
 Route::get('/', 'PropertiesController@index')->name('home');
 Route::get('/myaccount', 'UsersController@show')->name('myaccount')->middleware('auth');
+
+
+Route::patch('/users/update', 'UsersController@update')->name('user.update')->middleware('auth');

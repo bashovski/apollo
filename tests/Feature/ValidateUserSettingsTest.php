@@ -17,7 +17,7 @@ class ValidateUserSettingsTest extends TestCase
     public function testExample()
     {
 
-        $testFunc =User::validateUserSettings([
+        $testFunc = User::validateUserSettings([
             'email' => '',
             'password' => '',
             'location' => '',
