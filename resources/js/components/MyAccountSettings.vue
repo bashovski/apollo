@@ -1,12 +1,12 @@
 <template>
-    <div id="apollo_myaccount_profile_container" class="container" style="margin-left: 7.5%">
-        <div id="apollo_myaccount_left" class="col-md-8">
+    <div id="apollo_myaccount_profile_container" class="container" style="margin-left: 7.5%" v-bind:style="getViewStyle">
+        <div id="apollo_myaccount_left" class="col-md-8 animated fadeInLeft">
             <!-- Implementing these two fields to avoid auto-complete by insolent browsers. Google, be ashamed of yourself. -->
             <input type="text" style="position: relative; left: -1000px;">
             <input type="password" style="position: relative; left: -1000px;">
 
 
-            <div id="apollo_myaccount_profile" class="row shadow">
+            <div id="apollo_myaccount_profile" class="row shadow" style="cursor: pointer;" @click="avatarFileControl()">
                 <img id="apollo_myaccount_avatar" src="/img/profile.jpg" alt="">
                 <div id="apollo_myaccount_profile_info">
                     <div id="apollo_myaccount_profile_info_heading">
@@ -110,7 +110,7 @@
             <div>APPLY CHANGES</div>
             <div style="font-size: 14px; font-weight: normal;">Click to apply changes</div>
         </div>
-        <form id="apollo_update_user_form" :action="routeUpdate" method="post">
+        <form id="apollo_update_user_form" :action="routeUpdate" enctype="multipart/form-data" method="post">
             <input type="hidden" name="_token" :value="csrf">
             <input type="hidden" name="_method" value="PATCH">
             <input type="hidden" name="email" v-model="email" >
@@ -121,6 +121,7 @@
             <input type="hidden" name="accessProfilePermission" v-model="accessProfilePermission" >
             <input type="hidden" name="dateOfBirth" v-model="dateOfBirth" >
             <input type="hidden" name="language" v-model="language" >
+            <input type="file" id="upload" name="avatar">
         </form>
     </div>
 </template>
@@ -215,6 +216,9 @@
                     if(this.language === this.backendLocale) return '';
                     else return this.language;
                 }
+            },
+            avatarFileControl() {
+                return document.getElementById('apollo_file_control').click();
             },
             updateAccessDropdown(accessId) {
                 if(accessId === 'everyone') this.accessProfilePermission = 'Everyone';

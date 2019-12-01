@@ -22,7 +22,6 @@ class UsersController extends Controller {
     public function update() {
 
         $input = (object) array_filter((array) request()->all());
-
         $hasErrors = User::validateUserSettings(request()->all());
 
         if(sizeof($hasErrors) >= 1 && $hasErrors['errors'] === true) {
@@ -31,7 +30,8 @@ class UsersController extends Controller {
 
         $authenticatedUser = auth()->user();
 
-        //dd(auth()->user());
+        if(!is_null($input->avatar))
+            $input->avatar = request('avatar')->store('avatar', 'public');
 
         $dateDelimited = auth()->user()->sanitizeDate($input->dateOfBirth);
         if($dateDelimited['success'] === false) return redirect(route('myaccount'));

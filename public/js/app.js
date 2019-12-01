@@ -2369,6 +2369,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "MyAccountSettings",
@@ -2435,6 +2436,9 @@ __webpack_require__.r(__webpack_exports__);
       } else if (param === 'language') {
         if (this.language === this.backendLocale) return '';else return this.language;
       }
+    },
+    avatarFileControl: function avatarFileControl() {
+      return document.getElementById('apollo_file_control').click();
     },
     updateAccessDropdown: function updateAccessDropdown(accessId) {
       if (accessId === 'everyone') this.accessProfilePermission = 'Everyone';else if (accessId === 'onlyRegistered') this.accessProfilePermission = 'Only registered';else if (accessId === 'onlyAgent') this.accessProfilePermission = 'Only real estate agents';else if (accessId === 'onlyMe') this.accessProfilePermission = 'Only Me';
@@ -39516,12 +39520,16 @@ var render = function() {
     {
       staticClass: "container",
       staticStyle: { "margin-left": "7.5%" },
+      style: _vm.getViewStyle,
       attrs: { id: "apollo_myaccount_profile_container" }
     },
     [
       _c(
         "div",
-        { staticClass: "col-md-8", attrs: { id: "apollo_myaccount_left" } },
+        {
+          staticClass: "col-md-8 animated fadeInLeft",
+          attrs: { id: "apollo_myaccount_left" }
+        },
         [
           _c("input", {
             staticStyle: { position: "relative", left: "-1000px" },
@@ -39533,7 +39541,30 @@ var render = function() {
             attrs: { type: "password" }
           }),
           _vm._v(" "),
-          _vm._m(0),
+          _c(
+            "div",
+            {
+              staticClass: "row shadow",
+              staticStyle: { cursor: "pointer" },
+              attrs: { id: "apollo_myaccount_profile" },
+              on: {
+                click: function($event) {
+                  return _vm.avatarFileControl()
+                }
+              }
+            },
+            [
+              _c("img", {
+                attrs: {
+                  id: "apollo_myaccount_avatar",
+                  src: "/img/profile.jpg",
+                  alt: ""
+                }
+              }),
+              _vm._v(" "),
+              _vm._m(0)
+            ]
+          ),
           _vm._v(" "),
           _c("div", { staticClass: "apollo_myaccount_item row shadow" }, [
             _c("img", {
@@ -40007,6 +40038,7 @@ var render = function() {
           attrs: {
             id: "apollo_update_user_form",
             action: _vm.routeUpdate,
+            enctype: "multipart/form-data",
             method: "post"
           }
         },
@@ -40186,7 +40218,9 @@ var render = function() {
                 _vm.language = $event.target.value
               }
             }
-          })
+          }),
+          _vm._v(" "),
+          _c("input", { attrs: { type: "file", id: "upload", name: "avatar" } })
         ]
       )
     ]
@@ -40197,35 +40231,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "row shadow", attrs: { id: "apollo_myaccount_profile" } },
-      [
-        _c("img", {
-          attrs: {
-            id: "apollo_myaccount_avatar",
-            src: "/img/profile.jpg",
-            alt: ""
-          }
-        }),
+    return _c("div", { attrs: { id: "apollo_myaccount_profile_info" } }, [
+      _c("div", { attrs: { id: "apollo_myaccount_profile_info_heading" } }, [
+        _c("div", { attrs: { id: "apollo_myaccount_profile_info_name" } }, [
+          _vm._v("Avatar")
+        ]),
         _vm._v(" "),
-        _c("div", { attrs: { id: "apollo_myaccount_profile_info" } }, [
-          _c(
-            "div",
-            { attrs: { id: "apollo_myaccount_profile_info_heading" } },
-            [
-              _c(
-                "div",
-                { attrs: { id: "apollo_myaccount_profile_info_name" } },
-                [_vm._v("Avatar")]
-              ),
-              _vm._v(" "),
-              _c("div", [_vm._v("Click to change your avatar")])
-            ]
-          )
-        ])
-      ]
-    )
+        _c("div", [_vm._v("Click to change your avatar")])
+      ])
+    ])
   },
   function() {
     var _vm = this

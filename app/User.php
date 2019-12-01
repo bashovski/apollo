@@ -17,6 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+        'avatar',
         'firstName',
         'lastName',
         'email',
@@ -63,6 +64,7 @@ class User extends Authenticatable
 
     public static function validateUserSettings($data) {
         $validation = Validator::make($data, [
+            'avatar' => ['nullable', 'image', 'max:5120'],
             'email' => ['nullable', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['nullable', 'string', 'min:8', 'confirmed'],
             'location' => ['nullable', 'string', 'min:2', 'max:128'],
