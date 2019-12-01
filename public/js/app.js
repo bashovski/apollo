@@ -39228,8 +39228,7 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "container",
-      staticStyle: { "margin-left": "7.5%" },
+      staticClass: "container apollo_myaccount_container",
       style: _vm.getViewStyle,
       attrs: { id: "apollo_myaccount_profile_container" }
     },
@@ -39518,8 +39517,7 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "container",
-      staticStyle: { "margin-left": "7.5%" },
+      staticClass: "apollo_myaccount_container container",
       style: _vm.getViewStyle,
       attrs: { id: "apollo_myaccount_profile_container" }
     },

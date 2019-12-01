@@ -1,5 +1,5 @@
 <template>
-    <div id="apollo_myaccount_profile_container" class="container" style="margin-left: 7.5%" v-bind:style="getViewStyle">
+    <div id="apollo_myaccount_profile_container" class="apollo_myaccount_container container" v-bind:style="getViewStyle">
         <div id="apollo_myaccount_left" class="col-md-8 animated fadeInLeft">
             <!-- Implementing these two fields to avoid auto-complete by insolent browsers. Google, be ashamed of yourself. -->
             <input type="text" style="position: relative; left: -1000px;">

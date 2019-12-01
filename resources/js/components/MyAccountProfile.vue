@@ -1,5 +1,5 @@
 <template>
-    <div id="apollo_myaccount_profile_container" class="container" style="margin-left: 7.5%" v-bind:style="getViewStyle">
+    <div id="apollo_myaccount_profile_container" class="container apollo_myaccount_container" v-bind:style="getViewStyle">
         <div id="apollo_myaccount_left" class="col-md-8">
             <div id="apollo_myaccount_profile" class="row shadow">
                 <img id="apollo_myaccount_avatar" src="/img/profile.jpg" alt="">

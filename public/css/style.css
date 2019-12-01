@@ -642,3 +642,12 @@ textarea, select, input, button { outline: none !important; box-shadow: none !im
     transition: 350ms;
 }
 
+.apollo_myaccount_container {
+    margin-left: 7.5%;
+}
+
+@media (max-width:767px) {
+    .apollo_myaccount_container {
+        margin-left: auto;
+    }
+}
