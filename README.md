@@ -39,8 +39,8 @@ To observe API documentation, please refer to swagger.yaml file in the root dire
 4.2. In terminal, execute command: <i>cd apollo</i><br>
 4.3. Execute command: <i>composer install</i><br>
 4.4. Execute command: <i>php artisan key:generate</i><br>
-4.5. Copy .env-example and paste it as a new file with name of .env - Insert manually sensitive credentials and save the file.
-4.6. Create local database 'apollo' before migrating.
+4.5. Copy .env-example and paste it as a new file with name of .env - Insert manually sensitive credentials and save the file.<br>
+4.6. Create local database 'apollo' before migrating.<br>
 4.7. Execute command: <i>php artisan migrate</i> to migrate migrations to the database<br>
 4.8. Execute command: <i>php artisan serve</i> to run the server.<br>
 
