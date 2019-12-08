@@ -14,6 +14,31 @@ tags:
 schemes:
 - "http"
 paths:
+  /login:
+    post:
+      tags:
+        - "User"
+      summary: "Login a user and gather user access token"
+      description: ""
+      operationId: "login"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "User Data"
+        schema:
+          $ref: "#/definitions/UserLogin"
+      responses:
+        201:
+          description: "Success. User logged in"
+        422:
+          description: "Validation Error"
+        429:
+          description: "Too many requests"
+        401:
+          description: "Unauthorized"
   /validateregister:
     get:
       tags:
@@ -184,4 +209,11 @@ paths:
                 type: "object"
               inserted:
                 type: "object"
-
+definitions:
+  UserLogin:
+    type: "object"
+    properties:
+      email:
+        type: "string"
+      password:
+        type: "string"
