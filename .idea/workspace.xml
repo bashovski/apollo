@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c5c3d23-321a-4fde-8fc8-8fd8cc1720d2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/swagger.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/swagger.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -190,7 +190,11 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHPUnit.phpunit.xml">
+  <component name="RunManager" selected="PHPUnit.AuthApiEndpointsCheck.testExample">
+    <configuration name="AuthApiEndpointsCheck.testExample" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\AuthApiEndpointsCheck" file="$PROJECT_DIR$/tests/Feature/AuthApiEndpointsCheck.php" method="testExample" scope="Method" />
+      <method v="2" />
+    </configuration>
     <configuration name="ValidateProfileAccessEnumerationTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Tests\Feature\ValidateProfileAccessEnumerationTest" file="$PROJECT_DIR$/tests/Feature/ValidateProfileAccessEnumerationTest.php" scope="Class" />
       <method v="2" />
@@ -207,21 +211,17 @@
       <TestRunner class="Tests\Feature\ValidateSanitizedUserBirthDate" file="$PROJECT_DIR$/tests/Feature/ValidateSanitizedUserBirthDate.php" method="testExample" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="ValidateUserSettingsTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Feature\ValidateUserSettingsTest" file="$PROJECT_DIR$/tests/Feature/ValidateUserSettingsTest.php" scope="Class" />
-      <method v="2" />
-    </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="PHPUnit.AuthApiEndpointsCheck.testExample" />
         <item itemvalue="PHPUnit.ValidateSanitizedUserBirthDate.testExample" />
         <item itemvalue="PHPUnit.ValidateSanitizedUserBirthDate" />
         <item itemvalue="PHPUnit.ValidateProfileAccessEnumerationTest" />
         <item itemvalue="PHPUnit.ValidateProfileAccessEnumerationTest.testExample" />
-        <item itemvalue="PHPUnit.ValidateUserSettingsTest" />
       </list>
     </recent_temporary>
   </component>
@@ -281,7 +281,7 @@
       <workItem from="1576171934244" duration="141000" />
       <workItem from="1576173283129" duration="361000" />
       <workItem from="1576173737136" duration="53000" />
-      <workItem from="1576173807114" duration="1931000" />
+      <workItem from="1576173807114" duration="2900000" />
     </task>
     <servers />
   </component>
