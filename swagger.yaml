@@ -39,6 +39,29 @@ paths:
           description: "Too many requests"
         401:
           description: "Unauthorized"
+  /user:
+    get:
+      tags:
+        - "User"
+      summary: "Using authorization key, gather authorized user data model"
+      description: ""
+      operationId: "authorize"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "header"
+        name: "Authorization"
+        type: "string"
+        required: true
+      responses:
+        200:
+          description: "Success. Authorized."
+        429:
+          description: "Too many requests"
+        302:
+          description: "Authorization failed"
   /validateregister:
     get:
       tags:

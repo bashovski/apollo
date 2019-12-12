@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c5c3d23-321a-4fde-8fc8-8fd8cc1720d2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/apollo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/apollo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/swagger.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/swagger.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -146,6 +149,10 @@
       <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
       <path value="$PROJECT_DIR$/vendor/symfony/psr-http-message-bridge" />
       <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/vendor/tymon/jwt-auth" />
+      <path value="$PROJECT_DIR$/vendor/namshi/jose" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-util" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php56" />
     </include_path>
   </component>
   <component name="ProjectId" id="1TO5B88vMlYKZQAl55kkqzPlowI" />
@@ -160,19 +167,19 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\git\apollo\resources\js" />
+      <recent name="C:\xampp\htdocs\git\apollo\public\img" />
+      <recent name="C:\xampp\htdocs\git\apollo\public\svg" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\git\apollo\app\Http\Controllers" />
       <recent name="C:\xampp\htdocs\git\apollo\public\svg" />
       <recent name="C:\xampp\htdocs\git\apollo\public\img" />
       <recent name="C:\xampp\htdocs\git\apollo\public\css" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\git\apollo\resources\js" />
-      <recent name="C:\xampp\htdocs\git\apollo\public\img" />
-      <recent name="C:\xampp\htdocs\git\apollo\public\svg" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -275,6 +282,10 @@
       <workItem from="1575197254042" duration="7477000" />
       <workItem from="1575208466605" duration="5333000" />
       <workItem from="1575229599737" duration="2180000" />
+      <workItem from="1576171934244" duration="141000" />
+      <workItem from="1576173283129" duration="361000" />
+      <workItem from="1576173737136" duration="53000" />
+      <workItem from="1576173807114" duration="1506000" />
     </task>
     <servers />
   </component>
