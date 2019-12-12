@@ -14,7 +14,7 @@ tags:
 schemes:
 - "http"
 paths:
-  /login:
+  /auth/login:
     post:
       tags:
         - "User"
@@ -39,7 +39,7 @@ paths:
           description: "Too many requests"
         401:
           description: "Unauthorized"
-  /user:
+  /auth/user:
     get:
       tags:
         - "User"
@@ -58,6 +58,29 @@ paths:
       responses:
         200:
           description: "Success. Authorized."
+        429:
+          description: "Too many requests"
+        302:
+          description: "Authorization failed"
+  /auth/logout:
+    get:
+      tags:
+        - "User"
+      summary: "Using authorization key, log out the user."
+      description: ""
+      operationId: "logout"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "header"
+        name: "Authorization"
+        type: "string"
+        required: true
+      responses:
+        200:
+          description: "Success. Logged out."
         429:
           description: "Too many requests"
         302:
