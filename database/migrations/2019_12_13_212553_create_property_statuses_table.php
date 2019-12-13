@@ -15,6 +15,9 @@ class CreatePropertyStatusesTable extends Migration
     {
         Schema::create('property_statuses', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
+            $table->unsignedInteger('progress');
+            $table->string('locale_key')->nullable();
             $table->timestamps();
         });
     }

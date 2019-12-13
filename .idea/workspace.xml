@@ -4,8 +4,8 @@
     <list default="true" id="6c5c3d23-321a-4fde-8fc8-8fd8cc1720d2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Basha.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Basha.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Property.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Property.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_12_185515_create_properties_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_12_185515_create_properties_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/PropertyStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/PropertyStatus.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_13_212553_create_property_statuses_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_13_212553_create_property_statuses_table.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -286,7 +286,8 @@
       <workItem from="1576173737136" duration="53000" />
       <workItem from="1576173807114" duration="6736000" />
       <workItem from="1576188299510" duration="924000" />
-      <workItem from="1576269031768" duration="2787000" />
+      <workItem from="1576269031768" duration="2900000" />
+      <workItem from="1576277661649" duration="145000" />
     </task>
     <servers />
   </component>
