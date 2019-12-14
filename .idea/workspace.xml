@@ -2,10 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c5c3d23-321a-4fde-8fc8-8fd8cc1720d2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Basha.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Basha.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/apollo_vector_place.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/PlaceProperty.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/properties/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/apollo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/apollo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/PropertyStatus.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/PropertyStatus.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_13_212553_create_property_statuses_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_13_212553_create_property_statuses_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/PropertiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/PropertiesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PropertiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PropertiesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Property.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Property.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_12_185515_create_properties_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_12_185515_create_properties_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Navbar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -148,10 +162,8 @@
       <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
       <path value="$PROJECT_DIR$/vendor/symfony/psr-http-message-bridge" />
       <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
-      <path value="$PROJECT_DIR$/vendor/tymon/jwt-auth" />
-      <path value="$PROJECT_DIR$/vendor/namshi/jose" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-util" />
-      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php56" />
+      <path value="$PROJECT_DIR$/vendor/laravel/scout" />
+      <path value="$PROJECT_DIR$/vendor/algolia/algoliasearch-client-php" />
     </include_path>
   </component>
   <component name="ProjectId" id="1TO5B88vMlYKZQAl55kkqzPlowI" />
@@ -162,23 +174,23 @@
     <property name="DatabaseDriversLRU" value="mysql&#10;mariadb" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../mysql/data/apollo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/img" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\git\apollo\public\img" />
+      <recent name="C:\xampp\htdocs\git\apollo\app\Http\Controllers" />
+      <recent name="C:\xampp\htdocs\git\apollo\public\svg" />
+      <recent name="C:\xampp\htdocs\git\apollo\public\css" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\git\apollo\resources\js" />
       <recent name="C:\xampp\htdocs\git\apollo\public\img" />
       <recent name="C:\xampp\htdocs\git\apollo\public\svg" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\git\apollo\app\Http\Controllers" />
-      <recent name="C:\xampp\htdocs\git\apollo\public\svg" />
-      <recent name="C:\xampp\htdocs\git\apollo\public\img" />
-      <recent name="C:\xampp\htdocs\git\apollo\public\css" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -287,7 +299,8 @@
       <workItem from="1576173807114" duration="6736000" />
       <workItem from="1576188299510" duration="924000" />
       <workItem from="1576269031768" duration="2900000" />
-      <workItem from="1576277661649" duration="145000" />
+      <workItem from="1576277661649" duration="6186000" />
+      <workItem from="1576326034969" duration="11383000" />
     </task>
     <servers />
   </component>

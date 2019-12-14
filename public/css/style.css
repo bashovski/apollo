@@ -651,3 +651,51 @@ textarea, select, input, button { outline: none !important; box-shadow: none !im
         margin-left: auto;
     }
 }
+
+#apollo_place_property {
+    margin-top: 100px;
+}
+
+.apollo_div_awaits_input {
+    font-size: 26px;
+    font-family: Montserrat;
+    color: #001730;
+}
+
+.apollo_span_awaits_input {
+    color: #FE4A49;
+    text-decoration: underline;
+}
+
+.apollo_step_one_choose_prop {
+    background-color: #001730;
+    color: #ffffff;
+    border: 1px solid #001730;
+    border-radius: 6px;
+    padding: 3px 10px;
+    margin-right: 6px;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.apollo_step_one_choose_prop:hover {
+    transition: 500ms;
+    opacity: 0.9;
+}
+
+.apollo_step_one_choose_prop.active {
+    opacity: 1;
+    border-bottom: 4px solid #4AD7D1;
+    transition: 300ms;
+}
+
+.apollo_step_one_choose_prop_label {
+    padding-left: 10px;
+    font-family: Karla;
+    font-size: 1rem;
+}
+
+.apollo_step_one_question {
+    font-family: Montserrat;
+    font-size: 18px;
+}

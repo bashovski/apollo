@@ -3,11 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Property extends Model {
+
+    use Searchable;
+
     protected $fillable = [
         'seller_id',
         'agent_id',
+        'property_creatable_id',
         'agent_confirmation_id',
         'status',
         'transaction_type',
@@ -42,4 +47,29 @@ class Property extends Model {
         'description',
         'page_visits'
     ];
+
+    public function searchableAs() {
+        return 'properties_index';
+    }
+
+    public function validateCreatePropertyData() {
+
+    }
+
+    /**
+     *
+     * Updates created property instance for further updating before completing
+     * the creation process of a property. Unique URL/Creatable ID will be provided.
+     *
+     * @param \App\Property $property
+     *
+     * @return \App\Property
+     */
+    public function updateCreatedProperty(Property $property) {
+
+        $property->update([
+            $property
+        ]);
+        return $property;
+    }
 }

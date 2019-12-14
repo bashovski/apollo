@@ -17,6 +17,7 @@ import MyAccountPrivateMessages from "./components/MyAccountPrivateMessages";
 import MyAccountHistory from "./components/MyAccountHistory";
 import MyAccountSettings from "./components/MyAccountSettings";
 import MyAccountStatistics from "./components/MyAccountStatistics";
+import PlaceProperty from "./components/PlaceProperty";
 
 const app = new Vue({
     el: '#app',
@@ -35,6 +36,7 @@ const app = new Vue({
         MyAccountPrivateMessages,
         MyAccountHistory,
         MyAccountSettings,
-        MyAccountStatistics
+        MyAccountStatistics,
+        PlaceProperty
     }
 });

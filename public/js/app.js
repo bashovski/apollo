@@ -2524,7 +2524,191 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Navbar",
-  props: ['routeHome', 'routeMyAccount']
+  props: ['routeHome', 'routeMyAccount', 'routePlaceProperty']
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PlaceProperty.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PlaceProperty.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "PlaceProperty",
+  data: function data() {
+    return {
+      flowInput: {
+        about: {
+          propertyType: {
+            current: 'House',
+            "enum": ['House', 'Office', 'Business'],
+            style: ['active', '', '']
+          },
+          transactionType: {
+            current: 'Sell',
+            "enum": ['Sell', 'Rent'],
+            style: ['active', '']
+          },
+          useProgressLink: {
+            current: true,
+            "enum": [true, false],
+            style: ['active', '']
+          }
+        }
+      },
+      flowCategories: {
+        about: {
+          PROPERTY_TYPE: '_PROPERTY_TYPE',
+          TRANSACTION_TYPE: '_TRANSACTION_TYPE',
+          USE_PROGRESS_LINK: '_USE_PROGRESS_LINK'
+        }
+      }
+    };
+  },
+  methods: {
+    flowSelect: function flowSelect(dest, val) {
+      if (dest === this.flowCategories.about.PROPERTY_TYPE) this.flowInput.about.propertyType.current = val;else if (dest === this.flowCategories.about.TRANSACTION_TYPE) this.flowInput.about.transactionType.current = val;else if (dest === this.flowCategories.about.USE_PROGRESS_LINK) this.flowInput.about.useProgressLink.current = val;
+      return this.updateFlowSelectionDisplay(dest, val);
+    },
+    updateFlowSelectionDisplay: function updateFlowSelectionDisplay(dest, val) {
+      if (dest === this.flowCategories.about.PROPERTY_TYPE) {
+        this.flowInput.about.propertyType.style = this.flowInput.about.propertyType.style.map(function (i) {
+          return '';
+        });
+
+        for (var i in this.flowInput.about.propertyType.style) {
+          if (this.flowInput.about.propertyType["enum"][i] === val) {
+            this.flowInput.about.propertyType.style[i] = 'active';
+            break;
+          }
+        }
+      } else if (dest === this.flowCategories.about.TRANSACTION_TYPE) {
+        this.flowInput.about.transactionType.style = this.flowInput.about.transactionType.style.map(function (i) {
+          return '';
+        });
+
+        for (var _i in this.flowInput.about.transactionType.style) {
+          if (this.flowInput.about.transactionType["enum"][_i] === val) {
+            this.flowInput.about.transactionType.style[_i] = 'active';
+            break;
+          }
+        }
+      } else if (dest === this.flowCategories.about.USE_PROGRESS_LINK) {
+        this.flowInput.about.useProgressLink.style = this.flowInput.about.useProgressLink.style.map(function (i) {
+          return '';
+        });
+
+        for (var _i2 in this.flowInput.about.useProgressLink.style) {
+          if (this.flowInput.about.useProgressLink["enum"][_i2] === val) {
+            this.flowInput.about.useProgressLink.style[_i2] = 'active';
+            break;
+          }
+        }
+      }
+
+      return this.$forceUpdate();
+    }
+  }
 });
 
 /***/ }),
@@ -40455,7 +40639,35 @@ var render = function() {
               _vm._v(" "),
               _vm._m(1),
               _vm._v(" "),
-              _vm._m(2)
+              _c(
+                "li",
+                { staticClass: "nav-item", attrs: { role: "presentation" } },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "nav-link",
+                      attrs: {
+                        href: _vm.routePlaceProperty,
+                        id: "apollo_nav_main_btn"
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          id: "apollo_nav_main_btn_pin",
+                          src: "/svg/apollo_pin.svg",
+                          height: "18",
+                          width: "18",
+                          alt: ""
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("span", [_vm._v("Place a Property")])
+                    ]
+                  )
+                ]
+              )
             ])
           ]
         )
@@ -40506,37 +40718,379 @@ var staticRenderFns = [
         ])
       ]
     )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PlaceProperty.vue?vue&type=template&id=8d3a3cbe&scoped=true&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PlaceProperty.vue?vue&type=template&id=8d3a3cbe&scoped=true& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "apollo_place_property" } }, [
+    _c(
+      "div",
+      {
+        staticClass: "container",
+        attrs: { id: "apollo_place_property_container" }
+      },
+      [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "row mt-5" }, [
+          _c("div", { staticClass: "col-md-8" }, [
+            _c("div", { attrs: { id: "apollo_step_one" } }, [
+              _c("div", [
+                _vm._m(1),
+                _vm._v(" "),
+                _c("div", [
+                  _vm._v(
+                    "\n                            Choose type of property you want to sell/rent.\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "d-flex mt-2" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "apollo_step_one_choose_prop",
+                      class: _vm.flowInput.about.propertyType.style[0],
+                      on: {
+                        click: function($event) {
+                          return _vm.flowSelect(
+                            _vm.flowCategories.about.PROPERTY_TYPE,
+                            "House"
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          width: "40",
+                          src: "/svg/apollo_detached.svg",
+                          alt: ""
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        { staticClass: "apollo_step_one_choose_prop_label" },
+                        [_vm._v("House")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "apollo_step_one_choose_prop",
+                      class: _vm.flowInput.about.propertyType.style[1],
+                      on: {
+                        click: function($event) {
+                          return _vm.flowSelect(
+                            _vm.flowCategories.about.PROPERTY_TYPE,
+                            "Office"
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          width: "40",
+                          src: "/svg/apollo_office.svg",
+                          alt: ""
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        { staticClass: "apollo_step_one_choose_prop_label" },
+                        [_vm._v("Office")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "apollo_step_one_choose_prop",
+                      class: _vm.flowInput.about.propertyType.style[2],
+                      on: {
+                        click: function($event) {
+                          return _vm.flowSelect(
+                            _vm.flowCategories.about.PROPERTY_TYPE,
+                            "Business"
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          width: "40",
+                          src: "/svg/apollo_business.svg",
+                          alt: ""
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        { staticClass: "apollo_step_one_choose_prop_label" },
+                        [_vm._v("Business")]
+                      )
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "mt-5" }, [
+                _vm._m(2),
+                _vm._v(" "),
+                _c("div", [
+                  _vm._v(
+                    "\n                            Choose if you either want to sell or rent your house.\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "d-flex mt-2" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "apollo_step_one_choose_prop",
+                      class: _vm.flowInput.about.transactionType.style[0],
+                      on: {
+                        click: function($event) {
+                          return _vm.flowSelect(
+                            _vm.flowCategories.about.TRANSACTION_TYPE,
+                            "Sell"
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          width: "40",
+                          src: "/svg/apollo_forsale.svg",
+                          alt: ""
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        { staticClass: "apollo_step_one_choose_prop_label" },
+                        [_vm._v("I'd like to sell it")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "apollo_step_one_choose_prop",
+                      class: _vm.flowInput.about.transactionType.style[1],
+                      on: {
+                        click: function($event) {
+                          return _vm.flowSelect(
+                            _vm.flowCategories.about.TRANSACTION_TYPE,
+                            "Rent"
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          width: "40",
+                          src: "/svg/apollo_rent.svg",
+                          alt: ""
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        { staticClass: "apollo_step_one_choose_prop_label" },
+                        [_vm._v("I'd like to rent it")]
+                      )
+                    ]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "mt-5" }, [
+                _vm._m(3),
+                _vm._v(" "),
+                _c("div", [
+                  _vm._v(
+                    "\n                            You can generate a unique link to track and update your progress.\n                        "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "d-flex mt-2" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "apollo_step_one_choose_prop",
+                      class: _vm.flowInput.about.useProgressLink.style[0],
+                      on: {
+                        click: function($event) {
+                          return _vm.flowSelect(
+                            _vm.flowCategories.about.USE_PROGRESS_LINK,
+                            true
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          width: "40",
+                          src: "/svg/apollo_forsale.svg",
+                          alt: ""
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        { staticClass: "apollo_step_one_choose_prop_label" },
+                        [_vm._v("Yes, please.")]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "apollo_step_one_choose_prop",
+                      class: _vm.flowInput.about.useProgressLink.style[1],
+                      on: {
+                        click: function($event) {
+                          return _vm.flowSelect(
+                            _vm.flowCategories.about.USE_PROGRESS_LINK,
+                            false
+                          )
+                        }
+                      }
+                    },
+                    [
+                      _c("img", {
+                        attrs: {
+                          width: "40",
+                          src: "/svg/apollo_rent.svg",
+                          alt: ""
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        { staticClass: "apollo_step_one_choose_prop_label" },
+                        [_vm._v("No, I'll finish this right away.")]
+                      )
+                    ]
+                  )
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(4)
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "d-flex justify-content-center" }, [
+      _c("div", { staticClass: "apollo_div_awaits_input" }, [
+        _vm._v("So, you 've decided to\n                "),
+        _c("span", { staticClass: "apollo_span_awaits_input" }, [
+          _vm._v("sell")
+        ]),
+        _vm._v(" your "),
+        _c("span", { staticClass: "apollo_span_awaits_input" }, [
+          _vm._v("house")
+        ]),
+        _vm._v("?\n            ")
+      ])
+    ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "li",
-      { staticClass: "nav-item", attrs: { role: "presentation" } },
-      [
-        _c(
-          "a",
-          {
-            staticClass: "nav-link",
-            attrs: { href: "#", id: "apollo_nav_main_btn" }
-          },
-          [
-            _c("img", {
-              attrs: {
-                id: "apollo_nav_main_btn_pin",
-                src: "/svg/apollo_pin.svg",
-                height: "18",
-                width: "18",
-                alt: ""
-              }
-            }),
-            _vm._v(" "),
-            _c("span", [_vm._v("Place a Property")])
-          ]
-        )
-      ]
-    )
+    return _c("div", { staticClass: "apollo_step_one_question" }, [
+      _vm._v("What kind of\n                            "),
+      _c("span", { staticStyle: { color: "#4AD7D1", "font-weight": "bold" } }, [
+        _vm._v("property")
+      ]),
+      _vm._v(" do you have?\n                        ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "apollo_step_one_question" }, [
+      _vm._v("What would you\n                            "),
+      _c("span", { staticStyle: { color: "#4AD7D1", "font-weight": "bold" } }, [
+        _vm._v("like")
+      ]),
+      _vm._v(" to do with it?\n                        ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "apollo_step_one_question" }, [
+      _vm._v("Use\n                            "),
+      _c("span", { staticStyle: { color: "#4AD7D1", "font-weight": "bold" } }, [
+        _vm._v("Progress")
+      ]),
+      _vm._v(" link?\n                        ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-4" }, [
+      _c("div", { attrs: { id: "apollo_place_property_side_todo" } }, [
+        _c("div", [_vm._v("Tell us about your property.")]),
+        _vm._v(" "),
+        _c("div", [_vm._v("Where is it located?")]),
+        _vm._v(" "),
+        _c("div", [_vm._v("Give us some details.")]),
+        _vm._v(" "),
+        _c("div", [_vm._v("More boring details.")]),
+        _vm._v(" "),
+        _c("div", [_vm._v("Cadastre")]),
+        _vm._v(" "),
+        _c("div", [_vm._v("Extras")]),
+        _vm._v(" "),
+        _c("div", [_vm._v("Photos")])
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -56171,9 +56725,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_MyAccountHistory__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/MyAccountHistory */ "./resources/js/components/MyAccountHistory.vue");
 /* harmony import */ var _components_MyAccountSettings__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/MyAccountSettings */ "./resources/js/components/MyAccountSettings.vue");
 /* harmony import */ var _components_MyAccountStatistics__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/MyAccountStatistics */ "./resources/js/components/MyAccountStatistics.vue");
+/* harmony import */ var _components_PlaceProperty__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/PlaceProperty */ "./resources/js/components/PlaceProperty.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+
 
 
 
@@ -56206,7 +56762,8 @@ var app = new Vue({
     MyAccountPrivateMessages: _components_MyAccountPrivateMessages__WEBPACK_IMPORTED_MODULE_11__["default"],
     MyAccountHistory: _components_MyAccountHistory__WEBPACK_IMPORTED_MODULE_12__["default"],
     MyAccountSettings: _components_MyAccountSettings__WEBPACK_IMPORTED_MODULE_13__["default"],
-    MyAccountStatistics: _components_MyAccountStatistics__WEBPACK_IMPORTED_MODULE_14__["default"]
+    MyAccountStatistics: _components_MyAccountStatistics__WEBPACK_IMPORTED_MODULE_14__["default"],
+    PlaceProperty: _components_PlaceProperty__WEBPACK_IMPORTED_MODULE_15__["default"]
   }
 });
 
@@ -56942,6 +57499,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Navbar_vue_vue_type_template_id_6dde423b_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Navbar_vue_vue_type_template_id_6dde423b_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/PlaceProperty.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/components/PlaceProperty.vue ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PlaceProperty_vue_vue_type_template_id_8d3a3cbe_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PlaceProperty.vue?vue&type=template&id=8d3a3cbe&scoped=true& */ "./resources/js/components/PlaceProperty.vue?vue&type=template&id=8d3a3cbe&scoped=true&");
+/* harmony import */ var _PlaceProperty_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PlaceProperty.vue?vue&type=script&lang=js& */ "./resources/js/components/PlaceProperty.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _PlaceProperty_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PlaceProperty_vue_vue_type_template_id_8d3a3cbe_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PlaceProperty_vue_vue_type_template_id_8d3a3cbe_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "8d3a3cbe",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/PlaceProperty.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/PlaceProperty.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/PlaceProperty.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PlaceProperty_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PlaceProperty.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PlaceProperty.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PlaceProperty_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/PlaceProperty.vue?vue&type=template&id=8d3a3cbe&scoped=true&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/PlaceProperty.vue?vue&type=template&id=8d3a3cbe&scoped=true& ***!
+  \**********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PlaceProperty_vue_vue_type_template_id_8d3a3cbe_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./PlaceProperty.vue?vue&type=template&id=8d3a3cbe&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PlaceProperty.vue?vue&type=template&id=8d3a3cbe&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PlaceProperty_vue_vue_type_template_id_8d3a3cbe_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PlaceProperty_vue_vue_type_template_id_8d3a3cbe_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

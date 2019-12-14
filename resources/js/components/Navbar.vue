@@ -19,7 +19,7 @@
                         <span>My Properties</span>
                     </a>
                     </li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#" id="apollo_nav_main_btn">
+                    <li class="nav-item" role="presentation"><a class="nav-link" :href="routePlaceProperty" id="apollo_nav_main_btn">
                         <img id="apollo_nav_main_btn_pin" src="/svg/apollo_pin.svg" height="18" width="18" alt="">
                         <span>Place a Property</span></a>
                     </li>
@@ -35,7 +35,8 @@
         name: "Navbar",
         props: [
             'routeHome',
-            'routeMyAccount'
+            'routeMyAccount',
+            'routePlaceProperty'
         ]
     }
 </script>

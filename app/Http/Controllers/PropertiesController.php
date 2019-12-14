@@ -8,4 +8,8 @@ class PropertiesController extends Controller {
     public function index() {
         return view('index');
     }
+
+    public function create() {
+        return view('properties.create');
+    }
 }
