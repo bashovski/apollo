@@ -92,7 +92,6 @@ class User extends Authenticatable
         switch($enum) {
             case 'onlyAgent': return 'Only real estate agents';
             case 'only Me': return 'Only Me';
-            case 'onlyRegistered': return 'Only Registered';
             default: return 'Only Registered';
         }
     }

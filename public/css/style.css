@@ -667,6 +667,14 @@ textarea, select, input, button { outline: none !important; box-shadow: none !im
     text-decoration: underline;
 }
 
+#apollo_step_one {
+
+}
+
+.col-md-8 {
+    border-right: 1px solid #FE4A49;
+}
+
 .apollo_step_one_choose_prop {
     background-color: #001730;
     color: #ffffff;
@@ -698,4 +706,38 @@ textarea, select, input, button { outline: none !important; box-shadow: none !im
 .apollo_step_one_question {
     font-family: Montserrat;
     font-size: 18px;
+}
+
+#apollo_place_property_side_todo {
+    padding-top: 20px;
+}
+
+.apollo_todo_sidebar_item {
+    border-left: 2px solid #FE4A49;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+.apollo_todo_sidebar_item.active {
+    font-weight: bold;
+    border-left: 4px solid #4AD7D1;
+}
+
+.apollo_copy_progress_link_btn {
+    border: none;
+    color: #ffffff !important;
+    background: #001730;
+    border-radius: 5px;
+    border-bottom: 4px solid #4AD7D1;
+    font-weight: bold;
+    padding: 7px 30px;
+}
+
+#apollo_copy_progress_link {
+    margin-top: 136px;
+}
+
+.apollo_flow_pagination {
+    margin-top: 60px;
 }

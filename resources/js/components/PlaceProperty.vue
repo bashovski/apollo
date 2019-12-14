@@ -75,17 +75,33 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="apollo_flow_pagination">
+                        <button class="apollo_copy_progress_link_btn" @click="proceed()">
+                            <img src="/svg/apollo_right.svg" width="20" alt="">
+                            <span>Proceed</span>
+                        </button>
+                    </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 apollo_sidebar_parent">
                     <div id="apollo_place_property_side_todo">
-                        <div>Tell us about your property.</div>
-                        <div>Where is it located?</div>
-                        <div>Give us some details.</div>
-                        <div>More boring details.</div>
-                        <div>Cadastre</div>
-                        <div>Extras</div>
-                        <div>Photos</div>
+                        <div class="apollo_todo_sidebar_item active">Tell us about your property.</div>
+                        <div class="apollo_todo_sidebar_item">Where is it located?</div>
+                        <div class="apollo_todo_sidebar_item">Give us some details.</div>
+                        <div class="apollo_todo_sidebar_item">More boring details.</div>
+                        <div class="apollo_todo_sidebar_item">Cadastre</div>
+                        <div class="apollo_todo_sidebar_item">Extras</div>
+                        <div class="apollo_todo_sidebar_item">Photos</div>
+                        <div class="apollo_todo_sidebar_item">Confirm your Identity</div>
+                        <div class="apollo_todo_sidebar_item">Hire an Agent</div>
+                    </div>
+                    <div id="apollo_copy_progress_link">
+                        <div>
+                            You can copy and reuse the progress link <br>in case you can't complete everything now.
+                        </div>
+                        <button class="apollo_copy_progress_link_btn" @click="proceed()">
+                            <img src="/svg/apollo_clipboard.svg" width="20" alt="">
+                            <span>Copy Progress link to Clipboard</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -115,7 +131,8 @@
                             enum: [true, false],
                             style: ['active', '']
                         }
-                    }
+                    },
+                    currentFlowStep: 1
                 },
                 flowCategories: {
                     about: {
@@ -123,10 +140,56 @@
                         TRANSACTION_TYPE: '_TRANSACTION_TYPE',
                         USE_PROGRESS_LINK: '_USE_PROGRESS_LINK'
                     }
+                },
+                progressLink: null,
+
+                api: {
+                    endpoints: {
+                        UPDATE: '/api/progresslink/update',
+                        CREATE: '/api/progresslink/create',
+                    },
+                    calls: 0,
+                    lastCallTimestamp: 0,
+                    methods: {
+                        UPDATE: '_UPDATE',
+                        CREATE: '_CREATE'
+                    }
                 }
             }
         },
         methods: {
+            copyProgressLink() {
+                if(this.progressLink === null) return this.createProgressLink();
+                else this.updateProgressLink();
+            },
+            createProgressLink() {
+                return this.progressLink = 1231231;
+            },
+            updateProgressLink() {
+                console.log(JSON.stringify(this.flowInput));
+                axios.patch(this.constructApiEndpoint(this.api.methods.UPDATE), this.flowInput)
+                .then(response => {
+                        console.log(response.data);
+                    }).catch(errors => {
+                        console.log(errors);
+                });
+            },
+            proceed() {
+                try {
+                    this.validateInput();
+                } catch(errors) { // later display
+                    return console.log(errors);
+                }
+
+                this.updateProgressLink();
+            },
+            constructApiEndpoint(method) {
+                if(method === this.api.methods.UPDATE) {
+                    return this.api.endpoints.UPDATE;
+                } else if(method === this.api.methods.CREATE) {
+                    return this.api.endpoints.CREATE;
+                }
+            },
             flowSelect(dest, val) {
                 if(dest === this.flowCategories.about.PROPERTY_TYPE) this.flowInput.about.propertyType.current = val;
                 else if(dest === this.flowCategories.about.TRANSACTION_TYPE) this.flowInput.about.transactionType.current = val;
@@ -161,6 +224,33 @@
                     }
                 }
                 return this.$forceUpdate();
+            },
+            validateInput() {
+                let validationsPassed = 0;
+                if(this.flowInput.currentFlowStep === 1) {
+                    // validate property type
+                    for(let i = 0; i < 3; i++) {
+                        if(this.flowInput.about.propertyType.enum[i] === this.flowInput.about.propertyType.current) {
+                            validationsPassed++;
+                            break;
+                        }
+                    }
+                    // validate transaction type
+                    for(let i = 0; i < 3; i++) {
+                        if(this.flowInput.about.transactionType.enum[i] === this.flowInput.about.transactionType.current) {
+                            validationsPassed++;
+                            break;
+                        }
+                    }
+                    // validate progress link
+                    for(let i = 0; i < 3; i++) {
+                        if(this.flowInput.about.useProgressLink.enum[i] === this.flowInput.about.useProgressLink.current) {
+                            validationsPassed++;
+                            break;
+                        }
+                    }
+                    if(validationsPassed < 3) throw "validation failed";
+                }
             }
         }
     }

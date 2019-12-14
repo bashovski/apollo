@@ -2633,6 +2633,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PlaceProperty",
   data: function data() {
@@ -2654,7 +2670,8 @@ __webpack_require__.r(__webpack_exports__);
             "enum": [true, false],
             style: ['active', '']
           }
-        }
+        },
+        currentFlowStep: 1
       },
       flowCategories: {
         about: {
@@ -2662,10 +2679,54 @@ __webpack_require__.r(__webpack_exports__);
           TRANSACTION_TYPE: '_TRANSACTION_TYPE',
           USE_PROGRESS_LINK: '_USE_PROGRESS_LINK'
         }
+      },
+      progressLink: null,
+      api: {
+        endpoints: {
+          UPDATE: '/api/progresslink/update',
+          CREATE: '/api/progresslink/create'
+        },
+        calls: 0,
+        lastCallTimestamp: 0,
+        methods: {
+          UPDATE: '_UPDATE',
+          CREATE: '_CREATE'
+        }
       }
     };
   },
   methods: {
+    copyProgressLink: function copyProgressLink() {
+      if (this.progressLink === null) return this.createProgressLink();else this.updateProgressLink();
+    },
+    createProgressLink: function createProgressLink() {
+      return this.progressLink = 1231231;
+    },
+    updateProgressLink: function updateProgressLink() {
+      console.log(JSON.stringify(this.flowInput));
+      axios.patch(this.constructApiEndpoint(this.api.methods.UPDATE), this.flowInput).then(function (response) {
+        console.log(response.data);
+      })["catch"](function (errors) {
+        console.log(errors);
+      });
+    },
+    proceed: function proceed() {
+      try {
+        this.validateInput();
+      } catch (errors) {
+        // later display
+        return console.log(errors);
+      }
+
+      this.updateProgressLink();
+    },
+    constructApiEndpoint: function constructApiEndpoint(method) {
+      if (method === this.api.methods.UPDATE) {
+        return this.api.endpoints.UPDATE;
+      } else if (method === this.api.methods.CREATE) {
+        return this.api.endpoints.CREATE;
+      }
+    },
     flowSelect: function flowSelect(dest, val) {
       if (dest === this.flowCategories.about.PROPERTY_TYPE) this.flowInput.about.propertyType.current = val;else if (dest === this.flowCategories.about.TRANSACTION_TYPE) this.flowInput.about.transactionType.current = val;else if (dest === this.flowCategories.about.USE_PROGRESS_LINK) this.flowInput.about.useProgressLink.current = val;
       return this.updateFlowSelectionDisplay(dest, val);
@@ -2707,6 +2768,37 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       return this.$forceUpdate();
+    },
+    validateInput: function validateInput() {
+      var validationsPassed = 0;
+
+      if (this.flowInput.currentFlowStep === 1) {
+        // validate property type
+        for (var i = 0; i < 3; i++) {
+          if (this.flowInput.about.propertyType["enum"][i] === this.flowInput.about.propertyType.current) {
+            validationsPassed++;
+            break;
+          }
+        } // validate transaction type
+
+
+        for (var _i3 = 0; _i3 < 3; _i3++) {
+          if (this.flowInput.about.transactionType["enum"][_i3] === this.flowInput.about.transactionType.current) {
+            validationsPassed++;
+            break;
+          }
+        } // validate progress link
+
+
+        for (var _i4 = 0; _i4 < 3; _i4++) {
+          if (this.flowInput.about.useProgressLink["enum"][_i4] === this.flowInput.about.useProgressLink.current) {
+            validationsPassed++;
+            break;
+          }
+        }
+
+        if (validationsPassed < 3) throw "validation failed";
+      }
     }
   }
 });
@@ -41006,10 +41098,64 @@ var render = function() {
                   )
                 ])
               ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "apollo_flow_pagination" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "apollo_copy_progress_link_btn",
+                  on: {
+                    click: function($event) {
+                      return _vm.proceed()
+                    }
+                  }
+                },
+                [
+                  _c("img", {
+                    attrs: {
+                      src: "/svg/apollo_right.svg",
+                      width: "20",
+                      alt: ""
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("span", [_vm._v("Proceed")])
+                ]
+              )
             ])
           ]),
           _vm._v(" "),
-          _vm._m(4)
+          _c("div", { staticClass: "col-md-4 apollo_sidebar_parent" }, [
+            _vm._m(4),
+            _vm._v(" "),
+            _c("div", { attrs: { id: "apollo_copy_progress_link" } }, [
+              _vm._m(5),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "apollo_copy_progress_link_btn",
+                  on: {
+                    click: function($event) {
+                      return _vm.proceed()
+                    }
+                  }
+                },
+                [
+                  _c("img", {
+                    attrs: {
+                      src: "/svg/apollo_clipboard.svg",
+                      width: "20",
+                      alt: ""
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("span", [_vm._v("Copy Progress link to Clipboard")])
+                ]
+              )
+            ])
+          ])
         ])
       ]
     )
@@ -41074,22 +41220,54 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4" }, [
-      _c("div", { attrs: { id: "apollo_place_property_side_todo" } }, [
-        _c("div", [_vm._v("Tell us about your property.")]),
-        _vm._v(" "),
-        _c("div", [_vm._v("Where is it located?")]),
-        _vm._v(" "),
-        _c("div", [_vm._v("Give us some details.")]),
-        _vm._v(" "),
-        _c("div", [_vm._v("More boring details.")]),
-        _vm._v(" "),
-        _c("div", [_vm._v("Cadastre")]),
-        _vm._v(" "),
-        _c("div", [_vm._v("Extras")]),
-        _vm._v(" "),
-        _c("div", [_vm._v("Photos")])
+    return _c("div", { attrs: { id: "apollo_place_property_side_todo" } }, [
+      _c("div", { staticClass: "apollo_todo_sidebar_item active" }, [
+        _vm._v("Tell us about your property.")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "apollo_todo_sidebar_item" }, [
+        _vm._v("Where is it located?")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "apollo_todo_sidebar_item" }, [
+        _vm._v("Give us some details.")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "apollo_todo_sidebar_item" }, [
+        _vm._v("More boring details.")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "apollo_todo_sidebar_item" }, [
+        _vm._v("Cadastre")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "apollo_todo_sidebar_item" }, [
+        _vm._v("Extras")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "apollo_todo_sidebar_item" }, [
+        _vm._v("Photos")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "apollo_todo_sidebar_item" }, [
+        _vm._v("Confirm your Identity")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "apollo_todo_sidebar_item" }, [
+        _vm._v("Hire an Agent")
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _vm._v(
+        "\n                        You can copy and reuse the progress link "
+      ),
+      _c("br"),
+      _vm._v("in case you can't complete everything now.\n                    ")
     ])
   }
 ]

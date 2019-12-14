@@ -14,6 +14,12 @@ Route::group([], function () {
 });
 
 Route::group([
+    'prefix' => '/progresslink'
+], function() {
+    Route::patch('/update', 'API\ProgressLinksController@update');
+});
+
+Route::group([
     'prefix' => 'auth'
 ], function () {
     Route::post('login', 'AuthController@login');
