@@ -16,7 +16,9 @@ Route::group([], function () {
 Route::group([
     'prefix' => '/progresslink'
 ], function() {
-    Route::patch('/update', 'API\ProgressLinksController@update');
+    Route::patch('/update', 'API\ProgressLinksController@update')->name('progresslink.update');
+    Route::post('/', 'API\ProgressLinksController@store')->name('progresslink.store');
+    Route::get('/{key}', 'API\ProgressLinksController@show')->name('progresslink.show');
 });
 
 Route::group([

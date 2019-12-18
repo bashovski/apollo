@@ -7,7 +7,7 @@ use Laravel\Scout\Searchable;
 
 class Property extends Model {
 
-    use Searchable;
+    //use Searchable;
 
     protected $fillable = [
         'seller_id',
@@ -71,5 +71,11 @@ class Property extends Model {
             $property
         ]);
         return $property;
+    }
+
+
+
+    public static function createNewProperty($data) {
+        return Property::create($data);
     }
 }

@@ -15,14 +15,14 @@ class CreatePropertiesTable extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('property_creatable_id');
+            $table->string('property_creatable_id')->nullable();
             $table->unsignedBigInteger('seller_id')->nullable();
             $table->unsignedBigInteger('agent_id')->nullable();
             $table->unsignedBigInteger('agent_confirmation_id')->nullable();
             $table->string('status')->default('');
             $table->string('transaction_type')->nullable();
             $table->unsignedBigInteger('purchase_id')->nullable();
-            $table->json('photos')->nullable();
+            $table->text('photos')->nullable(); // json
             $table->string('address')->nullable();
             $table->string('postcode')->nullable();
             $table->unsignedSmallInteger('year_of_construction')->nullable();
@@ -47,7 +47,7 @@ class CreatePropertiesTable extends Migration
             $table->boolean('has_garage')->nullable();
             $table->string('garage_type')->nullable();
             $table->unsignedSmallInteger('garage_cap')->nullable();
-            $table->json('nearby_places')->nullable();
+            $table->text('nearby_places')->nullable(); // json
             $table->string('brochure_id')->nullable();
             $table->text('description')->nullable();
             $table->unsignedBigInteger('page_visits')->default(0);

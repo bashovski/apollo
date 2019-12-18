@@ -10,6 +10,8 @@ class PropertiesController extends Controller {
     }
 
     public function create() {
-        return view('properties.create');
+        return view('properties.create', [
+            'domain' =>getenv('APP_DOMAIN')
+        ]);
     }
 }

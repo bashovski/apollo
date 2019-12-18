@@ -1,4 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <place-property></place-property>
+    <place-property
+        domain="{{$domain}}"
+    ></place-property>
 @endsection

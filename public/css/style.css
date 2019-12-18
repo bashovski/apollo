@@ -672,7 +672,7 @@ textarea, select, input, button { outline: none !important; box-shadow: none !im
 }
 
 .col-md-8 {
-    border-right: 1px solid #FE4A49;
+
 }
 
 .apollo_step_one_choose_prop {
@@ -739,5 +739,30 @@ textarea, select, input, button { outline: none !important; box-shadow: none !im
 }
 
 .apollo_flow_pagination {
-    margin-top: 60px;
+    margin-top: 70px;
+    margin-bottom: 100px;
+}
+
+.apollo_post_flow_question_item {
+    padding: 20px;
+}
+
+#apollo_progress_link_display {
+    display: flex;
+}
+
+#apollo_progress_link_copy {
+    border: none;
+    color: #ffffff !important;
+    background: #001730;
+    border-radius: 5px;
+    border-bottom: 4px solid #4AD7D1;
+    font-weight: bold;
+    padding: 5.5px 10px;
+}
+
+#apollo_progress_link_field {
+    width: 80%;
+    margin-right: 4px;
+    border-bottom: 4px solid #4AD7D1;
 }

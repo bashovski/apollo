@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c5c3d23-321a-4fde-8fc8-8fd8cc1720d2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/svg/apollo_clipboard.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/svg/apollo_return.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/svg/apollo_right.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/ProgressLinksController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/ProgressLinksController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProgressLinksController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProgressLinksController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ProgressLink.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ProgressLink.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Property.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Property.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_12_185515_create_properties_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_12_185515_create_properties_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_12_14_163014_create_progress_links_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_12_14_163014_create_progress_links_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/PlaceProperty.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/PlaceProperty.vue" afterDir="false" />
@@ -294,7 +294,11 @@
       <workItem from="1576269031768" duration="2900000" />
       <workItem from="1576277661649" duration="6186000" />
       <workItem from="1576326034969" duration="16805000" />
-      <workItem from="1576348450897" duration="8164000" />
+      <workItem from="1576348450897" duration="8998000" />
+      <workItem from="1576358336502" duration="7880000" />
+      <workItem from="1576415102785" duration="4061000" />
+      <workItem from="1576594231739" duration="116000" />
+      <workItem from="1576703555903" duration="2946000" />
     </task>
     <servers />
   </component>

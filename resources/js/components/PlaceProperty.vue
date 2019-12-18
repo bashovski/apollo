@@ -9,7 +9,7 @@
             <div class="row mt-5">
                 <div class="col-md-8">
                     <div id="apollo_step_one">
-                        <div>
+                        <div class="apollo_post_flow_question_item shadow-lg">
                             <div class="apollo_step_one_question">What kind of
                                 <span style="color: #4AD7D1; font-weight: bold;">property</span> do you have?
                             </div>
@@ -34,7 +34,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mt-5">
+                        <div class="mt-5 apollo_post_flow_question_item shadow-lg">
                             <div class="apollo_step_one_question">What would you
                                 <span style="color: #4AD7D1; font-weight: bold;">like</span> to do with it?
                             </div>
@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mt-5">
+                        <div class="apollo_post_flow_question_item shadow-lg mt-5">
                             <div class="apollo_step_one_question">Use
                                 <span style="color: #4AD7D1; font-weight: bold;">Progress</span> link?
                             </div>
@@ -95,13 +95,23 @@
                         <div class="apollo_todo_sidebar_item">Hire an Agent</div>
                     </div>
                     <div id="apollo_copy_progress_link">
-                        <div>
-                            You can copy and reuse the progress link <br>in case you can't complete everything now.
+                        <div id="apollo_progress_link_notice">
+                            <div>
+                                You can copy and reuse the progress link <br>in case you can't complete everything now.
+                            </div>
+                            <button class="apollo_copy_progress_link_btn"
+                                    @click="displayProgressLink()" v-bind:style="getProgressLinkButtonDisplay">
+                                <img src="/svg/apollo_clipboard.svg" width="20" alt="">
+                                <span>Copy Progress link to Clipboard</span>
+                            </button>
                         </div>
-                        <button class="apollo_copy_progress_link_btn" @click="proceed()">
-                            <img src="/svg/apollo_clipboard.svg" width="20" alt="">
-                            <span>Copy Progress link to Clipboard</span>
-                        </button>
+                        <div id="apollo_progress_link_display" v-bind:style="getProgressLinkDisplay">
+                            <input id="apollo_progress_link_field" readonly class="form-control" type="text"
+                                   v-bind:value="getFormattedProgressLink">
+                            <button id="apollo_progress_link_copy" @click="copyProgressLink()">
+                                <img src="/svg/apollo_clipboard.svg" width="20" alt="">
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -134,6 +144,7 @@
                     },
                     currentFlowStep: 1
                 },
+
                 flowCategories: {
                     about: {
                         PROPERTY_TYPE: '_PROPERTY_TYPE',
@@ -141,34 +152,86 @@
                         USE_PROGRESS_LINK: '_USE_PROGRESS_LINK'
                     }
                 },
+
+                displayManagement: {
+                    sidebar: {
+                        progressLinkDisplay: false,
+                        progressLinkNotice: true
+                    }
+                },
+
                 progressLink: null,
 
                 api: {
+                    // https://laravel.com/docs/5.1/controllers#restful-resource-controllers
                     endpoints: {
                         UPDATE: '/api/progresslink/update',
-                        CREATE: '/api/progresslink/create',
+                        CREATE: '/api/progresslink/',
+                        SHOW: '/api/progresslink/'
                     },
                     calls: 0,
                     lastCallTimestamp: 0,
+                    apiQueue: false,
                     methods: {
                         UPDATE: '_UPDATE',
                         CREATE: '_CREATE'
+                    }
+                },
+
+                view: {
+                    endpoints: {
+                        SHOW: '/progresslink/'
                     }
                 }
             }
         },
         methods: {
-            copyProgressLink() {
+            displayProgressLink() {
+                if(this.progressLink === null) return;
+                this.displayManagement.sidebar.progressLinkDisplay = true;
+                this.displayManagement.sidebar.progressLinkNotice = false;
+                this.$forceUpdate();
+            },
+            mutateProgressLink() {
                 if(this.progressLink === null) return this.createProgressLink();
                 else this.updateProgressLink();
+
+                this.copyProgressLink();
+            },
+            copyProgressLink() {
+                let link = document.getElementById("apollo_progress_link_field");
+
+                link.select();
+                link.setSelectionRange(0, 99999);
+                document.execCommand("copy");
             },
             createProgressLink() {
-                return this.progressLink = 1231231;
+                if(this.apiQueue === true) return; this.apiQueue = true;
+                axios.post(this.constructApiEndpoint(this.api.methods.CREATE), this.flowInput)
+                .finally(() => {
+                    this.apiQueue = false;
+                })
+                .then(response => {
+                    console.log('progresslink created');
+                    this.progressLink = response.data.progress_link;
+                    this.updateProgressLink();
+                    this.$forceUpdate();
+                }).catch(errors => {
+                    console.log(errors);
+                });
             },
             updateProgressLink() {
                 console.log(JSON.stringify(this.flowInput));
+
+                if(this.apiQueue === true) return;
+                this.apiQueue = true;
+
                 axios.patch(this.constructApiEndpoint(this.api.methods.UPDATE), this.flowInput)
+                .finally(() => {
+                    this.apiQueue = false;
+                })
                 .then(response => {
+                        console.log('progresslink updated');
                         console.log(response.data);
                     }).catch(errors => {
                         console.log(errors);
@@ -181,7 +244,7 @@
                     return console.log(errors);
                 }
 
-                this.updateProgressLink();
+                this.mutateProgressLink();
             },
             constructApiEndpoint(method) {
                 if(method === this.api.methods.UPDATE) {
@@ -252,7 +315,23 @@
                     if(validationsPassed < 3) throw "validation failed";
                 }
             }
-        }
+        },
+        computed: {
+            getProgressLinkDisplay() {
+                return (this.displayManagement.sidebar.progressLinkDisplay && this.progressLink !== null) ? ('') : ('display: none');
+            },
+            getFormattedProgressLink() {
+                return (
+                    this.domain + this.view.endpoints.SHOW + this.progressLink
+                );
+            },
+            getProgressLinkButtonDisplay() {
+                return (this.displayManagement.sidebar.progressLinkNotice) ? ('') : ('display: none');
+            }
+        },
+        props: [
+            'domain'
+        ]
     }
 </script>
 

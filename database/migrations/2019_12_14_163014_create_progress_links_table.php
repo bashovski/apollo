@@ -15,6 +15,10 @@ class CreateProgressLinksTable extends Migration
     {
         Schema::create('progress_links', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('key')->unique();
+            $table->unsignedBigInteger('property_id');
+            $table->boolean('expired')->default(false);
+            $table->timestamp('expired_at')->nullable();
             $table->timestamps();
         });
     }
