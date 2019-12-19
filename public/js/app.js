@@ -2744,7 +2744,6 @@ __webpack_require__.r(__webpack_exports__);
       axios.post(this.constructApiEndpoint(this.api.methods.CREATE), this.flowInput)["finally"](function () {
         _this.apiQueue = false;
       }).then(function (response) {
-        console.log('progresslink created');
         _this.progressLink = response.data.progress_link;
 
         _this.updateProgressLink();
@@ -2763,7 +2762,6 @@ __webpack_require__.r(__webpack_exports__);
       axios.patch(this.constructApiEndpoint(this.api.methods.UPDATE), this.flowInput)["finally"](function () {
         _this2.apiQueue = false;
       }).then(function (response) {
-        console.log('progresslink updated');
         console.log(response.data);
       })["catch"](function (errors) {
         console.log(errors);

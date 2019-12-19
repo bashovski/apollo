@@ -212,7 +212,6 @@
                     this.apiQueue = false;
                 })
                 .then(response => {
-                    console.log('progresslink created');
                     this.progressLink = response.data.progress_link;
                     this.updateProgressLink();
                     this.$forceUpdate();
@@ -231,7 +230,6 @@
                     this.apiQueue = false;
                 })
                 .then(response => {
-                        console.log('progresslink updated');
                         console.log(response.data);
                     }).catch(errors => {
                         console.log(errors);
