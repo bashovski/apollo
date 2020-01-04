@@ -1,15 +1,10 @@
 <template>
     <div id="apollo_place_property">
-        <div id="apollo_place_property_container" class="container">
-            <div class="d-flex justify-content-center">
-                <div class="apollo_div_awaits_input">So, you 've decided to
-                    <span class="apollo_span_awaits_input">sell</span> your <span class="apollo_span_awaits_input">house</span>?
-                </div>
-            </div>
-            <div class="row mt-5">
+        <div id="apollo_place_property_container" class="container shadow-lg">
+            <div class="row mt-5" style="min-height: 100vh;">
                 <div class="col-md-8">
-                    <div id="apollo_step_one">
-                        <div class="apollo_post_flow_question_item shadow-lg">
+                    <div id="apollo_step_one" v-bind:style="displayManagement.flow.display[0]">
+                        <div class="apollo_post_flow_question_item">
                             <div class="apollo_step_one_question">What kind of
                                 <span style="color: #4AD7D1; font-weight: bold;">property</span> do you have?
                             </div>
@@ -34,7 +29,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mt-5 apollo_post_flow_question_item shadow-lg">
+                        <div class="mt-5 apollo_post_flow_question_item">
                             <div class="apollo_step_one_question">What would you
                                 <span style="color: #4AD7D1; font-weight: bold;">like</span> to do with it?
                             </div>
@@ -54,7 +49,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="apollo_post_flow_question_item shadow-lg mt-5">
+                        <div class="apollo_post_flow_question_item mt-5">
                             <div class="apollo_step_one_question">Use
                                 <span style="color: #4AD7D1; font-weight: bold;">Progress</span> link?
                             </div>
@@ -75,6 +70,57 @@
                             </div>
                         </div>
                     </div>
+                    <div id="apollo_step_two" class="" v-bind:style="displayManagement.flow.display[1]">
+                        <div class="apollo_post_flow_question_item">
+                            <div class="apollo_step_one_question">
+                                Select <span style="color: #4AD7D1; font-weight: bold;">location</span> of your property
+                            </div>
+                            <div>
+                                Please choose which country/autonomous region is your property located in?
+                            </div>
+                            <div class="apollo_location_btn" style="margin: auto;" data-toggle="dropdown">
+                            <span>
+                                <button type="button" class="btn dropdown-toggle w-50 align-items-center">
+                                    <span v-if="countries.selected.acronym === null">
+                                        <span class="pl-1">Select a country</span>
+                                        <span class="caret"></span>
+                                    </span>
+                                    <span v-else>
+                                        <img :src="countries.selected.flag" :alt="countries.selected.name" width="25" height="13">
+                                        <span class="pl-1">{{ countries.selected.name }}</span>
+                                        <span class="caret"></span>
+                                    </span>
+                                </button>
+                            </span>
+                                <ul class="dropdown-menu scrollable-menu w-100" role="menu">
+                                    <li class="gff_li_dropdown_main" v-for="country, index in countries.names" @click="selectCountry(index)" style="cursor: pointer;">
+                                        <img class="pl-2" :src="countries.flags[index]" width="25" height="13" :alt="country">
+                                        <a class="pl-1 gff_country-listitem">{{country}}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="apollo_post_flow_question_item">
+                            <div class="apollo_step_one_question">
+                                Insert the <span style="color: #4AD7D1; font-weight: bold;">ZIP/Postal code</span> of your property
+                            </div>
+                            <div>
+                                Please insert the ZIP/Postal code of the property you are {{getProcessVerb}}.
+                            </div>
+                            <input class="form-control apollo_input_field" type="text" v-model="flowInput.location.postcode"
+                                   placeholder="Please insert the ZIP/Postal code of the property you are selling.">
+                        </div>
+                        <div class="apollo_post_flow_question_item">
+                            <div class="apollo_step_one_question">
+                                Insert the <span style="color: #4AD7D1; font-weight: bold;">address</span> of your property
+                            </div>
+                            <div>
+                                Please insert the address (street name, number) of the property you are {{getProcessVerb}}.
+                            </div>
+                            <input class="form-control apollo_input_field" type="text" v-model="flowInput.location.address"
+                                   placeholder="Please insert the ZIP/Postal code of the property you are selling.">
+                        </div>
+                    </div>
                     <div class="apollo_flow_pagination">
                         <button class="apollo_copy_progress_link_btn" @click="proceed()">
                             <img src="/svg/apollo_right.svg" width="20" alt="">
@@ -84,7 +130,10 @@
                 </div>
                 <div class="col-md-4 apollo_sidebar_parent">
                     <div id="apollo_place_property_side_todo">
-                        <div class="apollo_todo_sidebar_item active">Tell us about your property.</div>
+                        <div class="apollo_todo_sidebar_item active">
+                            <span class=""></span>
+                            <span>Tell us about your property.</span>
+                        </div>
                         <div class="apollo_todo_sidebar_item">Where is it located?</div>
                         <div class="apollo_todo_sidebar_item">Give us some details.</div>
                         <div class="apollo_todo_sidebar_item">More boring details.</div>
@@ -116,10 +165,31 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="apollo_error_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Mistakes were made!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        {{ getValidationError }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="apollo_error-btn" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
+
+    import ValidationSvc from '../services/properties/validation.js';
+
     export default {
         name: "PlaceProperty",
         data() {
@@ -142,6 +212,10 @@
                             style: ['active', '']
                         }
                     },
+                    location: {
+                        postcode: '',
+                        address: ''
+                    },
                     currentFlowStep: 1
                 },
 
@@ -153,10 +227,15 @@
                     }
                 },
 
+                displayedError: '',
+
                 displayManagement: {
                     sidebar: {
                         progressLinkDisplay: false,
                         progressLinkNotice: true
+                    },
+                    flow: {
+                        display: new Array(9).fill('', 0, 1).fill('display: none', 1, 9)
                     }
                 },
 
@@ -167,14 +246,29 @@
                     endpoints: {
                         UPDATE: '/api/progresslink/update',
                         CREATE: '/api/progresslink/',
-                        SHOW: '/api/progresslink/'
+                        SHOW: '/api/progresslink/',
+                        COUNTRIES_GET: 'https://restcountries.eu/rest/v2/all'
                     },
                     calls: 0,
                     lastCallTimestamp: 0,
                     apiQueue: false,
                     methods: {
                         UPDATE: '_UPDATE',
-                        CREATE: '_CREATE'
+                        CREATE: '_CREATE',
+                        SHOW: '_SHOW',
+                        COUNTRIES_GET: '_COUNTRIES_GET'
+                    },
+                    proxy: 'https://fast-journey-35621.herokuapp.com/'
+                },
+
+                countries: {
+                    names: [],
+                    acronyms: [],
+                    flags: [],
+                    selected: {
+                        name: null,
+                        acronym: null,
+                        flag: null
                     }
                 },
 
@@ -237,10 +331,16 @@
             },
             proceed() {
                 try {
-                    this.validateInput();
+                    if(!this.validateInput()) return;
                 } catch(errors) { // later display
-                    return console.log(errors);
+                    return console.log('greška');
                 }
+                this.loadFlowStep(this.flowInput.currentFlowStep+1);
+                this.displayManagement.flow.display[this.flowInput.currentFlowStep-1] = 'display: none';
+                this.displayManagement.flow.display[this.flowInput.currentFlowStep] = '';
+                this.flowInput.currentFlowStep++;
+                console.log(this.flowInput.currentFlowStep);
+                this.$forceUpdate();
 
                 this.mutateProgressLink();
             },
@@ -249,6 +349,14 @@
                     return this.api.endpoints.UPDATE;
                 } else if(method === this.api.methods.CREATE) {
                     return this.api.endpoints.CREATE;
+                } else if( method === this.api.methods.COUNTRIES_GET) {
+                    return this.api.proxy + this.api.endpoints.COUNTRIES_GET;
+                }
+            },
+            loadFlowStep(stepId) {
+                console.log('stepid: '+ stepId);
+                if(stepId === 2) {
+                    this.loadLocations();
                 }
             },
             flowSelect(dest, val) {
@@ -256,6 +364,26 @@
                 else if(dest === this.flowCategories.about.TRANSACTION_TYPE) this.flowInput.about.transactionType.current = val;
                 else if(dest === this.flowCategories.about.USE_PROGRESS_LINK) this.flowInput.about.useProgressLink.current = val;
                 return this.updateFlowSelectionDisplay(dest, val);
+            },
+            loadLocations() {
+                this.loadCountries();
+            },
+            loadCountries() {
+                axios.get(this.constructApiEndpoint(this.api.methods.COUNTRIES_GET))
+                    .then(response => {
+                        for(let i = 0; i < response.data.length; i++) {
+                            this.countries.names[i] = response.data[i].name;
+                            this.countries.acronyms[i] = response.data[i].alpha2Code;
+                            this.countries.flags[i] = response.data[i].flag;
+                        }
+                    }).catch(errors => {
+                    console.log(errors);
+                });
+            },
+            selectCountry(index) {
+                this.countries.selected.acronym = this.countries.acronyms[index];
+                this.countries.selected.flag = this.countries.flags[index];
+                this.countries.selected.name = this.countries.names[index];
             },
             updateFlowSelectionDisplay(dest, val) {
                 if(dest === this.flowCategories.about.PROPERTY_TYPE) {
@@ -311,7 +439,22 @@
                         }
                     }
                     if(validationsPassed < 3) throw "validation failed";
+
+                } else if(this.flowInput.currentFlowStep === 2) {
+                    if(this.countries.selected.acronym === null)
+                        return this.displayError(ValidationSvc.validationErrors.location.countryNotSelected);
+                    else if(this.flowInput.location.postcode.toString().length === 0)
+                        return this.displayError(ValidationSvc.validationErrors.location.postalCodeEmpty);
+                    else if(this.flowInput.location.address.toString().length < 4)
+                        return this.displayError(ValidationSvc.validationErrors.location.addressInvalid);
                 }
+
+                return true;
+            },
+            displayError(string, displayLength = null) {
+                this.displayedError = string;
+                $('#apollo_error_modal').modal({show: true});
+                return false;
             }
         },
         computed: {
@@ -325,6 +468,12 @@
             },
             getProgressLinkButtonDisplay() {
                 return (this.displayManagement.sidebar.progressLinkNotice) ? ('') : ('display: none');
+            },
+            getProcessVerb() {
+                return (this.flowInput.about.transactionType.current === 'Sell') ? ('selling') : ('renting');
+            },
+            getValidationError() {
+                return this.displayedError;
             }
         },
         props: [
@@ -334,5 +483,4 @@
 </script>
 
 <style scoped>
-
 </style>

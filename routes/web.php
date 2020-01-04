@@ -15,3 +15,7 @@ Route::group([
 });
 
 Route::patch('/users/update', 'UsersController@update')->name('user.update')->middleware('auth');
+
+Route::get('/test', function() {
+    return view('test');
+});

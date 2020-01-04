@@ -2538,6 +2538,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _services_properties_validation_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/properties/validation.js */ "./resources/js/services/properties/validation.js");
 //
 //
 //
@@ -2659,6 +2660,74 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PlaceProperty",
   data: function data() {
@@ -2681,6 +2750,10 @@ __webpack_require__.r(__webpack_exports__);
             style: ['active', '']
           }
         },
+        location: {
+          postcode: '',
+          address: ''
+        },
         currentFlowStep: 1
       },
       flowCategories: {
@@ -2690,10 +2763,14 @@ __webpack_require__.r(__webpack_exports__);
           USE_PROGRESS_LINK: '_USE_PROGRESS_LINK'
         }
       },
+      displayedError: '',
       displayManagement: {
         sidebar: {
           progressLinkDisplay: false,
           progressLinkNotice: true
+        },
+        flow: {
+          display: new Array(9).fill('', 0, 1).fill('display: none', 1, 9)
         }
       },
       progressLink: null,
@@ -2702,14 +2779,28 @@ __webpack_require__.r(__webpack_exports__);
         endpoints: {
           UPDATE: '/api/progresslink/update',
           CREATE: '/api/progresslink/',
-          SHOW: '/api/progresslink/'
+          SHOW: '/api/progresslink/',
+          COUNTRIES_GET: 'https://restcountries.eu/rest/v2/all'
         },
         calls: 0,
         lastCallTimestamp: 0,
         apiQueue: false,
         methods: {
           UPDATE: '_UPDATE',
-          CREATE: '_CREATE'
+          CREATE: '_CREATE',
+          SHOW: '_SHOW',
+          COUNTRIES_GET: '_COUNTRIES_GET'
+        },
+        proxy: 'https://fast-journey-35621.herokuapp.com/'
+      },
+      countries: {
+        names: [],
+        acronyms: [],
+        flags: [],
+        selected: {
+          name: null,
+          acronym: null,
+          flag: null
         }
       },
       view: {
@@ -2769,12 +2860,18 @@ __webpack_require__.r(__webpack_exports__);
     },
     proceed: function proceed() {
       try {
-        this.validateInput();
+        if (!this.validateInput()) return;
       } catch (errors) {
         // later display
-        return console.log(errors);
+        return console.log('greška');
       }
 
+      this.loadFlowStep(this.flowInput.currentFlowStep + 1);
+      this.displayManagement.flow.display[this.flowInput.currentFlowStep - 1] = 'display: none';
+      this.displayManagement.flow.display[this.flowInput.currentFlowStep] = '';
+      this.flowInput.currentFlowStep++;
+      console.log(this.flowInput.currentFlowStep);
+      this.$forceUpdate();
       this.mutateProgressLink();
     },
     constructApiEndpoint: function constructApiEndpoint(method) {
@@ -2782,11 +2879,41 @@ __webpack_require__.r(__webpack_exports__);
         return this.api.endpoints.UPDATE;
       } else if (method === this.api.methods.CREATE) {
         return this.api.endpoints.CREATE;
+      } else if (method === this.api.methods.COUNTRIES_GET) {
+        return this.api.proxy + this.api.endpoints.COUNTRIES_GET;
+      }
+    },
+    loadFlowStep: function loadFlowStep(stepId) {
+      console.log('stepid: ' + stepId);
+
+      if (stepId === 2) {
+        this.loadLocations();
       }
     },
     flowSelect: function flowSelect(dest, val) {
       if (dest === this.flowCategories.about.PROPERTY_TYPE) this.flowInput.about.propertyType.current = val;else if (dest === this.flowCategories.about.TRANSACTION_TYPE) this.flowInput.about.transactionType.current = val;else if (dest === this.flowCategories.about.USE_PROGRESS_LINK) this.flowInput.about.useProgressLink.current = val;
       return this.updateFlowSelectionDisplay(dest, val);
+    },
+    loadLocations: function loadLocations() {
+      this.loadCountries();
+    },
+    loadCountries: function loadCountries() {
+      var _this3 = this;
+
+      axios.get(this.constructApiEndpoint(this.api.methods.COUNTRIES_GET)).then(function (response) {
+        for (var i = 0; i < response.data.length; i++) {
+          _this3.countries.names[i] = response.data[i].name;
+          _this3.countries.acronyms[i] = response.data[i].alpha2Code;
+          _this3.countries.flags[i] = response.data[i].flag;
+        }
+      })["catch"](function (errors) {
+        console.log(errors);
+      });
+    },
+    selectCountry: function selectCountry(index) {
+      this.countries.selected.acronym = this.countries.acronyms[index];
+      this.countries.selected.flag = this.countries.flags[index];
+      this.countries.selected.name = this.countries.names[index];
     },
     updateFlowSelectionDisplay: function updateFlowSelectionDisplay(dest, val) {
       if (dest === this.flowCategories.about.PROPERTY_TYPE) {
@@ -2855,7 +2982,19 @@ __webpack_require__.r(__webpack_exports__);
         }
 
         if (validationsPassed < 3) throw "validation failed";
+      } else if (this.flowInput.currentFlowStep === 2) {
+        if (this.countries.selected.acronym === null) return this.displayError(_services_properties_validation_js__WEBPACK_IMPORTED_MODULE_0__["default"].validationErrors.location.countryNotSelected);else if (this.flowInput.location.postcode.toString().length === 0) return this.displayError(_services_properties_validation_js__WEBPACK_IMPORTED_MODULE_0__["default"].validationErrors.location.postalCodeEmpty);else if (this.flowInput.location.address.toString().length < 4) return this.displayError(_services_properties_validation_js__WEBPACK_IMPORTED_MODULE_0__["default"].validationErrors.location.addressInvalid);
       }
+
+      return true;
+    },
+    displayError: function displayError(string) {
+      var displayLength = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+      this.displayedError = string;
+      $('#apollo_error_modal').modal({
+        show: true
+      });
+      return false;
     }
   },
   computed: {
@@ -2867,6 +3006,12 @@ __webpack_require__.r(__webpack_exports__);
     },
     getProgressLinkButtonDisplay: function getProgressLinkButtonDisplay() {
       return this.displayManagement.sidebar.progressLinkNotice ? '' : 'display: none';
+    },
+    getProcessVerb: function getProcessVerb() {
+      return this.flowInput.about.transactionType.current === 'Sell' ? 'selling' : 'renting';
+    },
+    getValidationError: function getValidationError() {
+      return this.displayedError;
     }
   },
   props: ['domain']
@@ -40906,367 +41051,532 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "container",
+        staticClass: "container shadow-lg",
         attrs: { id: "apollo_place_property_container" }
       },
       [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", { staticClass: "row mt-5" }, [
-          _c("div", { staticClass: "col-md-8" }, [
-            _c("div", { attrs: { id: "apollo_step_one" } }, [
+        _c(
+          "div",
+          { staticClass: "row mt-5", staticStyle: { "min-height": "100vh" } },
+          [
+            _c("div", { staticClass: "col-md-8" }, [
               _c(
                 "div",
-                { staticClass: "apollo_post_flow_question_item shadow-lg" },
+                {
+                  style: _vm.displayManagement.flow.display[0],
+                  attrs: { id: "apollo_step_one" }
+                },
                 [
-                  _vm._m(1),
-                  _vm._v(" "),
-                  _c("div", [
-                    _vm._v(
-                      "\n                            Choose type of property you want to sell/rent.\n                        "
-                    )
+                  _c("div", { staticClass: "apollo_post_flow_question_item" }, [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _c("div", [
+                      _vm._v(
+                        "\n                            Choose type of property you want to sell/rent.\n                        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "d-flex mt-2" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "apollo_step_one_choose_prop",
+                          class: _vm.flowInput.about.propertyType.style[0],
+                          on: {
+                            click: function($event) {
+                              return _vm.flowSelect(
+                                _vm.flowCategories.about.PROPERTY_TYPE,
+                                "House"
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("img", {
+                            attrs: {
+                              width: "40",
+                              src: "/svg/apollo_detached.svg",
+                              alt: ""
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              staticClass: "apollo_step_one_choose_prop_label"
+                            },
+                            [_vm._v("House")]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "apollo_step_one_choose_prop",
+                          class: _vm.flowInput.about.propertyType.style[1],
+                          on: {
+                            click: function($event) {
+                              return _vm.flowSelect(
+                                _vm.flowCategories.about.PROPERTY_TYPE,
+                                "Office"
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("img", {
+                            attrs: {
+                              width: "40",
+                              src: "/svg/apollo_office.svg",
+                              alt: ""
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              staticClass: "apollo_step_one_choose_prop_label"
+                            },
+                            [_vm._v("Office")]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "apollo_step_one_choose_prop",
+                          class: _vm.flowInput.about.propertyType.style[2],
+                          on: {
+                            click: function($event) {
+                              return _vm.flowSelect(
+                                _vm.flowCategories.about.PROPERTY_TYPE,
+                                "Business"
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("img", {
+                            attrs: {
+                              width: "40",
+                              src: "/svg/apollo_business.svg",
+                              alt: ""
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              staticClass: "apollo_step_one_choose_prop_label"
+                            },
+                            [_vm._v("Business")]
+                          )
+                        ]
+                      )
+                    ])
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "d-flex mt-2" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "apollo_step_one_choose_prop",
-                        class: _vm.flowInput.about.propertyType.style[0],
-                        on: {
-                          click: function($event) {
-                            return _vm.flowSelect(
-                              _vm.flowCategories.about.PROPERTY_TYPE,
-                              "House"
+                  _c(
+                    "div",
+                    { staticClass: "mt-5 apollo_post_flow_question_item" },
+                    [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c("div", [
+                        _vm._v(
+                          "\n                            Choose if you either want to sell or rent your house.\n                        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "d-flex mt-2" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "apollo_step_one_choose_prop",
+                            class: _vm.flowInput.about.transactionType.style[0],
+                            on: {
+                              click: function($event) {
+                                return _vm.flowSelect(
+                                  _vm.flowCategories.about.TRANSACTION_TYPE,
+                                  "Sell"
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c("img", {
+                              attrs: {
+                                width: "40",
+                                src: "/svg/apollo_forsale.svg",
+                                alt: ""
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "span",
+                              {
+                                staticClass: "apollo_step_one_choose_prop_label"
+                              },
+                              [_vm._v("I'd like to sell it")]
                             )
-                          }
-                        }
-                      },
-                      [
-                        _c("img", {
-                          attrs: {
-                            width: "40",
-                            src: "/svg/apollo_detached.svg",
-                            alt: ""
-                          }
-                        }),
+                          ]
+                        ),
                         _vm._v(" "),
                         _c(
-                          "span",
-                          { staticClass: "apollo_step_one_choose_prop_label" },
-                          [_vm._v("House")]
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "apollo_step_one_choose_prop",
-                        class: _vm.flowInput.about.propertyType.style[1],
-                        on: {
-                          click: function($event) {
-                            return _vm.flowSelect(
-                              _vm.flowCategories.about.PROPERTY_TYPE,
-                              "Office"
+                          "div",
+                          {
+                            staticClass: "apollo_step_one_choose_prop",
+                            class: _vm.flowInput.about.transactionType.style[1],
+                            on: {
+                              click: function($event) {
+                                return _vm.flowSelect(
+                                  _vm.flowCategories.about.TRANSACTION_TYPE,
+                                  "Rent"
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c("img", {
+                              attrs: {
+                                width: "40",
+                                src: "/svg/apollo_rent.svg",
+                                alt: ""
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "span",
+                              {
+                                staticClass: "apollo_step_one_choose_prop_label"
+                              },
+                              [_vm._v("I'd like to rent it")]
                             )
-                          }
-                        }
-                      },
-                      [
-                        _c("img", {
-                          attrs: {
-                            width: "40",
-                            src: "/svg/apollo_office.svg",
-                            alt: ""
-                          }
-                        }),
+                          ]
+                        )
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "apollo_post_flow_question_item mt-5" },
+                    [
+                      _vm._m(2),
+                      _vm._v(" "),
+                      _c("div", [
+                        _vm._v(
+                          "\n                            You can generate a unique link to track and update your progress.\n                        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "d-flex mt-2" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "apollo_step_one_choose_prop",
+                            class: _vm.flowInput.about.useProgressLink.style[0],
+                            on: {
+                              click: function($event) {
+                                return _vm.flowSelect(
+                                  _vm.flowCategories.about.USE_PROGRESS_LINK,
+                                  true
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c("img", {
+                              attrs: {
+                                width: "40",
+                                src: "/svg/apollo_forsale.svg",
+                                alt: ""
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "span",
+                              {
+                                staticClass: "apollo_step_one_choose_prop_label"
+                              },
+                              [_vm._v("Yes, please.")]
+                            )
+                          ]
+                        ),
                         _vm._v(" "),
                         _c(
-                          "span",
-                          { staticClass: "apollo_step_one_choose_prop_label" },
-                          [_vm._v("Office")]
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "apollo_step_one_choose_prop",
-                        class: _vm.flowInput.about.propertyType.style[2],
-                        on: {
-                          click: function($event) {
-                            return _vm.flowSelect(
-                              _vm.flowCategories.about.PROPERTY_TYPE,
-                              "Business"
+                          "div",
+                          {
+                            staticClass: "apollo_step_one_choose_prop",
+                            class: _vm.flowInput.about.useProgressLink.style[1],
+                            on: {
+                              click: function($event) {
+                                return _vm.flowSelect(
+                                  _vm.flowCategories.about.USE_PROGRESS_LINK,
+                                  false
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c("img", {
+                              attrs: {
+                                width: "40",
+                                src: "/svg/apollo_rent.svg",
+                                alt: ""
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "span",
+                              {
+                                staticClass: "apollo_step_one_choose_prop_label"
+                              },
+                              [_vm._v("No, I'll finish this right away.")]
                             )
-                          }
-                        }
-                      },
-                      [
-                        _c("img", {
-                          attrs: {
-                            width: "40",
-                            src: "/svg/apollo_business.svg",
-                            alt: ""
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "span",
-                          { staticClass: "apollo_step_one_choose_prop_label" },
-                          [_vm._v("Business")]
+                          ]
                         )
-                      ]
-                    )
-                  ])
+                      ])
+                    ]
+                  )
                 ]
               ),
               _vm._v(" "),
               _c(
                 "div",
                 {
-                  staticClass: "mt-5 apollo_post_flow_question_item shadow-lg"
+                  style: _vm.displayManagement.flow.display[1],
+                  attrs: { id: "apollo_step_two" }
                 },
                 [
-                  _vm._m(2),
-                  _vm._v(" "),
-                  _c("div", [
-                    _vm._v(
-                      "\n                            Choose if you either want to sell or rent your house.\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "d-flex mt-2" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "apollo_step_one_choose_prop",
-                        class: _vm.flowInput.about.transactionType.style[0],
-                        on: {
-                          click: function($event) {
-                            return _vm.flowSelect(
-                              _vm.flowCategories.about.TRANSACTION_TYPE,
-                              "Sell"
-                            )
-                          }
-                        }
-                      },
-                      [
-                        _c("img", {
-                          attrs: {
-                            width: "40",
-                            src: "/svg/apollo_forsale.svg",
-                            alt: ""
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "span",
-                          { staticClass: "apollo_step_one_choose_prop_label" },
-                          [_vm._v("I'd like to sell it")]
-                        )
-                      ]
-                    ),
+                  _c("div", { staticClass: "apollo_post_flow_question_item" }, [
+                    _vm._m(3),
+                    _vm._v(" "),
+                    _c("div", [
+                      _vm._v(
+                        "\n                            Please choose which country/autonomous region is your property located in?\n                        "
+                      )
+                    ]),
                     _vm._v(" "),
                     _c(
                       "div",
                       {
-                        staticClass: "apollo_step_one_choose_prop",
-                        class: _vm.flowInput.about.transactionType.style[1],
-                        on: {
-                          click: function($event) {
-                            return _vm.flowSelect(
-                              _vm.flowCategories.about.TRANSACTION_TYPE,
-                              "Rent"
-                            )
-                          }
-                        }
+                        staticClass: "apollo_location_btn",
+                        staticStyle: { margin: "auto" },
+                        attrs: { "data-toggle": "dropdown" }
                       },
                       [
-                        _c("img", {
-                          attrs: {
-                            width: "40",
-                            src: "/svg/apollo_rent.svg",
-                            alt: ""
-                          }
-                        }),
+                        _c("span", [
+                          _c(
+                            "button",
+                            {
+                              staticClass:
+                                "btn dropdown-toggle w-50 align-items-center",
+                              attrs: { type: "button" }
+                            },
+                            [
+                              _vm.countries.selected.acronym === null
+                                ? _c("span", [
+                                    _c("span", { staticClass: "pl-1" }, [
+                                      _vm._v("Select a country")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("span", { staticClass: "caret" })
+                                  ])
+                                : _c("span", [
+                                    _c("img", {
+                                      attrs: {
+                                        src: _vm.countries.selected.flag,
+                                        alt: _vm.countries.selected.name,
+                                        width: "25",
+                                        height: "13"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("span", { staticClass: "pl-1" }, [
+                                      _vm._v(
+                                        _vm._s(_vm.countries.selected.name)
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("span", { staticClass: "caret" })
+                                  ])
+                            ]
+                          )
+                        ]),
                         _vm._v(" "),
                         _c(
-                          "span",
-                          { staticClass: "apollo_step_one_choose_prop_label" },
-                          [_vm._v("I'd like to rent it")]
+                          "ul",
+                          {
+                            staticClass: "dropdown-menu scrollable-menu w-100",
+                            attrs: { role: "menu" }
+                          },
+                          _vm._l(_vm.countries.names, function(country, index) {
+                            return _c(
+                              "li",
+                              {
+                                staticClass: "gff_li_dropdown_main",
+                                staticStyle: { cursor: "pointer" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.selectCountry(index)
+                                  }
+                                }
+                              },
+                              [
+                                _c("img", {
+                                  staticClass: "pl-2",
+                                  attrs: {
+                                    src: _vm.countries.flags[index],
+                                    width: "25",
+                                    height: "13",
+                                    alt: country
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "a",
+                                  { staticClass: "pl-1 gff_country-listitem" },
+                                  [_vm._v(_vm._s(country))]
+                                )
+                              ]
+                            )
+                          }),
+                          0
                         )
                       ]
                     )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "apollo_post_flow_question_item" }, [
+                    _vm._m(4),
+                    _vm._v(" "),
+                    _c("div", [
+                      _vm._v(
+                        "\n                            Please insert the ZIP/Postal code of the property you are " +
+                          _vm._s(_vm.getProcessVerb) +
+                          ".\n                        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.flowInput.location.postcode,
+                          expression: "flowInput.location.postcode"
+                        }
+                      ],
+                      staticClass: "form-control apollo_input_field",
+                      attrs: {
+                        type: "text",
+                        placeholder:
+                          "Please insert the ZIP/Postal code of the property you are selling."
+                      },
+                      domProps: { value: _vm.flowInput.location.postcode },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.flowInput.location,
+                            "postcode",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "apollo_post_flow_question_item" }, [
+                    _vm._m(5),
+                    _vm._v(" "),
+                    _c("div", [
+                      _vm._v(
+                        "\n                            Please insert the address (street name, number) of the property you are " +
+                          _vm._s(_vm.getProcessVerb) +
+                          ".\n                        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.flowInput.location.address,
+                          expression: "flowInput.location.address"
+                        }
+                      ],
+                      staticClass: "form-control apollo_input_field",
+                      attrs: {
+                        type: "text",
+                        placeholder:
+                          "Please insert the ZIP/Postal code of the property you are selling."
+                      },
+                      domProps: { value: _vm.flowInput.location.address },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.flowInput.location,
+                            "address",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
                   ])
                 ]
               ),
               _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "apollo_post_flow_question_item shadow-lg mt-5"
-                },
-                [
-                  _vm._m(3),
-                  _vm._v(" "),
-                  _c("div", [
-                    _vm._v(
-                      "\n                            You can generate a unique link to track and update your progress.\n                        "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "d-flex mt-2" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "apollo_step_one_choose_prop",
-                        class: _vm.flowInput.about.useProgressLink.style[0],
-                        on: {
-                          click: function($event) {
-                            return _vm.flowSelect(
-                              _vm.flowCategories.about.USE_PROGRESS_LINK,
-                              true
-                            )
-                          }
-                        }
-                      },
-                      [
-                        _c("img", {
-                          attrs: {
-                            width: "40",
-                            src: "/svg/apollo_forsale.svg",
-                            alt: ""
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "span",
-                          { staticClass: "apollo_step_one_choose_prop_label" },
-                          [_vm._v("Yes, please.")]
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "apollo_step_one_choose_prop",
-                        class: _vm.flowInput.about.useProgressLink.style[1],
-                        on: {
-                          click: function($event) {
-                            return _vm.flowSelect(
-                              _vm.flowCategories.about.USE_PROGRESS_LINK,
-                              false
-                            )
-                          }
-                        }
-                      },
-                      [
-                        _c("img", {
-                          attrs: {
-                            width: "40",
-                            src: "/svg/apollo_rent.svg",
-                            alt: ""
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "span",
-                          { staticClass: "apollo_step_one_choose_prop_label" },
-                          [_vm._v("No, I'll finish this right away.")]
-                        )
-                      ]
-                    )
-                  ])
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "apollo_flow_pagination" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "apollo_copy_progress_link_btn",
-                  on: {
-                    click: function($event) {
-                      return _vm.proceed()
-                    }
-                  }
-                },
-                [
-                  _c("img", {
-                    attrs: {
-                      src: "/svg/apollo_right.svg",
-                      width: "20",
-                      alt: ""
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("span", [_vm._v("Proceed")])
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-4 apollo_sidebar_parent" }, [
-            _vm._m(4),
-            _vm._v(" "),
-            _c("div", { attrs: { id: "apollo_copy_progress_link" } }, [
-              _c("div", { attrs: { id: "apollo_progress_link_notice" } }, [
-                _vm._m(5),
-                _vm._v(" "),
+              _c("div", { staticClass: "apollo_flow_pagination" }, [
                 _c(
                   "button",
                   {
                     staticClass: "apollo_copy_progress_link_btn",
-                    style: _vm.getProgressLinkButtonDisplay,
                     on: {
                       click: function($event) {
-                        return _vm.displayProgressLink()
+                        return _vm.proceed()
                       }
                     }
                   },
                   [
                     _c("img", {
                       attrs: {
-                        src: "/svg/apollo_clipboard.svg",
+                        src: "/svg/apollo_right.svg",
                         width: "20",
                         alt: ""
                       }
                     }),
                     _vm._v(" "),
-                    _c("span", [_vm._v("Copy Progress link to Clipboard")])
+                    _c("span", [_vm._v("Proceed")])
                   ]
                 )
-              ]),
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-4 apollo_sidebar_parent" }, [
+              _vm._m(6),
               _vm._v(" "),
-              _c(
-                "div",
-                {
-                  style: _vm.getProgressLinkDisplay,
-                  attrs: { id: "apollo_progress_link_display" }
-                },
-                [
-                  _c("input", {
-                    staticClass: "form-control",
-                    attrs: {
-                      id: "apollo_progress_link_field",
-                      readonly: "",
-                      type: "text"
-                    },
-                    domProps: { value: _vm.getFormattedProgressLink }
-                  }),
+              _c("div", { attrs: { id: "apollo_copy_progress_link" } }, [
+                _c("div", { attrs: { id: "apollo_progress_link_notice" } }, [
+                  _vm._m(7),
                   _vm._v(" "),
                   _c(
                     "button",
                     {
-                      attrs: { id: "apollo_progress_link_copy" },
+                      staticClass: "apollo_copy_progress_link_btn",
+                      style: _vm.getProgressLinkButtonDisplay,
                       on: {
                         click: function($event) {
-                          return _vm.copyProgressLink()
+                          return _vm.displayProgressLink()
                         }
                       }
                     },
@@ -41277,37 +41587,96 @@ var render = function() {
                           width: "20",
                           alt: ""
                         }
-                      })
+                      }),
+                      _vm._v(" "),
+                      _c("span", [_vm._v("Copy Progress link to Clipboard")])
                     ]
                   )
-                ]
-              )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    style: _vm.getProgressLinkDisplay,
+                    attrs: { id: "apollo_progress_link_display" }
+                  },
+                  [
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        id: "apollo_progress_link_field",
+                        readonly: "",
+                        type: "text"
+                      },
+                      domProps: { value: _vm.getFormattedProgressLink }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        attrs: { id: "apollo_progress_link_copy" },
+                        on: {
+                          click: function($event) {
+                            return _vm.copyProgressLink()
+                          }
+                        }
+                      },
+                      [
+                        _c("img", {
+                          attrs: {
+                            src: "/svg/apollo_clipboard.svg",
+                            width: "20",
+                            alt: ""
+                          }
+                        })
+                      ]
+                    )
+                  ]
+                )
+              ])
             ])
-          ])
-        ])
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "apollo_error_modal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "exampleModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(8),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.getValidationError) +
+                    "\n                "
+                )
+              ]),
+              _vm._v(" "),
+              _vm._m(9)
+            ])
+          ]
+        )
       ]
     )
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "d-flex justify-content-center" }, [
-      _c("div", { staticClass: "apollo_div_awaits_input" }, [
-        _vm._v("So, you 've decided to\n                "),
-        _c("span", { staticClass: "apollo_span_awaits_input" }, [
-          _vm._v("sell")
-        ]),
-        _vm._v(" your "),
-        _c("span", { staticClass: "apollo_span_awaits_input" }, [
-          _vm._v("house")
-        ]),
-        _vm._v("?\n            ")
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -41348,9 +41717,47 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "apollo_step_one_question" }, [
+      _vm._v("\n                            Select "),
+      _c("span", { staticStyle: { color: "#4AD7D1", "font-weight": "bold" } }, [
+        _vm._v("location")
+      ]),
+      _vm._v(" of your property\n                        ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "apollo_step_one_question" }, [
+      _vm._v("\n                            Insert the "),
+      _c("span", { staticStyle: { color: "#4AD7D1", "font-weight": "bold" } }, [
+        _vm._v("ZIP/Postal code")
+      ]),
+      _vm._v(" of your property\n                        ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "apollo_step_one_question" }, [
+      _vm._v("\n                            Insert the "),
+      _c("span", { staticStyle: { color: "#4AD7D1", "font-weight": "bold" } }, [
+        _vm._v("address")
+      ]),
+      _vm._v(" of your property\n                        ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { attrs: { id: "apollo_place_property_side_todo" } }, [
       _c("div", { staticClass: "apollo_todo_sidebar_item active" }, [
-        _vm._v("Tell us about your property.")
+        _c("span", {}),
+        _vm._v(" "),
+        _c("span", [_vm._v("Tell us about your property.")])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "apollo_todo_sidebar_item" }, [
@@ -41397,6 +41804,46 @@ var staticRenderFns = [
       _c("br"),
       _vm._v(
         "in case you can't complete everything now.\n                        "
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
+        [_vm._v("Mistakes were made!")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "apollo_error-btn",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
       )
     ])
   }
@@ -58154,6 +58601,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_WhyUs_vue_vue_type_template_id_ec0a6baa_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/services/properties/validation.js":
+/*!********************************************************!*\
+  !*** ./resources/js/services/properties/validation.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var validationErrors = {
+  location: {
+    countryNotSelected: 'You need to select the country where the property is located in.',
+    postalCodeEmpty: 'Please enter the Postal Code of the property.',
+    postalCodeInvalid: 'You \'ve entered invalid Postal code. Please try again.',
+    addressEmpty: 'Please enter the address of your property.',
+    addressInvalid: 'You \'ve provided an invalid address of a property.'
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  validationErrors: validationErrors
+});
 
 /***/ }),
 

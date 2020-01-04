@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c5c3d23-321a-4fde-8fc8-8fd8cc1720d2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/js/services/properties/validation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/test.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/PlaceProperty.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/PlaceProperty.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,8 +40,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="JavaScript File" />
         <option value="Vue Single File Component" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -294,7 +295,14 @@
       <workItem from="1576415102785" duration="4061000" />
       <workItem from="1576594231739" duration="116000" />
       <workItem from="1576703555903" duration="3739000" />
-      <workItem from="1576769122741" duration="1718000" />
+      <workItem from="1576769122741" duration="6348000" />
+      <workItem from="1576775829910" duration="437000" />
+      <workItem from="1576777344403" duration="118000" />
+      <workItem from="1576935737212" duration="6693000" />
+      <workItem from="1577120846311" duration="3472000" />
+      <workItem from="1577466974464" duration="2985000" />
+      <workItem from="1577988820094" duration="82000" />
+      <workItem from="1578138528330" duration="9932000" />
     </task>
     <servers />
   </component>
