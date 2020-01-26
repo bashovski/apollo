@@ -188,7 +188,7 @@
 
 <script>
 
-    import ValidationSvc from '../services/properties/validation.js';
+    import ValidationSvc from '../../services/properties/validation.js';
 
     export default {
         name: "PlaceProperty",
@@ -354,7 +354,6 @@
                 }
             },
             loadFlowStep(stepId) {
-                console.log('stepid: '+ stepId);
                 if(stepId === 2) {
                     this.loadLocations();
                 }

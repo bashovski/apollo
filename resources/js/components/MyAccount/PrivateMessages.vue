@@ -3,12 +3,12 @@
 </template>
 
 <script>
-    import store from '../store/index';
+    import store from '../../store/index';
     export default {
-        name: "MyAccountProperties",
+        name: "MyAccountPrivateMessages",
         computed: {
             getViewStyle() {
-                return store.getters.getViewStyles[1];
+                return store.getters.getViewStyles[2];
             }
         }
     }
