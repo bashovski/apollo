@@ -2047,6 +2047,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _api_auth_login__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../api/auth/login */ "./resources/js/api/auth/login.js");
 //
 //
 //
@@ -2092,12 +2093,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Login",
   props: ['emailPlaceholderDefault', 'passwordPlaceholderDefault', 'routeLogin', 'routeRegister'],
   data: function data() {
     return {
-      apiEndpoint: '/api/validate',
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
       email: '',
       previousEmail: '_',
@@ -2118,7 +2119,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       if (!this.isValidMail(this.email)) return this.displayError('EMAIL', 'Invalid e-mail');
-      axios.get(this.constructApiEndpoint(type)).then(function (response) {
+      _api_auth_login__WEBPACK_IMPORTED_MODULE_0__["default"].getValidationResponse(type, this.email, this.password).then(function (response) {
         if (type === 'email') {
           _this.previousEmail = _this.email;
           if (response.data.exists === 0) return _this.displayError('EMAIL', 'Account with this e-mail doesn\'t exist.');else {
@@ -2132,11 +2133,6 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (errors) {
         console.log(errors);
       });
-    },
-    constructApiEndpoint: function constructApiEndpoint(type) {
-      var endpoint = this.apiEndpoint;
-      endpoint += '?type=' + type + '&email=' + this.email + '&password=' + this.password;
-      return endpoint;
     },
     displayError: function displayError(type, error) {
       if (type === 'FINAL') {
@@ -8302,7 +8298,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".apollo-footer[data-v-b734d10a] {\n  background-color: #f8fafc;\n}\n.apollo-footer-container[data-v-b734d10a] {\n  display: -webkit-box;\n  display: flex;\n}\n.apollo-footer-item-main-slogan[data-v-b734d10a] {\n  margin-top: 20px;\n  font-family: Karla, sans-serif;\n  color: #001730;\n}\n.apollo-footer-item-main-brand > img[data-v-b734d10a] {\n  max-height: 46px;\n}\n.apollo-footer-item-main-brand > span[data-v-b734d10a] {\n  color: #FE4A49;\n  font-family: Montserrat, sans-serif;\n  font-style: normal;\n  font-weight: bold;\n  font-size: 15.7922px;\n  letter-spacing: 0.28em;\n  vertical-align: middle;\n  padding-left: 15px;\n}\n.apollo-footer-item-links_list[data-v-b734d10a] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  margin-bottom: 50px;\n}\n.apollo-footer-links-wrapper[data-v-b734d10a] {\n  display: -webkit-box;\n  display: flex;\n}\n.apollo-footer-rights[data-v-b734d10a] {\n  padding: 10px 0;\n  box-shadow: -7px 0px 20px 0px rgba(0, 0, 0, 0.25);\n  background-color: #fff;\n  font-family: Karla, sans-serif;\n  color: #001730;\n}", ""]);
+exports.push([module.i, ".apollo-footer[data-v-b734d10a] {\n  background-color: #f8fafc;\n}\n.apollo-footer-container[data-v-b734d10a] {\n  display: -webkit-box;\n  display: flex;\n  padding-top: 30px;\n}\n.apollo-footer-item-main-slogan[data-v-b734d10a] {\n  margin-top: 20px;\n  font-family: Karla, sans-serif;\n  color: #001730;\n}\n.apollo-footer-item-main-brand > img[data-v-b734d10a] {\n  max-height: 46px;\n}\n.apollo-footer-item-main-brand > span[data-v-b734d10a] {\n  color: #FE4A49;\n  font-family: Montserrat, sans-serif;\n  font-style: normal;\n  font-weight: bold;\n  font-size: 15.7922px;\n  letter-spacing: 0.28em;\n  vertical-align: middle;\n  padding-left: 15px;\n}\n.apollo-footer-item-links_list[data-v-b734d10a] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  margin-bottom: 50px;\n}\n.apollo-footer-links-wrapper[data-v-b734d10a] {\n  display: -webkit-box;\n  display: flex;\n}\n.apollo-footer-rights[data-v-b734d10a] {\n  padding: 10px 0;\n  box-shadow: -7px 0px 20px 0px rgba(0, 0, 0, 0.25);\n  background-color: #fff;\n  font-family: Karla, sans-serif;\n  color: #001730;\n}", ""]);
 
 // exports
 
@@ -44754,176 +44750,167 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticStyle: { "margin-bottom": "10vh" },
-        attrs: { id: "apollo_verified_partners" }
-      },
-      [
-        _c("div", { attrs: { id: "apollo_search_filter_tools" } }, [
-          _c(
-            "div",
-            { staticClass: "row", attrs: { id: "apollo_verified_banner" } },
-            [
-              _c("div", { staticStyle: { "vertical-align": "middle" } }, [
-                _c("img", {
-                  staticStyle: { "vertical-align": "text-bottom" },
-                  attrs: {
-                    height: "52",
-                    width: "52",
-                    src: "/svg/apollo_qa.svg",
-                    alt: ""
-                  }
-                }),
-                _vm._v(" "),
-                _c("span", { staticStyle: { "padding-left": "10px" } }, [
-                  _vm._v("WHY US")
-                ])
+    return _c("div", { attrs: { id: "apollo_verified_partners" } }, [
+      _c("div", { attrs: { id: "apollo_search_filter_tools" } }, [
+        _c(
+          "div",
+          { staticClass: "row", attrs: { id: "apollo_verified_banner" } },
+          [
+            _c("div", { staticStyle: { "vertical-align": "middle" } }, [
+              _c("img", {
+                staticStyle: { "vertical-align": "text-bottom" },
+                attrs: {
+                  height: "52",
+                  width: "52",
+                  src: "/svg/apollo_qa.svg",
+                  alt: ""
+                }
+              }),
+              _vm._v(" "),
+              _c("span", { staticStyle: { "padding-left": "10px" } }, [
+                _vm._v("WHY US")
               ])
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "apollo_why_us_cl" }, [
-          _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "row features" }, [
-              _c("div", { staticClass: "col-sm-6 col-lg-4 item" }, [
-                _c("img", {
-                  staticClass: "icon",
-                  attrs: {
-                    src: "/svg/apollo_monitor.svg",
-                    height: "32",
-                    width: "32",
-                    alt: ""
-                  }
-                }),
-                _vm._v(" "),
-                _c("h3", { staticClass: "name" }, [
-                  _vm._v("Everything is online")
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "description" }, [
-                  _vm._v(
-                    "We know filling complicated forms and signing different documents,\n                        while dealing with all of kinds of real-estate agents is a pain. Hence, we 've decided\n                        to simplify the process as much as possible. From now on, everything can be done in a few clicks."
-                  )
-                ])
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "apollo_why_us_cl" }, [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "row features" }, [
+            _c("div", { staticClass: "col-sm-6 col-lg-4 item" }, [
+              _c("img", {
+                staticClass: "icon",
+                attrs: {
+                  src: "/svg/apollo_monitor.svg",
+                  height: "32",
+                  width: "32",
+                  alt: ""
+                }
+              }),
+              _vm._v(" "),
+              _c("h3", { staticClass: "name" }, [
+                _vm._v("Everything is online")
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-sm-6 col-lg-4 item" }, [
-                _c("img", {
-                  staticClass: "icon",
-                  attrs: {
-                    src: "/svg/apollo_properties.svg",
-                    height: "32",
-                    width: "32",
-                    alt: ""
-                  }
-                }),
-                _vm._v(" "),
-                _c("h3", { staticClass: "name" }, [
-                  _vm._v("Access properties easily")
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "description" }, [
-                  _vm._v(
-                    "\n                        You can access properties you are selling, renting or interested in buying via 'My Properties' feature.\n                        Therefore, you don't need to waste your valuable time for nonsense.\n                    "
-                  )
-                ])
+              _c("p", { staticClass: "description" }, [
+                _vm._v(
+                  "We know filling complicated forms and signing different documents,\n                        while dealing with all of kinds of real-estate agents is a pain. Hence, we 've decided\n                        to simplify the process as much as possible. From now on, everything can be done in a few clicks."
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-6 col-lg-4 item" }, [
+              _c("img", {
+                staticClass: "icon",
+                attrs: {
+                  src: "/svg/apollo_properties.svg",
+                  height: "32",
+                  width: "32",
+                  alt: ""
+                }
+              }),
+              _vm._v(" "),
+              _c("h3", { staticClass: "name" }, [
+                _vm._v("Access properties easily")
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-sm-6 col-lg-4 item" }, [
-                _c("img", {
-                  staticClass: "icon",
-                  attrs: {
-                    src: "/svg/apollo_agent.svg",
-                    height: "32",
-                    width: "32",
-                    alt: ""
-                  }
-                }),
-                _vm._v(" "),
-                _c("h3", { staticClass: "name" }, [
-                  _vm._v("Find Agents with a single click")
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "description" }, [
-                  _vm._v(
-                    "\n                        Finding verified and professional Real-Estate agents can take a lot of time.\n                        By using our 'Find an Agent' feature, you 'll save a lot of time by selecting\n                        affordable and trusted agents.\n                    "
-                  )
-                ])
+              _c("p", { staticClass: "description" }, [
+                _vm._v(
+                  "\n                        You can access properties you are selling, renting or interested in buying via 'My Properties' feature.\n                        Therefore, you don't need to waste your valuable time for nonsense.\n                    "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-6 col-lg-4 item" }, [
+              _c("img", {
+                staticClass: "icon",
+                attrs: {
+                  src: "/svg/apollo_agent.svg",
+                  height: "32",
+                  width: "32",
+                  alt: ""
+                }
+              }),
+              _vm._v(" "),
+              _c("h3", { staticClass: "name" }, [
+                _vm._v("Find Agents with a single click")
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-sm-6 col-lg-4 item" }, [
-                _c("img", {
-                  staticClass: "icon",
-                  attrs: {
-                    src: "/svg/apollo_signature.svg",
-                    height: "32",
-                    width: "32",
-                    alt: ""
-                  }
-                }),
-                _vm._v(" "),
-                _c("h3", { staticClass: "name" }, [
-                  _vm._v("Digital Paperwork")
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "description" }, [
-                  _vm._v(
-                    "\n                        Say no more to 'Do you have a pen, sir?' by signing and previewing paperwork,\n                        licenses, documents, agreements, brochures online. Signing paperwork has never been any easier.\n                    "
-                  )
-                ])
+              _c("p", { staticClass: "description" }, [
+                _vm._v(
+                  "\n                        Finding verified and professional Real-Estate agents can take a lot of time.\n                        By using our 'Find an Agent' feature, you 'll save a lot of time by selecting\n                        affordable and trusted agents.\n                    "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-6 col-lg-4 item" }, [
+              _c("img", {
+                staticClass: "icon",
+                attrs: {
+                  src: "/svg/apollo_signature.svg",
+                  height: "32",
+                  width: "32",
+                  alt: ""
+                }
+              }),
+              _vm._v(" "),
+              _c("h3", { staticClass: "name" }, [_vm._v("Digital Paperwork")]),
+              _vm._v(" "),
+              _c("p", { staticClass: "description" }, [
+                _vm._v(
+                  "\n                        Say no more to 'Do you have a pen, sir?' by signing and previewing paperwork,\n                        licenses, documents, agreements, brochures online. Signing paperwork has never been any easier.\n                    "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-6 col-lg-4 item" }, [
+              _c("img", {
+                staticClass: "icon",
+                attrs: {
+                  src: "/svg/apollo_movein.svg",
+                  height: "32",
+                  width: "32",
+                  alt: ""
+                }
+              }),
+              _vm._v(" "),
+              _c("h3", { staticClass: "name" }, [
+                _vm._v("Coupons for our partners")
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-sm-6 col-lg-4 item" }, [
-                _c("img", {
-                  staticClass: "icon",
-                  attrs: {
-                    src: "/svg/apollo_movein.svg",
-                    height: "32",
-                    width: "32",
-                    alt: ""
-                  }
-                }),
-                _vm._v(" "),
-                _c("h3", { staticClass: "name" }, [
-                  _vm._v("Coupons for our partners")
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "description" }, [
-                  _vm._v(
-                    "Please be sure to read EULA and ToS before in order to receive free bonuses and coupons. You can use our Premium pack and unlock free services."
-                  )
-                ])
+              _c("p", { staticClass: "description" }, [
+                _vm._v(
+                  "Please be sure to read EULA and ToS before in order to receive free bonuses and coupons. You can use our Premium pack and unlock free services."
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-6 col-lg-4 item" }, [
+              _c("img", {
+                staticClass: "icon",
+                attrs: {
+                  src: "/svg/apollo_amount.svg",
+                  height: "32",
+                  width: "32",
+                  alt: ""
+                }
+              }),
+              _vm._v(" "),
+              _c("h3", { staticClass: "name" }, [
+                _vm._v("Season of Home sales")
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-sm-6 col-lg-4 item" }, [
-                _c("img", {
-                  staticClass: "icon",
-                  attrs: {
-                    src: "/svg/apollo_amount.svg",
-                    height: "32",
-                    width: "32",
-                    alt: ""
-                  }
-                }),
-                _vm._v(" "),
-                _c("h3", { staticClass: "name" }, [
-                  _vm._v("Season of Home sales")
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "description" }, [
-                  _vm._v(
-                    "\n                        Since bank-loan interest-rates and Mortgage have been slightly decreased, prices of real estate has grown.\n                        Therefore, this is a great chance for you as a seller to sell your house or to buy one as a buyer.\n                    "
-                  )
-                ])
+              _c("p", { staticClass: "description" }, [
+                _vm._v(
+                  "\n                        Since bank-loan interest-rates and Mortgage have been slightly decreased, prices of real estate has grown.\n                        Therefore, this is a great chance for you as a seller to sell your house or to buy one as a buyer.\n                    "
+                )
               ])
             ])
           ])
         ])
-      ]
-    )
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -58135,6 +58122,29 @@ module.exports = function(module) {
 	return module;
 };
 
+
+/***/ }),
+
+/***/ "./resources/js/api/auth/login.js":
+/*!****************************************!*\
+  !*** ./resources/js/api/auth/login.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var getValidationResponse = function getValidationResponse(type, email, password) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/validate/?type='".concat(type, "'&email='").concat(email, "'&password=").concat(password));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  getValidationResponse: getValidationResponse
+});
 
 /***/ }),
 

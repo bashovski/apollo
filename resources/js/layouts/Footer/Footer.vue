@@ -77,6 +77,7 @@
         background-color: #f8fafc;
         &-container {
             display: flex;
+            padding-top: 30px;
         }
         &-item {
             &-main {

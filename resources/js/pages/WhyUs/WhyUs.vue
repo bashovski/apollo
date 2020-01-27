@@ -1,5 +1,5 @@
 <template>
-    <div id="apollo_verified_partners" style="margin-bottom: 10vh;">
+    <div id="apollo_verified_partners">
         <div id="apollo_search_filter_tools">
             <div id="apollo_verified_banner" class="row">
                 <div style="vertical-align: middle">

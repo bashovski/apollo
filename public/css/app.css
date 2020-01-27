@@ -11099,6 +11099,7 @@ a.text-dark:focus {
 }
 
 #apollo_main {
+  margin-bottom: 40px;
   box-shadow: -7px 0px 20px 0px rgba(0, 0, 0, 0.25);
 }
 
@@ -11450,7 +11451,7 @@ button {
 
 .apollo_why_us_cl h2 {
   font-weight: bold;
-  margin-bottom: 40px;
+  margin-top: 40px;
   padding-top: 40px;
   color: inherit;
 }

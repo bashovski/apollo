@@ -44,6 +44,7 @@
 </template>
 
 <script>
+    import LoginAPI from '../../api/auth/login';
     export default {
         name: "Login",
         props: [
@@ -54,7 +55,6 @@
         ],
         data() {
             return {
-                apiEndpoint: '/api/validate',
                 csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
                 email: '',
                 previousEmail: '_',
@@ -73,7 +73,8 @@
             },
             proceed(type) {
                 if(!this.isValidMail(this.email)) return this.displayError('EMAIL', 'Invalid e-mail');
-                axios.get(this.constructApiEndpoint(type))
+                LoginAPI
+                .getValidationResponse(type, this.email, this.password)
                 .then(response => {
                     if(type === 'email') {
                         this.previousEmail = this.email;
@@ -92,11 +93,6 @@
                 }).catch(errors => {
                     console.log(errors);
                 });
-            },
-            constructApiEndpoint(type) {
-                let endpoint = this.apiEndpoint;
-                endpoint += '?type='+ type + '&email='+ this.email + '&password=' + this.password;
-                return endpoint;
             },
             displayError(type, error) {
                 if(type === 'FINAL') {
