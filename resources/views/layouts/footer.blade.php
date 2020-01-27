@@ -1,0 +1,1 @@
+<apollo-footer></apollo-footer>

@@ -1,5 +1,5 @@
 <template>
-    <nav id="apollo_nav" class="navbar navbar-light navbar-expand-md fixed-top">
+    <nav id="apollo_nav" class="navbar navbar-light navbar-expand-md fixed-top" v-bind:class="getNavigationStyle">
         <div class="container-fluid">
             <a class="navbar-brand" :href="routeHome" style="color: #fff;">
                 <img src="/img/apollo_logo.png" width="42" height="42" alt="">
@@ -37,10 +37,36 @@
             'routeHome',
             'routeMyAccount',
             'routePlaceProperty'
-        ]
+        ],
+        data() {
+            return {
+                state: ''
+            }
+        },
+        methods: {
+            handleScroll() {
+                if(typeof window !== 'undefined') {
+                    window.addEventListener('scroll', () => {
+                        if(window.scrollY > 73) this.state = 'fixed';
+                        else this.state = '';
+                    });
+                }
+            }
+        },
+        computed: {
+            getNavigationStyle() {
+                return this.state;
+            }
+        },
+        mounted() {
+            this.handleScroll();
+        }
     }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+    .fixed {
+        background-color: #ffffff !important;
+        box-shadow: 0 5px 6px -6px #999;
+    }
 </style>

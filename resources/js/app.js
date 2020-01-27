@@ -3,27 +3,29 @@ require('./bootstrap');
 window.Vue = require('vue');
 
 import store from './store'
-import Navbar from "./components/Navbar/Navbar";
-import Jumbotron from './components/Jumbotron/Jumbotron.vue';
-import Search from "./components/Search/Search";
-import RecentProperties from "./components/RecentProperties/RecentProperties";
-import WhyUs from "./components/WhyUs/WhyUs";
-import Login from "./components/Login/Login";
-import Register from "./components/Register/Register";
-import MyAccountNav from "./components/MyAccount/Nav";
-import MyAccountProfile from "./components/MyAccount/Profile";
-import MyAccountProperties from "./components/MyAccount/Properties";
-import MyAccountPrivateMessages from "./components/MyAccount/PrivateMessages";
-import MyAccountHistory from "./components/MyAccount/History";
-import MyAccountSettings from "./components/MyAccount/Settings";
-import MyAccountStatistics from "./components/MyAccount/Statistics";
-import PlaceProperty from "./components/PlaceProperty/PlaceProperty";
+import Navbar from "./layouts/Navbar/Navbar";
+import ApolloFooter from './layouts/Footer/Footer';
+import Jumbotron from './pages/Jumbotron/Jumbotron.vue';
+import Search from "./pages/Search/Search";
+import RecentProperties from "./pages/RecentProperties/RecentProperties";
+import WhyUs from "./pages/WhyUs/WhyUs";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
+import MyAccountNav from "./pages/MyAccount/Nav";
+import MyAccountProfile from "./pages/MyAccount/Profile";
+import MyAccountProperties from "./pages/MyAccount/Properties";
+import MyAccountPrivateMessages from "./pages/MyAccount/PrivateMessages";
+import MyAccountHistory from "./pages/MyAccount/History";
+import MyAccountSettings from "./pages/MyAccount/Settings";
+import MyAccountStatistics from "./pages/MyAccount/Statistics";
+import PlaceProperty from "./pages/PlaceProperty/PlaceProperty";
 
 const app = new Vue({
     el: '#app',
     components: {
         store,
         Navbar,
+        ApolloFooter,
         Jumbotron,
         Search,
         RecentProperties,

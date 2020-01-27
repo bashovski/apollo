@@ -4,10 +4,10 @@
 
 <script>
     export default {
-        name: "Footer"
+        name: "MyProperties"
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 </style>
