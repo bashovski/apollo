@@ -2,14 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c5c3d23-321a-4fde-8fc8-8fd8cc1720d2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/api/auth/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Basha.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Basha.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/api/auth/register.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/helpers/navbar/fixedLinks.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/ValidateUserInputController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/ValidateUserInputController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/layouts/Footer/Footer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/layouts/Footer/Footer.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/Login/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/Login/Login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/pages/WhyUs/WhyUs.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/WhyUs/WhyUs.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/api/auth/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/api/auth/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/layouts/Navbar/Navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/layouts/Navbar/Navbar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/pages/Register/Register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/Register/Register.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -311,7 +313,7 @@
       <workItem from="1578690984770" duration="1459000" />
       <workItem from="1578741491244" duration="92000" />
       <workItem from="1580066364997" duration="5795000" />
-      <workItem from="1580144342302" duration="9336000" />
+      <workItem from="1580144342302" duration="13478000" />
     </task>
     <servers />
   </component>
@@ -320,6 +322,7 @@
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.yaml" />
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.yml" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

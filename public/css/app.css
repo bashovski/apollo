@@ -11969,3 +11969,8 @@ button {
   transition: 500ms;
 }
 
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+

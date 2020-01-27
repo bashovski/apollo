@@ -1,0 +1,10 @@
+version: '2'
+
+tasks:
+  serve:
+    cmds:
+      - php artisan serve
+  watch:
+    cmds:
+      - npm run watch
+

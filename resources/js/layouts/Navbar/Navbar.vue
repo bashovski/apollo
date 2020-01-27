@@ -31,9 +31,11 @@
 </template>
 
 <script>
+    import {fixedLinks} from '../../helpers/navbar/fixedLinks';
     export default {
         name: "Navbar",
         props: [
+            'fixedByDefault',
             'routeHome',
             'routeMyAccount',
             'routePlaceProperty'
@@ -45,12 +47,24 @@
         },
         methods: {
             handleScroll() {
-                if(typeof window !== 'undefined') {
+                console.log(fixedLinks);
+                if(!this.isPageRequiringFixedNavbar() && typeof window !== 'undefined') {
                     window.addEventListener('scroll', () => {
                         if(window.scrollY > 73) this.state = 'fixed';
                         else this.state = '';
                     });
+                } else this.state = 'fixed';
+            },
+
+            isPageRequiringFixedNavbar() {
+                const route = window.location.pathname;
+
+                for(let i = 0, length = fixedLinks.length; i < length; i++) {
+                    if(route === fixedLinks[i]) {
+                        return true;
+                    }
                 }
+                return false;
             }
         },
         computed: {

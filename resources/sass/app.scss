@@ -829,3 +829,8 @@ textarea, select, input, button { outline: none !important; box-shadow: none !im
         }
     }
 }
+
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}

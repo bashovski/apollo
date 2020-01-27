@@ -1921,6 +1921,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _helpers_navbar_fixedLinks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/navbar/fixedLinks */ "./resources/js/helpers/navbar/fixedLinks.js");
 //
 //
 //
@@ -1953,9 +1954,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Navbar",
-  props: ['routeHome', 'routeMyAccount', 'routePlaceProperty'],
+  props: ['fixedByDefault', 'routeHome', 'routeMyAccount', 'routePlaceProperty'],
   data: function data() {
     return {
       state: ''
@@ -1965,11 +1967,24 @@ __webpack_require__.r(__webpack_exports__);
     handleScroll: function handleScroll() {
       var _this = this;
 
-      if (typeof window !== 'undefined') {
+      console.log(_helpers_navbar_fixedLinks__WEBPACK_IMPORTED_MODULE_0__["fixedLinks"]);
+
+      if (!this.isPageRequiringFixedNavbar() && typeof window !== 'undefined') {
         window.addEventListener('scroll', function () {
           if (window.scrollY > 73) _this.state = 'fixed';else _this.state = '';
         });
+      } else this.state = 'fixed';
+    },
+    isPageRequiringFixedNavbar: function isPageRequiringFixedNavbar() {
+      var route = window.location.pathname;
+
+      for (var i = 0, length = _helpers_navbar_fixedLinks__WEBPACK_IMPORTED_MODULE_0__["fixedLinks"].length; i < length; i++) {
+        if (route === _helpers_navbar_fixedLinks__WEBPACK_IMPORTED_MODULE_0__["fixedLinks"][i]) {
+          return true;
+        }
       }
+
+      return false;
     }
   },
   computed: {
@@ -3185,6 +3200,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _api_auth_register__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../api/auth/register */ "./resources/js/api/auth/register.js");
 //
 //
 //
@@ -3357,70 +3373,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Register",
   props: ['routeLogin', 'routeRegister'],
   data: function data() {
     return {
-      apiEndpoint: '/api/validateregister',
       csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
       divStyles: ['', 'display: none', 'display: none', 'display: none', 'display: none'],
       email: '',
@@ -3457,17 +3415,12 @@ __webpack_require__.r(__webpack_exports__);
     next: function next(type) {
       if (type === 'email') this.proceedEmail(type);else if (type === 'names') this.proceedNames(type);else if (type === 'password') this.proceedPassword(type);else if (type === 'birthloc') this.proceedBirthLocation(type);else if (type === 'account_type') this.proceedAccountType(type);
     },
-    constructApiEndpoint: function constructApiEndpoint(type) {
-      var endpoint = this.apiEndpoint;
-      endpoint += '?type=' + type + '&email=' + this.email + '&firstname=' + this.firstName + '&lastname=' + this.lastName + '&password=' + this.password + '&password_confirmation=' + this.passwordConfirmation + '&birthDay=' + this.birthDay + '&birthMonth=' + this.birthMonth + '&birthYear=' + this.birthYear + '&location=' + this.location;
-      return endpoint;
-    },
     proceedEmail: function proceedEmail(type) {
       var _this = this;
 
       if (!this.isValidMail(this.email)) return this.displayError('EMAIL', 'Invalid e-mail');
       if (this.email === this.previousMail) return true;
-      axios.get(this.constructApiEndpoint(type)).then(function (response) {
+      _api_auth_register__WEBPACK_IMPORTED_MODULE_0__["default"].validateRegister(type, this.email, this.firstName, this.lastName, this.password, this.passwordConfirmation, this.birthDay, this.birthMonth, this.birthYear, this.location).then(function (response) {
         if (response.data.account_exists === 0) {
           _this.divStyles[0] = 'display: none';
           _this.divStyles[1] = '';
@@ -43533,47 +43486,17 @@ var render = function() {
                         _c("path", {
                           attrs: {
                             d:
-                              "M159.375,150c41.355,0,75-33.645,75-75s-33.645-75-75-75s-75,33.645-75,75S118.02,150,159.375,150z M159.375,30\n\t\tc24.813,0,45,20.187,45,45s-20.187,45-45,45s-45-20.187-45-45S134.562,30,159.375,30z"
+                              "M159.375,150c41.355,0,75-33.645,75-75s-33.645-75-75-75s-75,33.645-75,75S118.02,150,159.375,150z M159.375,30\n                            c24.813,0,45,20.187,45,45s-20.187,45-45,45s-45-20.187-45-45S134.562,30,159.375,30z"
                           }
                         }),
                         _vm._v(" "),
                         _c("path", {
                           attrs: {
                             d:
-                              "M159.375,180c-68.236,0-123.75,55.514-123.75,123.75v15h247.5v-15C283.125,235.514,227.611,180,159.375,180z\n\t\t M66.824,288.75c7.202-44.588,45.962-78.75,92.551-78.75s85.35,34.162,92.551,78.75H66.824z"
+                              "M159.375,180c-68.236,0-123.75,55.514-123.75,123.75v15h247.5v-15C283.125,235.514,227.611,180,159.375,180z\n                             M66.824,288.75c7.202-44.588,45.962-78.75,92.551-78.75s85.35,34.162,92.551,78.75H66.824z"
                           }
                         })
-                      ]),
-                      _vm._v(" "),
-                      _c("g"),
-                      _vm._v(" "),
-                      _c("g"),
-                      _vm._v(" "),
-                      _c("g"),
-                      _vm._v(" "),
-                      _c("g"),
-                      _vm._v(" "),
-                      _c("g"),
-                      _vm._v(" "),
-                      _c("g"),
-                      _vm._v(" "),
-                      _c("g"),
-                      _vm._v(" "),
-                      _c("g"),
-                      _vm._v(" "),
-                      _c("g"),
-                      _vm._v(" "),
-                      _c("g"),
-                      _vm._v(" "),
-                      _c("g"),
-                      _vm._v(" "),
-                      _c("g"),
-                      _vm._v(" "),
-                      _c("g"),
-                      _vm._v(" "),
-                      _c("g"),
-                      _vm._v(" "),
-                      _c("g")
+                      ])
                     ]
                   )
                 ]
@@ -43614,47 +43537,17 @@ var render = function() {
                         _c("path", {
                           attrs: {
                             d:
-                              "M308.719,182.794l-70-50c-5.216-3.725-12.222-3.725-17.438,0l-49.225,35.16C155.995,159.792,138.195,155.5,120,155.5\n\t\tc-63.411,0-115,51.589-115,115c0,8.284,6.716,15,15,15h125V305c0,8.284,6.716,15,15,15h140c8.284,0,15-6.716,15-15V195\n\t\tC315,190.155,312.661,185.609,308.719,182.794z M36.325,255.5c7.106-39.739,41.923-70,83.675-70c8.903,0,17.675,1.387,26.029,4.068\n\t\tC145.364,191.279,145,193.115,145,195v60.5H36.325z M285,290H175v-87.28l6.61-4.722c0.018-0.012,0.036-0.025,0.054-0.038\n\t\tL230,163.434l55,39.286V290z"
+                              "M308.719,182.794l-70-50c-5.216-3.725-12.222-3.725-17.438,0l-49.225,35.16C155.995,159.792,138.195,155.5,120,155.5\n                            c-63.411,0-115,51.589-115,115c0,8.284,6.716,15,15,15h125V305c0,8.284,6.716,15,15,15h140c8.284,0,15-6.716,15-15V195\n                            C315,190.155,312.661,185.609,308.719,182.794z M36.325,255.5c7.106-39.739,41.923-70,83.675-70c8.903,0,17.675,1.387,26.029,4.068\n                            C145.364,191.279,145,193.115,145,195v60.5H36.325z M285,290H175v-87.28l6.61-4.722c0.018-0.012,0.036-0.025,0.054-0.038\n                            L230,163.434l55,39.286V290z"
                           }
                         }),
                         _vm._v(" "),
                         _c("path", {
                           attrs: {
                             d:
-                              "M120,125.5c34.601,0,62.751-28.149,62.751-62.75S154.601,0,120,0S57.249,28.149,57.249,62.75S85.399,125.5,120,125.5z\n\t\t M120,30c18.059,0,32.751,14.691,32.751,32.75S138.059,95.5,120,95.5S87.249,80.809,87.249,62.75S101.941,30,120,30z"
+                              "M120,125.5c34.601,0,62.751-28.149,62.751-62.75S154.601,0,120,0S57.249,28.149,57.249,62.75S85.399,125.5,120,125.5z\n                             M120,30c18.059,0,32.751,14.691,32.751,32.75S138.059,95.5,120,95.5S87.249,80.809,87.249,62.75S101.941,30,120,30z"
                           }
                         })
-                      ]),
-                      _vm._v(" "),
-                      _c("g"),
-                      _vm._v(" "),
-                      _c("g"),
-                      _vm._v(" "),
-                      _c("g"),
-                      _vm._v(" "),
-                      _c("g"),
-                      _vm._v(" "),
-                      _c("g"),
-                      _vm._v(" "),
-                      _c("g"),
-                      _vm._v(" "),
-                      _c("g"),
-                      _vm._v(" "),
-                      _c("g"),
-                      _vm._v(" "),
-                      _c("g"),
-                      _vm._v(" "),
-                      _c("g"),
-                      _vm._v(" "),
-                      _c("g"),
-                      _vm._v(" "),
-                      _c("g"),
-                      _vm._v(" "),
-                      _c("g"),
-                      _vm._v(" "),
-                      _c("g"),
-                      _vm._v(" "),
-                      _c("g")
+                      ])
                     ]
                   )
                 ]
@@ -58139,11 +58032,35 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var getValidationResponse = function getValidationResponse(type, email, password) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/validate/?type='".concat(type, "'&email='").concat(email, "'&password=").concat(password));
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/validate/?type=".concat(type, "&email=").concat(email, "&password=").concat(password));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   getValidationResponse: getValidationResponse
+});
+
+/***/ }),
+
+/***/ "./resources/js/api/auth/register.js":
+/*!*******************************************!*\
+  !*** ./resources/js/api/auth/register.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var validateRegister = function validateRegister(type, email, firstName, lastName, password, passwordConfirmation, birthDay, birthMonth, birthYear, location) {
+  var query = '?type=' + type + '&email=' + email + '&firstname=' + firstName + '&lastname=' + lastName + '&password=' + password + '&password_confirmation=' + passwordConfirmation + '&birthDay=' + birthDay + '&birthMonth=' + birthMonth + '&birthYear=' + birthYear + '&location=' + location;
+  return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/validateregister/".concat(query));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  validateRegister: validateRegister
 });
 
 /***/ }),
@@ -58287,6 +58204,24 @@ var getFooterLinks = function getFooterLinks() {
 /* harmony default export */ __webpack_exports__["default"] = ({
   getFooterLinks: getFooterLinks
 });
+
+/***/ }),
+
+/***/ "./resources/js/helpers/navbar/fixedLinks.js":
+/*!***************************************************!*\
+  !*** ./resources/js/helpers/navbar/fixedLinks.js ***!
+  \***************************************************/
+/*! exports provided: fixedLinks */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fixedLinks", function() { return fixedLinks; });
+/**
+ * This helper is holding 'whitelisted' pages which can by default display navbar in its
+ * fixed state without invoking handler method which will later on mutate the navbar's state.
+ */
+var fixedLinks = ['/myaccount'];
 
 /***/ }),
 
