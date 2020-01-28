@@ -19,6 +19,7 @@ import MyAccountHistory from "./pages/MyAccount/History";
 import MyAccountSettings from "./pages/MyAccount/Settings";
 import MyAccountStatistics from "./pages/MyAccount/Statistics";
 import PlaceProperty from "./pages/PlaceProperty/PlaceProperty";
+import MyProperties from "./pages/MyProperties/MyProperties";
 
 const app = new Vue({
     el: '#app',
@@ -39,6 +40,7 @@ const app = new Vue({
         MyAccountHistory,
         MyAccountSettings,
         MyAccountStatistics,
-        PlaceProperty
+        PlaceProperty,
+        MyProperties
     }
 });

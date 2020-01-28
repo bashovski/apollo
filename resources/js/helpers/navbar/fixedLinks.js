@@ -4,5 +4,6 @@
  */
 
 export const fixedLinks = [
-    '/myaccount'
+    '/myaccount',
+    '/myproperties'
 ];

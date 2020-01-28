@@ -14,7 +14,7 @@
                         <span>My Account</span>
                     </a>
                     </li>
-                    <li class="apollo_nav_item nav-item" role="presentation"><a class="nav-link" href="#">
+                    <li class="apollo_nav_item nav-item" role="presentation"><a class="nav-link" :href="routeMyProperties">
                         <img id="apollo_nav_main_btn_pin" src="/svg/apollo_properties.svg" height="18" width="18" alt="">
                         <span>My Properties</span>
                     </a>
@@ -38,7 +38,8 @@
             'fixedByDefault',
             'routeHome',
             'routeMyAccount',
-            'routePlaceProperty'
+            'routePlaceProperty',
+            'routeMyProperties'
         ],
         data() {
             return {

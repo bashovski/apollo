@@ -8,6 +8,7 @@ Auth::routes();
 
 Route::get('/', 'PropertiesController@index')->name('home');
 Route::get('/myaccount', 'UsersController@show')->name('myaccount')->middleware('auth');
+Route::get('/myproperties', 'UserPropertiesController@index')->name('user.properties');
 Route::group([
     'prefix' => '/properties'
 ], function() {
