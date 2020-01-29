@@ -1,8 +1,6 @@
 <template>
     <div class="apollo-my_properties container">
-        <div class="apollo-my_properties-list col-md-6">
-            asdasdasd
-        </div>
+        <PropertiesList/>
         <div class="apollo-my_properties-bar col-md-6">
             <div class="apollo-my_properties-bar-heading">
                 <div class="heading">Property Options</div>
@@ -21,10 +19,14 @@
 
 <script>
 
-    import PropertyOptions from "../../components/PropertyOptions/PropertyOptions";
+    import PropertyOptions from '../../components/PropertyOptions/PropertyOptions';
+    import PropertiesList from '../../components/PropertiesList/PropertiesList';
     export default {
         name: "MyProperties",
-        components: {PropertyOptions},
+        components: {
+            PropertyOptions,
+            PropertiesList
+        },
     }
 </script>
 
@@ -38,6 +40,7 @@
         margin-top: 73px;
         margin-right: 0;
         padding-right: 0;
+        padding-left: 0;
 
         &-bar {
 
@@ -87,6 +90,9 @@
                     opacity: 0.8;
                 }
             }
+        }
+        &-list {
+            padding-left: 0;
         }
     }
 </style>
