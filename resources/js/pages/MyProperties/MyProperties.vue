@@ -21,6 +21,7 @@
 
     import PropertyOptions from '../../components/PropertyOptions/PropertyOptions';
     import PropertiesList from '../../components/PropertiesList/PropertiesList';
+
     export default {
         name: "MyProperties",
         components: {
@@ -41,6 +42,9 @@
         margin-right: 0;
         padding-right: 0;
         padding-left: 0;
+        margin-left: 0;
+        width: 100%;
+        max-width: unset;
 
         &-bar {
 
@@ -49,7 +53,7 @@
             justify-content: space-between;
             padding: 20px 20px;
             background: linear-gradient(#36d1dc, #5b86e5);
-
+            max-width: 30%;
 
             &-heading {
                 font-family: Karla, sans-serif;

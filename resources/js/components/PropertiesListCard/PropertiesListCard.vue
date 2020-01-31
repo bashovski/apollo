@@ -1,5 +1,5 @@
 <template>
-    <div class="apollo-properties_list-card">
+    <div class="apollo-properties_list-card" @click="selectPropertyCard">
         <div class="apollo-properties_list-card-property-heading">
             <div class="apollo-properties_list-card-property-heading-icon">
                 <img src="/svg/apollo_detached.svg" alt="">
@@ -31,6 +31,7 @@
 </template>
 
 <script>
+    import store from '../../store/index';
     import RoundedIcon from "../RoundedIcon/RoundedIcon";
     export default {
         name: "PropertiesListCard",
@@ -39,6 +40,11 @@
         ],
         components: {
             RoundedIcon
+        },
+        methods: {
+            selectPropertyCard() {
+                console.log(this);
+            }
         }
     }
 </script>
@@ -51,6 +57,13 @@
         box-shadow: 0 0 17px 1px rgba(0, 0, 0, 0.25);
         margin-top: 20px;
         padding: 20px;
+        transition: 500ms;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.8;
+            transition: 500ms;
+        }
 
         &-property {
             &-heading {

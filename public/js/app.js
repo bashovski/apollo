@@ -1845,6 +1845,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PropertiesList",
@@ -1864,7 +1865,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _RoundedIcon_RoundedIcon__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../RoundedIcon/RoundedIcon */ "./resources/js/components/RoundedIcon/RoundedIcon.vue");
+/* harmony import */ var _store_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../store/index */ "./resources/js/store/index.js");
+/* harmony import */ var _RoundedIcon_RoundedIcon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../RoundedIcon/RoundedIcon */ "./resources/js/components/RoundedIcon/RoundedIcon.vue");
+//
+//
 //
 //
 //
@@ -1896,11 +1900,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PropertiesListCard",
   props: ['property'],
   components: {
-    RoundedIcon: _RoundedIcon_RoundedIcon__WEBPACK_IMPORTED_MODULE_0__["default"]
+    RoundedIcon: _RoundedIcon_RoundedIcon__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  methods: {
+    selectPropertyCard: function selectPropertyCard() {
+      console.log(this);
+    }
   }
 });
 
@@ -8501,7 +8511,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".apollo-properties_list[data-v-678fdfd8] {\n  padding-left: 0;\n}", ""]);
+exports.push([module.i, ".apollo-properties_list[data-v-678fdfd8] {\n  max-height: 100vh;\n  overflow-y: scroll;\n  width: 70%;\n  max-width: 70%;\n  min-width: 70%;\n  padding-left: calc(7.5% + 15px);\n}\n.apollo-properties_list[data-v-678fdfd8]::-webkit-scrollbar {\n  display: none;\n}\n.apollo-properties_list-scroll_gradient[data-v-678fdfd8] {\n  width: 100%;\n  height: 250px;\n  width: 100%;\n  background: -webkit-gradient(linear, left top, left bottom, from(#fff0), to(#fff));\n  background: linear-gradient(#fff0, #fff);\n  position: -webkit-sticky;\n  position: sticky;\n  bottom: 0;\n}", ""]);
 
 // exports
 
@@ -8520,7 +8530,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".apollo-properties_list-card[data-v-90e233d8] {\n  width: 100%;\n  border-radius: 10px;\n  background-color: #ffffff;\n  box-shadow: 0 0 17px 1px rgba(0, 0, 0, 0.25);\n  margin-top: 20px;\n  padding: 20px;\n}\n.apollo-properties_list-card-property-heading[data-v-90e233d8] {\n  display: -webkit-box;\n  display: flex;\n}\n.apollo-properties_list-card-property-heading-icon[data-v-90e233d8] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n  border-radius: 50%;\n  background-image: -webkit-gradient(linear, left top, left bottom, from(#36d1dc), to(#5b86e5));\n  background-image: linear-gradient(#36d1dc, #5b86e5);\n  width: 65px;\n  height: 65px;\n}\n.apollo-properties_list-card-property-heading-icon > img[data-v-90e233d8] {\n  max-width: 42px;\n  max-height: 42px;\n}\n.apollo-properties_list-card-property-heading-details[data-v-90e233d8] {\n  display: -webkit-box;\n  display: flex;\n  margin-left: 10px;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.apollo-properties_list-card-property-heading-details .address[data-v-90e233d8] {\n  font-family: Karla, sans-serif;\n  font-weight: bold;\n  font-size: 16px;\n  color: #001730;\n}\n.apollo-properties_list-card-property-heading-details .price[data-v-90e233d8] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  font-family: Karla, sans-serif;\n  font-size: 14px;\n}\n.apollo-properties_list-card-property-heading-details .price .amount[data-v-90e233d8] {\n  padding-right: 5px;\n}\n.apollo-properties_list-card-property-heading-details .price .currency[data-v-90e233d8] {\n  background-image: -webkit-gradient(linear, left top, left bottom, from(#36d1dc), to(#5b86e5));\n  background-image: linear-gradient(#36d1dc, #5b86e5);\n  border-radius: 50px;\n  padding: 2px 5px;\n  color: #fff;\n}\n.apollo-properties_list-card-property-content-item[data-v-90e233d8] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n.apollo-properties_list-card-property-content-item > a[data-v-90e233d8], .apollo-properties_list-card-property-content-item div[data-v-90e233d8] {\n  padding-left: 5px;\n  text-decoration: none !important;\n  color: #001730;\n  font-family: Karla, sans-serif;\n}\n.apollo-properties_list-card-property-content-item > a > .disabled[data-v-90e233d8], .apollo-properties_list-card-property-content-item div > .disabled[data-v-90e233d8] {\n  opacity: 0.7;\n}", ""]);
+exports.push([module.i, ".apollo-properties_list-card[data-v-90e233d8] {\n  width: 100%;\n  border-radius: 10px;\n  background-color: #ffffff;\n  box-shadow: 0 0 17px 1px rgba(0, 0, 0, 0.25);\n  margin-top: 20px;\n  padding: 20px;\n  -webkit-transition: 500ms;\n  transition: 500ms;\n  cursor: pointer;\n}\n.apollo-properties_list-card[data-v-90e233d8]:hover {\n  opacity: 0.8;\n  -webkit-transition: 500ms;\n  transition: 500ms;\n}\n.apollo-properties_list-card-property-heading[data-v-90e233d8] {\n  display: -webkit-box;\n  display: flex;\n}\n.apollo-properties_list-card-property-heading-icon[data-v-90e233d8] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n  border-radius: 50%;\n  background-image: -webkit-gradient(linear, left top, left bottom, from(#36d1dc), to(#5b86e5));\n  background-image: linear-gradient(#36d1dc, #5b86e5);\n  width: 65px;\n  height: 65px;\n}\n.apollo-properties_list-card-property-heading-icon > img[data-v-90e233d8] {\n  max-width: 42px;\n  max-height: 42px;\n}\n.apollo-properties_list-card-property-heading-details[data-v-90e233d8] {\n  display: -webkit-box;\n  display: flex;\n  margin-left: 10px;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n}\n.apollo-properties_list-card-property-heading-details .address[data-v-90e233d8] {\n  font-family: Karla, sans-serif;\n  font-weight: bold;\n  font-size: 16px;\n  color: #001730;\n}\n.apollo-properties_list-card-property-heading-details .price[data-v-90e233d8] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  font-family: Karla, sans-serif;\n  font-size: 14px;\n}\n.apollo-properties_list-card-property-heading-details .price .amount[data-v-90e233d8] {\n  padding-right: 5px;\n}\n.apollo-properties_list-card-property-heading-details .price .currency[data-v-90e233d8] {\n  background-image: -webkit-gradient(linear, left top, left bottom, from(#36d1dc), to(#5b86e5));\n  background-image: linear-gradient(#36d1dc, #5b86e5);\n  border-radius: 50px;\n  padding: 2px 5px;\n  color: #fff;\n}\n.apollo-properties_list-card-property-content-item[data-v-90e233d8] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n.apollo-properties_list-card-property-content-item > a[data-v-90e233d8], .apollo-properties_list-card-property-content-item div[data-v-90e233d8] {\n  padding-left: 5px;\n  text-decoration: none !important;\n  color: #001730;\n  font-family: Karla, sans-serif;\n}\n.apollo-properties_list-card-property-content-item > a > .disabled[data-v-90e233d8], .apollo-properties_list-card-property-content-item div > .disabled[data-v-90e233d8] {\n  opacity: 0.7;\n}", ""]);
 
 // exports
 
@@ -8634,7 +8644,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".apollo-my_properties[data-v-f413b114] {\n  display: -webkit-box;\n  display: flex;\n  height: 100vh;\n  max-height: calc(100vh - 73px);\n  margin-top: 73px;\n  margin-right: 0;\n  padding-right: 0;\n  padding-left: 0;\n}\n.apollo-my_properties-bar[data-v-f413b114] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  padding: 20px 20px;\n  background: -webkit-gradient(linear, left top, left bottom, from(#36d1dc), to(#5b86e5));\n  background: linear-gradient(#36d1dc, #5b86e5);\n}\n.apollo-my_properties-bar-heading[data-v-f413b114] {\n  font-family: Karla, sans-serif;\n  color: #fff;\n  font-size: 28px;\n  font-weight: bold;\n}\n.apollo-my_properties-bar-heading > .heading[data-v-f413b114] {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  border-radius: 6px;\n  border-bottom: 4px solid #FE4A49;\n}\n.apollo-my_properties-bar-subheading[data-v-f413b114] {\n  margin-top: 20px;\n  opacity: 0.6;\n  font-size: 14px;\n}\n.apollo-my_properties-bar-btn[data-v-f413b114] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n  padding: 30px 20px;\n  box-shadow: 0 6px 8px 4px rgba(0, 0, 0, 0.25);\n  border-radius: 6px;\n  border-bottom: 4px solid #FE4A49;\n  background-color: #fff;\n  color: #FE4A49;\n  font-family: Karla, sans-serif;\n  font-size: 18px;\n  text-transform: uppercase;\n  -webkit-transition: 500ms;\n  transition: 500ms;\n  cursor: pointer;\n}\n.apollo-my_properties-bar-btn[data-v-f413b114]:hover {\n  opacity: 0.8;\n}\n.apollo-my_properties-list[data-v-f413b114] {\n  padding-left: 0;\n}", ""]);
+exports.push([module.i, ".apollo-my_properties[data-v-f413b114] {\n  display: -webkit-box;\n  display: flex;\n  height: 100vh;\n  max-height: calc(100vh - 73px);\n  margin-top: 73px;\n  margin-right: 0;\n  padding-right: 0;\n  padding-left: 0;\n  margin-left: 0;\n  width: 100%;\n  max-width: unset;\n}\n.apollo-my_properties-bar[data-v-f413b114] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  padding: 20px 20px;\n  background: -webkit-gradient(linear, left top, left bottom, from(#36d1dc), to(#5b86e5));\n  background: linear-gradient(#36d1dc, #5b86e5);\n  max-width: 30%;\n}\n.apollo-my_properties-bar-heading[data-v-f413b114] {\n  font-family: Karla, sans-serif;\n  color: #fff;\n  font-size: 28px;\n  font-weight: bold;\n}\n.apollo-my_properties-bar-heading > .heading[data-v-f413b114] {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  border-radius: 6px;\n  border-bottom: 4px solid #FE4A49;\n}\n.apollo-my_properties-bar-subheading[data-v-f413b114] {\n  margin-top: 20px;\n  opacity: 0.6;\n  font-size: 14px;\n}\n.apollo-my_properties-bar-btn[data-v-f413b114] {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n          align-items: center;\n  padding: 30px 20px;\n  box-shadow: 0 6px 8px 4px rgba(0, 0, 0, 0.25);\n  border-radius: 6px;\n  border-bottom: 4px solid #FE4A49;\n  background-color: #fff;\n  color: #FE4A49;\n  font-family: Karla, sans-serif;\n  font-size: 18px;\n  text-transform: uppercase;\n  -webkit-transition: 500ms;\n  transition: 500ms;\n  cursor: pointer;\n}\n.apollo-my_properties-bar-btn[data-v-f413b114]:hover {\n  opacity: 0.8;\n}\n.apollo-my_properties-list[data-v-f413b114] {\n  padding-left: 0;\n}", ""]);
 
 // exports
 
@@ -40120,8 +40130,14 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "apollo-properties_list col-md-6" },
-    [_c("PropertiesListCard")],
-    1
+    [
+      _vm._l(10, function(card, key) {
+        return _c("PropertiesListCard", { key: key })
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "apollo-properties_list-scroll_gradient" })
+    ],
+    2
   )
 }
 var staticRenderFns = []
@@ -40146,38 +40162,56 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "apollo-properties_list-card" }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("div", { staticClass: "apollo-properties_list-card-property-content" }, [
-      _c(
-        "div",
-        { staticClass: "apollo-properties_list-card-property-content-item" },
-        [
-          _c("RoundedIcon", {
-            attrs: { src: "/svg/apollo_visits.svg", width: 28, height: 28 }
-          }),
-          _vm._v(" "),
-          _c("div", [_vm._v("9817")])
-        ],
-        1
-      ),
+  return _c(
+    "div",
+    {
+      staticClass: "apollo-properties_list-card",
+      on: { click: _vm.selectPropertyCard }
+    },
+    [
+      _vm._m(0),
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "apollo-properties_list-card-property-content-item" },
+        { staticClass: "apollo-properties_list-card-property-content" },
         [
-          _c("RoundedIcon", {
-            attrs: { src: "/svg/apollo_qa.svg", width: 28, height: 28 }
-          }),
+          _c(
+            "div",
+            {
+              staticClass: "apollo-properties_list-card-property-content-item"
+            },
+            [
+              _c("RoundedIcon", {
+                attrs: { src: "/svg/apollo_visits.svg", width: 28, height: 28 }
+              }),
+              _vm._v(" "),
+              _c("div", [_vm._v("9817")])
+            ],
+            1
+          ),
           _vm._v(" "),
-          _vm._m(1)
-        ],
-        1
-      )
-    ]),
-    _vm._v("\n    .apollo-properties_\n")
-  ])
+          _c(
+            "div",
+            {
+              staticClass: "apollo-properties_list-card-property-content-item"
+            },
+            [
+              _c("RoundedIcon", {
+                attrs: { src: "/svg/apollo_qa.svg", width: 28, height: 28 }
+              }),
+              _vm._v(" "),
+              _vm._m(1)
+            ],
+            1
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "apollo-properties_list-card-property-selection"
+      })
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
@@ -60856,6 +60890,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var _modules_myAccount__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/myAccount */ "./resources/js/store/modules/myAccount.js");
+/* harmony import */ var _modules_myProperties__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/myProperties */ "./resources/js/store/modules/myProperties.js");
+
 
 
 
@@ -60863,7 +60899,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 var debug = "development" !== 'production';
 /* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   modules: {
-    myAccount: _modules_myAccount__WEBPACK_IMPORTED_MODULE_2__["default"]
+    myAccount: _modules_myAccount__WEBPACK_IMPORTED_MODULE_2__["default"],
+    myProperties: _modules_myProperties__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   strict: debug
 }));
@@ -60905,6 +60942,43 @@ var mutations = {
       return 'display: none';
     });
     state.viewStyles[item] = '';
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  state: state,
+  getters: getters,
+  actions: actions,
+  mutations: mutations
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/myProperties.js":
+/*!****************************************************!*\
+  !*** ./resources/js/store/modules/myProperties.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var state = {
+  selectedProperty: null
+};
+var getters = {
+  getSelectedProperty: function getSelectedProperty() {
+    return state.selectedProperty;
+  }
+};
+var actions = {
+  selectProperty: function selectProperty(_ref, property) {
+    var commit = _ref.commit;
+    commit('setSelectedProperty', property);
+  }
+};
+var mutations = {
+  setSelectedProperty: function setSelectedProperty(property) {
+    state.selectedProperty = property;
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = ({

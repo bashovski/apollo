@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6c5c3d23-321a-4fde-8fc8-8fd8cc1720d2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/components/PropertiesList/PropertiesList.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/PropertiesListCard/PropertiesListCard.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/RoundedIcon/RoundedIcon.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/models/UserPropertiesListitem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Basha.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Basha.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/store/modules/myProperties.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/PropertiesList/PropertiesList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/PropertiesList/PropertiesList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/PropertiesListCard/PropertiesListCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/PropertiesListCard/PropertiesListCard.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/pages/MyProperties/MyProperties.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/pages/MyProperties/MyProperties.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/store/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,8 +40,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="JavaScript File" />
         <option value="Vue Single File Component" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -318,6 +317,7 @@
       <workItem from="1580319124831" duration="8510000" />
       <workItem from="1580332861445" duration="447000" />
       <workItem from="1580333797637" duration="1228000" />
+      <workItem from="1580505023198" duration="3802000" />
     </task>
     <servers />
   </component>
