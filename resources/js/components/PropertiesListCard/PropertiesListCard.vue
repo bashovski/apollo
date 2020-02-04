@@ -1,5 +1,5 @@
 <template>
-    <div class="apollo-properties_list-card" @click="selectPropertyCard">
+    <div class="apollo-properties_list-card" @click="selectPropertyCard" v-bind:class="getCardStyle">
         <div class="apollo-properties_list-card-property-heading">
             <div class="apollo-properties_list-card-property-heading-icon">
                 <img src="/svg/apollo_detached.svg" alt="">
@@ -24,9 +24,6 @@
                 <a href="/">3 new questions <span class="disabled">(32 read)</span></a>
             </div>
         </div>
-        <div class="apollo-properties_list-card-property-selection">
-
-        </div>
     </div>
 </template>
 
@@ -36,14 +33,23 @@
     export default {
         name: "PropertiesListCard",
         props: [
-            'property'
+            'property',
+            'index'
         ],
         components: {
             RoundedIcon
         },
         methods: {
             selectPropertyCard() {
-                console.log(this);
+                store.dispatch('selectProperty', this.index);
+            }
+        },
+        computed: {
+            isSelectedCard() {
+                return this.index === store.getters.getSelectedProperty;
+            },
+            getCardStyle() {
+                return this.index === store.getters.getSelectedProperty ? 'selected' : '';
             }
         }
     }
@@ -59,6 +65,13 @@
         padding: 20px;
         transition: 500ms;
         cursor: pointer;
+
+        opacity: 0.3;
+
+        &.selected, &.selected:hover {
+            cursor: context-menu;
+            opacity: 1;
+        }
 
         &:hover {
             opacity: 0.8;

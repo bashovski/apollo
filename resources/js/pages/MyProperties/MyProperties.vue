@@ -10,7 +10,7 @@
                 </div>
             </div>
             <PropertyOptions/>
-            <div class="apollo-my_properties-bar-btn">
+            <div class="apollo-my_properties-bar-btn" @click="applyChanges">
                 Apply Changes
             </div>
         </div>
@@ -19,6 +19,7 @@
 
 <script>
 
+    import store from '../../store/index';
     import PropertyOptions from '../../components/PropertyOptions/PropertyOptions';
     import PropertiesList from '../../components/PropertiesList/PropertiesList';
 
@@ -28,6 +29,11 @@
             PropertyOptions,
             PropertiesList
         },
+        methods: {
+            applyChanges() {
+                console.log(store);
+            }
+        }
     }
 </script>
 

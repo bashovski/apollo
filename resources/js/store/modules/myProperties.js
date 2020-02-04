@@ -15,7 +15,8 @@ const actions = {
 };
 
 const mutations = {
-    setSelectedProperty(property) {
+    setSelectedProperty(state, property) {
+        console.log(property);
         state.selectedProperty = property;
     }
 };

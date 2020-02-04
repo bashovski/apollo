@@ -1,6 +1,6 @@
 <template>
     <div class="apollo-properties_list col-md-6">
-        <PropertiesListCard v-for="(card, key) in 10" v-bind:key="key"/>
+        <PropertiesListCard v-for="(card, key) in 10" v-bind:key="key" :index="key"/>
         <div class="apollo-properties_list-scroll_gradient"/>
     </div>
 </template>
@@ -31,7 +31,6 @@
         &-scroll_gradient {
             width: 100%;
             height: 250px;
-            width: 100%;
             background: linear-gradient(#fff0, #fff);
             position: sticky;
             bottom: 0;
