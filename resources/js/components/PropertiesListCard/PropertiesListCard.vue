@@ -49,7 +49,7 @@
                 return this.index === store.getters.getSelectedProperty;
             },
             getCardStyle() {
-                return this.index === store.getters.getSelectedProperty ? 'selected' : '';
+                return this.index === store.getters.getSelectedProperty ? 'selected' : (store.getters.getSelectedProperty !== null ? 'grayed-out' : '');
             }
         }
     }
@@ -66,7 +66,9 @@
         transition: 500ms;
         cursor: pointer;
 
-        opacity: 0.3;
+        &.grayed-out {
+            opacity: 0.3;
+        }
 
         &.selected, &.selected:hover {
             cursor: context-menu;
