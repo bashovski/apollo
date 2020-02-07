@@ -1,17 +1,18 @@
-<template>
+    <template>
     <div class="apollo-my_properties container">
         <PropertiesList/>
         <div class="apollo-my_properties-bar col-md-6">
             <div class="apollo-my_properties-bar-heading">
                 <div class="heading">Property Options</div>
                 <div class="apollo-my_properties-bar-subheading">
-                    Please note that you can modify anything regarding your property
-                    with the approval of Apollo Certified Staff or the Real-Estate agent you've hired.
+                    {{ currentSubheading }}
                 </div>
             </div>
             <PropertyOptions/>
-            <div class="apollo-my_properties-bar-btn" @click="applyChanges">
-                Apply Changes
+            <div class="apollo-my_properties-bar-btn"
+                 v-if="this.cta[`${this.status}`] !== null"
+                 @click="applyChanges">
+                {{ currentCTAString }}
             </div>
         </div>
     </div>
@@ -22,6 +23,9 @@
     import store from '../../store/index';
     import PropertyOptions from '../../components/PropertyOptions/PropertyOptions';
     import PropertiesList from '../../components/PropertiesList/PropertiesList';
+    import subheadingsList from "../../helpers/myproperties/subheadings";
+    import statusList from "../../helpers/myproperties/status";
+    import ctaList from "../../helpers/myproperties/cta";
 
     export default {
         name: "MyProperties",
@@ -29,9 +33,30 @@
             PropertyOptions,
             PropertiesList
         },
+        data() {
+            return {
+                subheadings: subheadingsList,
+                cta: ctaList,
+                selectedProperty: null,
+                status: statusList.STATUS_PROPERTY_NOT_SELECTED // Refer to status.js helper for status keys
+            }
+        },
         methods: {
             applyChanges() {
                 console.log(store);
+            }
+        },
+        computed: {
+            currentSubheading() {
+                return this.subheadings[`${this.status}`];
+            },
+            currentCTAString() {
+                return this.cta[`${this.status}`];
+            },
+            getSelectedProperty() {
+                const selectedProperty = store.getters.getSelectedProperty;
+                this.status = (selectedProperty !== null ? statusList.STATUS_PROPERTY_SELECTED : statusList.STATUS_PROPERTY_NOT_SELECTED);
+                return this.selectedProperty = selectedProperty;
             }
         }
     }

@@ -2882,6 +2882,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../store/index */ "./resources/js/store/index.js");
 /* harmony import */ var _components_PropertyOptions_PropertyOptions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/PropertyOptions/PropertyOptions */ "./resources/js/components/PropertyOptions/PropertyOptions.vue");
 /* harmony import */ var _components_PropertiesList_PropertiesList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/PropertiesList/PropertiesList */ "./resources/js/components/PropertiesList/PropertiesList.vue");
+/* harmony import */ var _helpers_myproperties_subheadings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../helpers/myproperties/subheadings */ "./resources/js/helpers/myproperties/subheadings.js");
+/* harmony import */ var _helpers_myproperties_status__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../helpers/myproperties/status */ "./resources/js/helpers/myproperties/status.js");
+/* harmony import */ var _helpers_myproperties_cta__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../helpers/myproperties/cta */ "./resources/js/helpers/myproperties/cta.js");
 //
 //
 //
@@ -2901,6 +2904,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
+
+
 
 
 
@@ -2910,9 +2917,31 @@ __webpack_require__.r(__webpack_exports__);
     PropertyOptions: _components_PropertyOptions_PropertyOptions__WEBPACK_IMPORTED_MODULE_1__["default"],
     PropertiesList: _components_PropertiesList_PropertiesList__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
+  data: function data() {
+    return {
+      subheadings: _helpers_myproperties_subheadings__WEBPACK_IMPORTED_MODULE_3__["default"],
+      cta: _helpers_myproperties_cta__WEBPACK_IMPORTED_MODULE_5__["default"],
+      selectedProperty: null,
+      status: _helpers_myproperties_status__WEBPACK_IMPORTED_MODULE_4__["default"].STATUS_PROPERTY_NOT_SELECTED // Refer to status.js helper for status keys
+
+    };
+  },
   methods: {
     applyChanges: function applyChanges() {
       console.log(_store_index__WEBPACK_IMPORTED_MODULE_0__["default"]);
+    }
+  },
+  computed: {
+    currentSubheading: function currentSubheading() {
+      return this.subheadings["".concat(this.status)];
+    },
+    currentCTAString: function currentCTAString() {
+      return this.cta["".concat(this.status)];
+    },
+    getSelectedProperty: function getSelectedProperty() {
+      var selectedProperty = _store_index__WEBPACK_IMPORTED_MODULE_0__["default"].getters.getSelectedProperty;
+      this.status = selectedProperty !== null ? _helpers_myproperties_status__WEBPACK_IMPORTED_MODULE_4__["default"].STATUS_PROPERTY_SELECTED : _helpers_myproperties_status__WEBPACK_IMPORTED_MODULE_4__["default"].STATUS_PROPERTY_NOT_SELECTED;
+      return this.selectedProperty = selectedProperty;
     }
   }
 });
@@ -42525,18 +42554,36 @@ var render = function() {
         "div",
         { staticClass: "apollo-my_properties-bar col-md-6" },
         [
-          _vm._m(0),
+          _c("div", { staticClass: "apollo-my_properties-bar-heading" }, [
+            _c("div", { staticClass: "heading" }, [_vm._v("Property Options")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "apollo-my_properties-bar-subheading" }, [
+              _vm._v(
+                "\n                " +
+                  _vm._s(_vm.currentSubheading) +
+                  "\n            "
+              )
+            ])
+          ]),
           _vm._v(" "),
           _c("PropertyOptions"),
           _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "apollo-my_properties-bar-btn",
-              on: { click: _vm.applyChanges }
-            },
-            [_vm._v("\n            Apply Changes\n        ")]
-          )
+          this.cta["" + this.status] !== null
+            ? _c(
+                "div",
+                {
+                  staticClass: "apollo-my_properties-bar-btn",
+                  on: { click: _vm.applyChanges }
+                },
+                [
+                  _vm._v(
+                    "\n            " +
+                      _vm._s(_vm.currentCTAString) +
+                      "\n        "
+                  )
+                ]
+              )
+            : _vm._e()
         ],
         1
       )
@@ -42544,22 +42591,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "apollo-my_properties-bar-heading" }, [
-      _c("div", { staticClass: "heading" }, [_vm._v("Property Options")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "apollo-my_properties-bar-subheading" }, [
-        _vm._v(
-          "\n                Please note that you can modify anything regarding your property\n                with the approval of Apollo Certified Staff or the Real-Estate agent you've hired.\n            "
-        )
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -59548,6 +59580,30 @@ var getFooterLinks = function getFooterLinks() {
 
 /***/ }),
 
+/***/ "./resources/js/helpers/myproperties/cta.js":
+/*!**************************************************!*\
+  !*** ./resources/js/helpers/myproperties/cta.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * This helper service regarding MyProperties component is holding string values for the Call-to-action button
+ * which will dynamically call different actions depending on the state of the component and the user's made progress.
+ *
+ * Therefore, keys that hold null-value are apostrophizing that the CTA button won't be displayed in that specific case.
+ * Also, there's a need to mention that keys listed below are placed in order of expected flow.
+ */
+/* harmony default export */ __webpack_exports__["default"] = ({
+  propertyNotSelected: null,
+  propertySelected: null,
+  propertyMadeChanges: "Apply Changes"
+});
+
+/***/ }),
+
 /***/ "./resources/js/helpers/myproperties/options.js":
 /*!******************************************************!*\
   !*** ./resources/js/helpers/myproperties/options.js ***!
@@ -59561,6 +59617,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _models_PropertyOption__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../models/PropertyOption */ "./resources/js/models/PropertyOption.js");
 
 var propertyOptions = [new _models_PropertyOption__WEBPACK_IMPORTED_MODULE_0__["default"]('Update Energy Label', 'energylabel', 'onEnergyLabelUpdateClicked'), new _models_PropertyOption__WEBPACK_IMPORTED_MODULE_0__["default"]('Update Location Info', 'location', 'onUpdateLocationInfoClicked'), new _models_PropertyOption__WEBPACK_IMPORTED_MODULE_0__["default"]('Update Cadastre', 'cadastre', 'onUpdateCadastreClicked'), new _models_PropertyOption__WEBPACK_IMPORTED_MODULE_0__["default"]('Update Photos', 'photo', 'onUpdatePhotosClicked'), new _models_PropertyOption__WEBPACK_IMPORTED_MODULE_0__["default"]('Brochure', 'brochure', 'onBrochureClicked')];
+
+/***/ }),
+
+/***/ "./resources/js/helpers/myproperties/status.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/helpers/myproperties/status.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  STATUS_PROPERTY_NOT_SELECTED: 'propertyNotSelected',
+  STATUS_PROPERTY_SELECTED: 'propertySelected',
+  STATUS_PROPERTY_MADE_CHANGES: 'propertyMadeChanges'
+});
+
+/***/ }),
+
+/***/ "./resources/js/helpers/myproperties/subheadings.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/helpers/myproperties/subheadings.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  propertyNotSelected: 'Please select a property you want to modify.',
+  propertySelected: 'Please note that you can modify anything regarding your property\n' + 'with the approval of Apollo Certified Staff or the Real-Estate agent you\'ve hired.',
+  propertyMadeChanges: "Click 'Apply Changes' Button in order to save every change you've made recently."
+});
 
 /***/ }),
 
