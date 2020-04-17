@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
-            "version": "2.6.0",
+            "version": "2.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/algolia/algoliasearch-client-php.git",
-                "reference": "cf00bbc55e0701691abbd92101c963e34ec4a496"
+                "reference": "dd7eb942ff15c45179043b4cce51e53b4cf10112"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/algolia/algoliasearch-client-php/zipball/cf00bbc55e0701691abbd92101c963e34ec4a496",
-                "reference": "cf00bbc55e0701691abbd92101c963e34ec4a496",
+                "url": "https://api.github.com/repos/algolia/algoliasearch-client-php/zipball/dd7eb942ff15c45179043b4cce51e53b4cf10112",
+                "reference": "dd7eb942ff15c45179043b4cce51e53b4cf10112",
                 "shasum": ""
             },
             "require": {
@@ -74,7 +74,7 @@
                 "php",
                 "search"
             ],
-            "time": "2020-03-09T09:11:44+00:00"
+            "time": "2020-04-16T08:45:30+00:00"
         },
         {
             "name": "defuse/php-encryption",
