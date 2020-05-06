@@ -13,7 +13,7 @@
         "algolia/algoliasearch-client-php": "^2.5",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.2",
-        "laravel/passport": "^8.0",
+        "laravel/passport": "^9.0",
         "laravel/scout": "^8.0",
         "laravel/tinker": "^2.0",
         "predis/predis": "^1.1"
