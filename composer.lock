@@ -1003,16 +1003,16 @@
         },
         {
             "name": "laravel/passport",
-            "version": "v9.1.0",
+            "version": "v9.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/passport.git",
-                "reference": "c274e928a9f43d517b9887446288d3129b1543f9"
+                "reference": "9f4b88114e7517db58428cef0ba461f86a2e5f92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/passport/zipball/c274e928a9f43d517b9887446288d3129b1543f9",
-                "reference": "c274e928a9f43d517b9887446288d3129b1543f9",
+                "url": "https://api.github.com/repos/laravel/passport/zipball/9f4b88114e7517db58428cef0ba461f86a2e5f92",
+                "reference": "9f4b88114e7517db58428cef0ba461f86a2e5f92",
                 "shasum": ""
             },
             "require": {
@@ -1072,7 +1072,7 @@
                 "oauth",
                 "passport"
             ],
-            "time": "2020-05-08T13:55:52+00:00"
+            "time": "2020-05-12T20:45:28+00:00"
         },
         {
             "name": "laravel/scout",
