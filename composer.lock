@@ -1118,16 +1118,16 @@
         },
         {
             "name": "laravel/scout",
-            "version": "v8.0.1",
+            "version": "v8.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/scout.git",
-                "reference": "85e018b752088057881f780e05a85c8657ff8e95"
+                "reference": "415177bd2e52a0dbf87ef9143fed16e9c9b93224"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/scout/zipball/85e018b752088057881f780e05a85c8657ff8e95",
-                "reference": "85e018b752088057881f780e05a85c8657ff8e95",
+                "url": "https://api.github.com/repos/laravel/scout/zipball/415177bd2e52a0dbf87ef9143fed16e9c9b93224",
+                "reference": "415177bd2e52a0dbf87ef9143fed16e9c9b93224",
                 "shasum": ""
             },
             "require": {
@@ -1179,7 +1179,7 @@
                 "laravel",
                 "search"
             ],
-            "time": "2020-04-21T19:33:18+00:00"
+            "time": "2020-07-14T18:16:00+00:00"
         },
         {
             "name": "laravel/tinker",
