@@ -1119,32 +1119,32 @@
         },
         {
             "name": "laravel/scout",
-            "version": "v8.2.1",
+            "version": "v8.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/scout.git",
-                "reference": "74e2d6a3859579dd7b246478d0bb62f13583d6c4"
+                "reference": "da05fbb539889338a7f0cabb0cf5acdd0083278c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/scout/zipball/74e2d6a3859579dd7b246478d0bb62f13583d6c4",
-                "reference": "74e2d6a3859579dd7b246478d0bb62f13583d6c4",
+                "url": "https://api.github.com/repos/laravel/scout/zipball/da05fbb539889338a7f0cabb0cf5acdd0083278c",
+                "reference": "da05fbb539889338a7f0cabb0cf5acdd0083278c",
                 "shasum": ""
             },
             "require": {
-                "illuminate/bus": "^6.0|^7.0",
-                "illuminate/contracts": "^6.0|^7.0",
-                "illuminate/database": "^6.0|^7.0",
-                "illuminate/http": "^6.0|^7.0",
-                "illuminate/pagination": "^6.0|^7.0",
-                "illuminate/queue": "^6.0|^7.0",
-                "illuminate/support": "^6.0|^7.0",
+                "illuminate/bus": "^6.0|^7.0|^8.0",
+                "illuminate/contracts": "^6.0|^7.0|^8.0",
+                "illuminate/database": "^6.0|^7.0|^8.0",
+                "illuminate/http": "^6.0|^7.0|^8.0",
+                "illuminate/pagination": "^6.0|^7.0|^8.0",
+                "illuminate/queue": "^6.0|^7.0|^8.0",
+                "illuminate/support": "^6.0|^7.0|^8.0",
                 "php": "^7.2"
             },
             "require-dev": {
                 "algolia/algoliasearch-client-php": "^2.2",
                 "mockery/mockery": "^1.0",
-                "phpunit/phpunit": "^8.0"
+                "phpunit/phpunit": "^8.0|^9.3"
             },
             "suggest": {
                 "algolia/algoliasearch-client-php": "Required to use the Algolia engine (^2.2)."
@@ -1181,7 +1181,7 @@
                 "laravel",
                 "search"
             ],
-            "time": "2020-08-06T11:13:20+00:00"
+            "time": "2020-08-25T18:14:31+00:00"
         },
         {
             "name": "laravel/tinker",
