@@ -10,7 +10,7 @@
     "require": {
         "php": "^7.2",
         "ext-json": "*",
-        "algolia/algoliasearch-client-php": "^2.5",
+        "algolia/algoliasearch-client-php": "^3.0",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.2",
         "laravel/passport": "^9.0",
