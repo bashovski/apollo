@@ -4,27 +4,27 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "536e54c4b794095b400b1c99ee22cba4",
+    "content-hash": "024d1763a881bfefc049fe89f2fb1d0a",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
-            "version": "2.7.2",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/algolia/algoliasearch-client-php.git",
-                "reference": "a915109c76d5f4af67f10cd21855ea2d4c9aec9f"
+                "reference": "17083be5fec3876b8548169c178a1735d8e16530"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/algolia/algoliasearch-client-php/zipball/a915109c76d5f4af67f10cd21855ea2d4c9aec9f",
-                "reference": "a915109c76d5f4af67f10cd21855ea2d4c9aec9f",
+                "url": "https://api.github.com/repos/algolia/algoliasearch-client-php/zipball/17083be5fec3876b8548169c178a1735d8e16530",
+                "reference": "17083be5fec3876b8548169c178a1735d8e16530",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
                 "ext-json": "*",
                 "ext-mbstring": "*",
-                "php": "^5.3 || ^7.0",
+                "php": "^7.2 || ^8.0",
                 "psr/http-message": "^1.0",
                 "psr/log": "^1.0",
                 "psr/simple-cache": "^1.0"
@@ -32,7 +32,7 @@
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.0",
                 "fzaninotto/faker": "^1.8",
-                "phpunit/phpunit": "^4.8",
+                "phpunit/phpunit": "^8.0 || ^9.0",
                 "symfony/yaml": "^2.0 || ^4.0"
             },
             "suggest": {
@@ -74,7 +74,7 @@
                 "php",
                 "search"
             ],
-            "time": "2020-11-24T10:16:46+00:00"
+            "time": "2021-04-23T13:29:26+00:00"
         },
         {
             "name": "defuse/php-encryption",
@@ -6990,12 +6990,12 @@
             "version": "1.9.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/webmozart/assert.git",
+                "url": "https://github.com/webmozarts/assert.git",
                 "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
                 "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389",
                 "shasum": ""
             },
